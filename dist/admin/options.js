@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import { locales as AdminJSLocales } from 'adminjs';
 import { HomeResource } from './entities/home.entity.js';
-import { UnidadeResource } from './entities/unidades.entity.js';
+import { UnidadeResource } from './resources/unidades.resource.js';
 import componentLoader from './component-loader.js';
 import ValePizzaResource from './resources/vale-pizza.resource.js';
 import { MediaResource } from './resources/media.resource.js';

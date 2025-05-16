@@ -4,7 +4,7 @@ import mongoose from 'mongoose';
 import { locales as AdminJSLocales } from 'adminjs';
 
 import { HomeResource } from './entities/home.entity.js';
-import { UnidadeResource } from './entities/unidades.entity.js';
+import { UnidadeResource } from './resources/unidades.resource.js';
 import componentLoader from './component-loader.js';
 import CardapioJantarResource from './resources/cardapio-jantar.resource.js';
 import CardapioDeliveryResource from './resources/cardapio-delivery.resource.js';
