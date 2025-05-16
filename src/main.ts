@@ -1,7 +1,6 @@
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
-import cors from 'cors';
 import { NestFactory } from '@nestjs/core';
 import * as express from 'express';
 import session from 'express-session';
@@ -18,7 +17,7 @@ async function bootstrap() {
 
   app.use(
     session({
-      secret: 'pqYByvlL7A3DPEtx0A2JwC2p06QXh8vq',
+      secret: 'sua-chave-secreta',
       resave: false,
       saveUninitialized: true,
       cookie: {
@@ -26,9 +25,5 @@ async function bootstrap() {
       },
     }),
   );
-
-  app.use(cors({
-    origin: '*', // ou '*' para liberar geral (não recomendado em produção)
-  }));
 }
 bootstrap();
