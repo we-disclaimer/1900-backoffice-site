@@ -6,6 +6,12 @@
     },
     "routes": [
       { "src": "/(.*)", "dest": "/api/main.ts" }
-    ]
+    ],
+    "builds": [
+        {
+          "src": "api/main.ts",
+          "use": "@vercel/node"
+        }
+      ]
   }
   
