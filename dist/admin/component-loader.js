@@ -7,5 +7,6 @@ componentLoader.add('GroupedPrices', path.resolve('src/admin/components/grouped-
 componentLoader.add('GroupedDisponibilities', path.resolve('src/admin/components/grouped-disponibilities.tsx'));
 componentLoader.add('ShowProductImage', path.resolve('src/admin/components/show-media.tsx'));
 componentLoader.add('FormattedDate', path.resolve('src/admin/components/formatted-date.tsx'));
+componentLoader.add('RedirectDashboard', path.resolve('src/admin/components/redirect-dashboard.tsx'));
 export default componentLoader;
 //# sourceMappingURL=component-loader.js.map

@@ -11,6 +11,9 @@ const mongooseDb = await mongoose.connect('mongodb+srv://admin:TXCCMCCQvgQhmKwZ@
 const options = {
     rootPath: '/admin',
     resources: [HomeResource, UnidadeResource, MediaResource, CardapioResource, PostResource, CategoriaResource],
+    dashboard: {
+        component: 'RedirectDashboard',
+    },
     databases: [mongooseDb],
     componentLoader,
     locale: {

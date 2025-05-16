@@ -20,6 +20,11 @@ const options: AdminJSOptions = {
 
   rootPath: '/admin',
   resources: [HomeResource, UnidadeResource, MediaResource, CardapioResource, PostResource, CategoriaResource],
+
+  dashboard: {
+    component: 'RedirectDashboard',
+
+  },
   databases: [mongooseDb],
   componentLoader,
   locale: {

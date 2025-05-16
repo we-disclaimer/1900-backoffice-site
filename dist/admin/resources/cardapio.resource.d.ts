@@ -3,24 +3,24 @@ import { ResourceWithOptions } from 'adminjs';
 declare const CardapioModel: mongoose.Model<any, {}, {}, {}, any, any> | mongoose.Model<{
     nome: string;
     categorias: mongoose.Types.ObjectId[];
-    tituloSessao?: string;
     descricao?: string;
-    mostrarNoJantar?: boolean;
     mostrarNoDelivery?: boolean;
+    mostrarNoJantar?: boolean;
+    tituloSessao?: string;
 }, {}, {}, {}, mongoose.Document<unknown, {}, {
     nome: string;
     categorias: mongoose.Types.ObjectId[];
-    tituloSessao?: string;
     descricao?: string;
-    mostrarNoJantar?: boolean;
     mostrarNoDelivery?: boolean;
+    mostrarNoJantar?: boolean;
+    tituloSessao?: string;
 }, {}> & {
     nome: string;
     categorias: mongoose.Types.ObjectId[];
-    tituloSessao?: string;
     descricao?: string;
-    mostrarNoJantar?: boolean;
     mostrarNoDelivery?: boolean;
+    mostrarNoJantar?: boolean;
+    tituloSessao?: string;
 } & {
     _id: mongoose.Types.ObjectId;
 } & {
@@ -28,24 +28,24 @@ declare const CardapioModel: mongoose.Model<any, {}, {}, {}, any, any> | mongoos
 }, mongoose.Schema<any, mongoose.Model<any, any, any, any, any, any>, {}, {}, {}, {}, mongoose.DefaultSchemaOptions, {
     nome: string;
     categorias: mongoose.Types.ObjectId[];
-    tituloSessao?: string;
     descricao?: string;
-    mostrarNoJantar?: boolean;
     mostrarNoDelivery?: boolean;
+    mostrarNoJantar?: boolean;
+    tituloSessao?: string;
 }, mongoose.Document<unknown, {}, mongoose.FlatRecord<{
     nome: string;
     categorias: mongoose.Types.ObjectId[];
-    tituloSessao?: string;
     descricao?: string;
-    mostrarNoJantar?: boolean;
     mostrarNoDelivery?: boolean;
+    mostrarNoJantar?: boolean;
+    tituloSessao?: string;
 }>, {}> & mongoose.FlatRecord<{
     nome: string;
     categorias: mongoose.Types.ObjectId[];
-    tituloSessao?: string;
     descricao?: string;
-    mostrarNoJantar?: boolean;
     mostrarNoDelivery?: boolean;
+    mostrarNoJantar?: boolean;
+    tituloSessao?: string;
 }> & {
     _id: mongoose.Types.ObjectId;
 } & {
