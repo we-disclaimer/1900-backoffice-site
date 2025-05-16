@@ -17,7 +17,7 @@ const mongooseDb = await mongoose.connect('mongodb+srv://admin:TXCCMCCQvgQhmKwZ@
 const options: AdminJSOptions = {
 
   rootPath: '/admin',
-  resources: [HomeResource, UnidadeResource, CardapioJantarResource, CardapioDeliveryResource, MediaResource, PostResource],
+  resources: [HomeResource, UnidadeResource, MediaResource, PostResource],
   databases: [mongooseDb],
   componentLoader,
   locale: {
