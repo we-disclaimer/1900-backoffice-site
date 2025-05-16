@@ -5,7 +5,7 @@ import { UnidadeResource } from './entities/unidades.entity.js';
 import componentLoader from './component-loader.js';
 import { MediaResource } from './resources/media.resource.js';
 import PostResource from './resources/post.resource.js';
-import { CategoriaResource } from './resources/categoria.resource.js';
+import { CategoriaResource } from './resources/subcategoria.resource.js';
 import CardapioResource from './resources/cardapio.resource.js';
 const mongooseDb = await mongoose.connect('mongodb+srv://admin:TXCCMCCQvgQhmKwZ@cluster0.j7wteli.mongodb.net/website?retryWrites=true&w=majority');
 const options = {

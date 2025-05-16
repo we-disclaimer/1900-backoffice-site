@@ -18,7 +18,7 @@ import { ResourceWithOptions } from 'adminjs';
 import { MediaModel } from './media.resource.js';
 
 // 🔥 Importa o model de categoria
-import { CategoriaModel } from './categoria.resource.js';
+import { CategoriaModel } from './subcategoria.resource.js';
 
 const PostSchema = new mongoose.Schema({
   titulo: { type: String, required: true },

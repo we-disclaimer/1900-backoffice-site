@@ -33,4 +33,4 @@ const CategoriaResource = {
     },
 };
 export { CategoriaModel, CategoriaResource };
-//# sourceMappingURL=categoria.resource.js.map
+//# sourceMappingURL=subcategoria.resource.js.map

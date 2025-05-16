@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import { ResourceWithOptions } from 'adminjs';
 
-import { CategoriaModel } from './categoria.resource.js';
+import { CategoriaModel } from './subcategoria.resource.js';
 
 const CardapioSchema = new mongoose.Schema({
   nome: { type: String, required: true },
