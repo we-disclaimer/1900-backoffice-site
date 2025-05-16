@@ -1,3 +1,3 @@
-import { handler } from '../src/lambda.ts';
+import { handler } from '../src/lambda';
 
 export default handler;
