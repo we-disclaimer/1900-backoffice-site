@@ -1,5 +1,5 @@
 /* eslint-disable no-empty-function */
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 
@@ -21,5 +21,22 @@ export class UnidadesController {
       .populate('mediaSecundaria', 'url')
       .lean()
       .exec();
+  }
+
+  @Get(':urlCustomizada')
+  async getByUrlCustomizada(@Param('urlCustomizada') urlCustomizada: string) {
+    const unidade = await this.unidadeModel
+      .findOne({ urlCustomizada }) // busca um só item
+      .populate('mediaCapa', 'url')
+      .populate('mediaPrincipal', 'url')
+      .populate('mediaSecundaria', 'url')
+      .lean()
+      .exec();
+
+    if (!unidade) {
+      return { message: 'Unidade não encontrada' };
+    }
+
+    return unidade; // já será um objeto simples, sem array
   }
 }
