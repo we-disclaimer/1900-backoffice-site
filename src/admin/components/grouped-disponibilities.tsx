@@ -25,22 +25,32 @@ const GroupedDisponibilities: React.FC<BasePropertyProps> = ({ record, onChange 
       </Label>
       <Box display="flex" gap="lg" flexWrap="wrap" mb="36px">
         <Box width="50%" display="flex" alignItems="center" gap="sm">
-          <CheckBox
-            id="jantar"
-            checked={jantar}
-            onChange={handleChangeJantar}
-            aria-label="Disponível para Jantar"
-          />
-          <Label htmlFor="jantar">Disponível para Jantar</Label>
+          <Label htmlFor="jantar" display="flex" alignItems="center" cursor="pointer" gap="sm">
+            <CheckBox
+              id="jantar"
+              checked={jantar}
+              onChange={handleChangeJantar}
+              aria-label="Disponível para Jantar"
+              style={{ marginRight: '0.5rem' }}
+            />
+            {' '}
+            {' '}
+            Disponível para Jantar
+          </Label>
         </Box>
         <Box width="50%" display="flex" alignItems="center" gap="sm">
-          <CheckBox
-            id="delivery"
-            checked={delivery}
-            onChange={handleChangeDelivery}
-            aria-label="Disponível para Delivery"
-          />
-          <Label htmlFor="delivery">Disponível para Delivery</Label>
+          <Label htmlFor="delivery" display="flex" alignItems="center" cursor="pointer" gap="sm">
+            <CheckBox
+              id="delivery"
+              checked={delivery}
+              onChange={handleChangeDelivery}
+              aria-label="Disponível para Delivery"
+              style={{ marginRight: '0.5rem' }}
+            />
+            {' '}
+            {' '}
+            Disponível para Delivery
+          </Label>
         </Box>
       </Box>
     </Box>
