@@ -20,6 +20,32 @@ const PostResource = {
     resource: PostModel,
     options: {
         actions: {
+            sincronizarPrecos: {
+                component: 'SyncPricesAction',
+                actionType: 'bulk',
+                icon: 'Sync',
+                isVisible: true,
+                guard: 'Tem certeza que deseja sincronizar os preços dos produtos selecionados?',
+                handler: async (request, response, context) => {
+                    const { recordIds } = request.query;
+                    if (!recordIds) {
+                        throw new Error('Nenhum produto selecionado.');
+                    }
+                    const ids = recordIds.split(',');
+                    const records = await context.resource.findMany(ids);
+                    await Promise.all(records.map(async (record) => {
+                        await context.resource.update(record.id(), { precoUnico: 9.99 });
+                    }));
+                    const updatedRecords = await context.resource.findMany(ids);
+                    return {
+                        records: updatedRecords.map((r) => r.toJSON(context.currentAdmin)),
+                        notice: {
+                            message: `Preços sincronizados com sucesso para ${ids.length} produto(s).`,
+                            type: 'success',
+                        },
+                    };
+                },
+            },
             show: {
                 after: async (response, request, context) => {
                     const { record } = context;
@@ -30,28 +56,6 @@ const PostResource = {
                         }
                     }
                     return response;
-                },
-            },
-            sincronizarPrecos: {
-                actionType: 'bulk',
-                icon: 'Sync',
-                guard: 'Tem certeza que deseja sincronizar os preços dos produtos selecionados?',
-                handler: async (request, response, context) => {
-                    const { records } = context;
-                    if (!records || records.length === 0) {
-                        return {
-                            notice: {
-                                message: 'Nenhum produto selecionado.',
-                                type: 'error',
-                            },
-                        };
-                    }
-                    return {
-                        notice: {
-                            message: `Preços sincronizados para ${records.length} produto(s)!`,
-                            type: 'success',
-                        },
-                    };
                 },
             },
         },
@@ -105,10 +109,7 @@ const PostResource = {
             precoIndividual: { isVisible: false },
             precos: {
                 isVisible: {
-                    list: false,
-                    filter: false,
-                    show: true,
-                    edit: true,
+                    list: false, filter: false, show: true, edit: true,
                 },
                 components: {
                     edit: 'GroupedPrices',
@@ -120,10 +121,7 @@ const PostResource = {
             delivery: { isVisible: false },
             disponibilidades: {
                 isVisible: {
-                    list: false,
-                    filter: false,
-                    show: true,
-                    edit: true,
+                    list: false, filter: false, show: true, edit: true,
                 },
                 components: {
                     edit: 'GroupedDisponibilities',

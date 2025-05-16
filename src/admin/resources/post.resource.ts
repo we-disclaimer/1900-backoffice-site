@@ -2,14 +2,13 @@ import mongoose from 'mongoose';
 import { ResourceWithOptions } from 'adminjs';
 
 import { MediaModel } from './media.resource.js';
-// 🔥 Importa o model de categoria
 import { CategoriaModel } from './subcategoria.resource.js';
 
 const PostSchema = new mongoose.Schema({
   titulo: { type: String, required: true },
   descricao: { type: String },
   media: { type: mongoose.Schema.Types.ObjectId, ref: 'Media', label: 'Imagem' },
-  categoria: { type: mongoose.Schema.Types.ObjectId, ref: 'Categoria' }, // <- NOVO
+  categoria: { type: mongoose.Schema.Types.ObjectId, ref: 'Categoria' },
   precoUnico: { type: Number },
   precoMedio: { type: Number },
   precoGrande: { type: Number },
@@ -27,6 +26,44 @@ const PostResource: ResourceWithOptions = {
   resource: PostModel,
   options: {
     actions: {
+      sincronizarPrecos: {
+        component: 'SyncPricesAction', // Aqui
+        actionType: 'bulk',
+        icon: 'Sync',
+        isVisible: true,
+        guard: 'Tem certeza que deseja sincronizar os preços dos produtos selecionados?',
+
+        handler: async (request, response, context) => {
+          // Os ids vêm em request.query.recordIds como string separada por vírgula
+          const { recordIds } = request.query;
+
+          if (!recordIds) {
+            throw new Error('Nenhum produto selecionado.');
+          }
+
+          // Transforma em array de strings
+          const ids = recordIds.split(',');
+
+          // Busca os registros via model, já que context.records pode estar vazio
+          const records = await context.resource.findMany(ids);
+
+          // Atualiza os preços (exemplo fixo)
+          await Promise.all(records.map(async (record) => {
+            await context.resource.update(record.id(), { precoUnico: 9.99 });
+          }));
+
+          // Após atualização, busca os registros atualizados
+          const updatedRecords = await context.resource.findMany(ids);
+
+          return {
+            records: updatedRecords.map((r) => r.toJSON(context.currentAdmin)),
+            notice: {
+              message: `Preços sincronizados com sucesso para ${ids.length} produto(s).`,
+              type: 'success',
+            },
+          };
+        },
+      },
       show: {
         after: async (response, request, context) => {
           const { record } = context;
@@ -40,31 +77,6 @@ const PostResource: ResourceWithOptions = {
         },
       },
 
-      // ✅ Ação personalizada: Sincronizar Preços
-      sincronizarPrecos: {
-        actionType: 'bulk',
-        icon: 'Sync',
-        guard: 'Tem certeza que deseja sincronizar os preços dos produtos selecionados?',
-        handler: async (request, response, context) => {
-          const { records } = context;
-
-          if (!records || records.length === 0) {
-            return {
-              notice: {
-                message: 'Nenhum produto selecionado.',
-                type: 'error',
-              },
-            };
-          }
-
-          return {
-            notice: {
-              message: `Preços sincronizados para ${records.length} produto(s)!`,
-              type: 'success',
-            },
-          };
-        },
-      },
     },
 
     listProperties: ['titulo', 'categoria', 'precoUnico', 'dataDeCriacao', 'codigoIntegracao', 'tags'],
@@ -119,10 +131,7 @@ const PostResource: ResourceWithOptions = {
 
       precos: {
         isVisible: {
-          list: false,
-          filter: false,
-          show: true,
-          edit: true,
+          list: false, filter: false, show: true, edit: true,
         },
         components: {
           edit: 'GroupedPrices',
@@ -136,10 +145,7 @@ const PostResource: ResourceWithOptions = {
 
       disponibilidades: {
         isVisible: {
-          list: false,
-          filter: false,
-          show: true,
-          edit: true,
+          list: false, filter: false, show: true, edit: true,
         },
         components: {
           edit: 'GroupedDisponibilities',

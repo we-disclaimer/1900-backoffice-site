@@ -13,5 +13,5 @@ componentLoader.add('GroupedDisponibilities', path.resolve('src/admin/components
 componentLoader.add('ShowProductImage', path.resolve('src/admin/components/show-media.tsx'));
 componentLoader.add('FormattedDate', path.resolve('src/admin/components/formatted-date.tsx'));
 componentLoader.add('RedirectDashboard', path.resolve('src/admin/components/redirect-dashboard.tsx'));
-
+componentLoader.add('SyncPricesAction', path.resolve('src/admin/components/sync-button.tsx'));
 export default componentLoader;

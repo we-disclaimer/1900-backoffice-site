@@ -13,6 +13,8 @@ import FormattedDate from '../src/admin/components/formatted-date'
 AdminJS.UserComponents.FormattedDate = FormattedDate
 import RedirectDashboard from '../src/admin/components/redirect-dashboard'
 AdminJS.UserComponents.RedirectDashboard = RedirectDashboard
+import SyncPricesAction from '../src/admin/components/sync-button'
+AdminJS.UserComponents.SyncPricesAction = SyncPricesAction
 import UploadEditComponent from '../node_modules/@adminjs/upload/build/features/upload-file/components/UploadEditComponent'
 AdminJS.UserComponents.UploadEditComponent = UploadEditComponent
 import UploadListComponent from '../node_modules/@adminjs/upload/build/features/upload-file/components/UploadListComponent'
