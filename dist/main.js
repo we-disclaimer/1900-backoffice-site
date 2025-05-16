@@ -11,7 +11,7 @@ async function bootstrap() {
     await app.listen(process.env.PORT ?? 3000);
     app.use('/public', express.static(join(__dirname, '..', 'public')));
     app.use(session({
-        secret: 'sua-chave-secreta',
+        secret: 'pqYByvlL7A3DPEtx0A2JwC2p06QXh8vq',
         resave: false,
         saveUninitialized: true,
         cookie: {
