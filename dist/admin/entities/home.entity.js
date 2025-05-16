@@ -4,11 +4,14 @@ const HomeSchema = new Schema({
     subtitle: String,
     bannerImage: String,
     content: String,
+    metaTagTitle: String,
+    metaTagDescription: String,
 }, { timestamps: true });
 export const HomeModel = model('Home', HomeSchema);
 export const HomeResource = {
     resource: HomeModel,
     options: {
+        listProperties: ['title', 'metaTagTitle', 'metaTagDescription'],
         actions: {
             list: { isAccessible: true },
             new: { isAccessible: true },

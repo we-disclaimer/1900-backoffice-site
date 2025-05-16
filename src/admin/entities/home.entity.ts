@@ -8,6 +8,8 @@ const HomeSchema = new Schema(
     subtitle: String,
     bannerImage: String,
     content: String,
+    metaTagTitle: String,
+    metaTagDescription: String,
   },
   { timestamps: true },
 );
@@ -17,26 +19,25 @@ export const HomeModel = model('Home', HomeSchema);
 export const HomeResource: ResourceWithOptions = {
   resource: HomeModel,
   options: {
+    listProperties: ['title', 'metaTagTitle', 'metaTagDescription'], // ✅ exibidos na listagem
     actions: {
-      list: { isAccessible: true }, // Desabilitar listagem
-      new: { isAccessible: true }, // Desabilitar criação
-      delete: { isAccessible: true }, // Desabilitar exclusão
+      list: { isAccessible: true },
+      new: { isAccessible: true },
+      delete: { isAccessible: true },
 
-      // Ação personalizada
       editHome: {
         actionType: 'resource',
-        name: 'Editar Página Home', // Nome da ação
-        icon: 'Edit', // Ícone da ação
-        isVisible: true, // Tornar a ação visível no menu
+        name: 'Editar Página Home',
+        icon: 'Edit',
+        isVisible: true,
         handler: async (request, response, context) => {
           const records = await context.resource.findMany([]);
-          const record = records[0]; // Considera o primeiro registro
+          const record = records[0];
 
           if (!record) {
             throw new Error('Nenhum registro da Home encontrado.');
           }
 
-          // Redireciona para o formulário de edição do primeiro registro
           return {
             redirectUrl: context.h.recordActionUrl({
               resourceId: context.resource.id(),
