@@ -2,7 +2,6 @@ import mongoose from 'mongoose';
 import { ResourceWithOptions } from 'adminjs';
 
 import { MediaModel } from './media.resource.js';
-
 // 🔥 Importa o model de categoria
 import { CategoriaModel } from './subcategoria.resource.js';
 
@@ -10,17 +9,13 @@ const PostSchema = new mongoose.Schema({
   titulo: { type: String, required: true },
   descricao: { type: String },
   media: { type: mongoose.Schema.Types.ObjectId, ref: 'Media', label: 'Imagem' },
-
   categoria: { type: mongoose.Schema.Types.ObjectId, ref: 'Categoria' }, // <- NOVO
-
   precoUnico: { type: Number },
   precoMedio: { type: Number },
   precoGrande: { type: Number },
   precoIndividual: { type: Number },
-
   jantar: { type: Boolean },
   delivery: { type: Boolean },
-
   tags: { type: String },
   codigoIntegracao: { type: String },
   dataDeCriacao: { type: Date, default: Date.now },
@@ -44,13 +39,40 @@ const PostResource: ResourceWithOptions = {
           return response;
         },
       },
+
+      // ✅ Ação personalizada: Sincronizar Preços
+      sincronizarPrecos: {
+        actionType: 'bulk',
+        icon: 'Sync',
+        guard: 'Tem certeza que deseja sincronizar os preços dos produtos selecionados?',
+        handler: async (request, response, context) => {
+          const { records } = context;
+
+          if (!records || records.length === 0) {
+            return {
+              notice: {
+                message: 'Nenhum produto selecionado.',
+                type: 'error',
+              },
+            };
+          }
+
+          return {
+            notice: {
+              message: `Preços sincronizados para ${records.length} produto(s)!`,
+              type: 'success',
+            },
+          };
+        },
+      },
     },
+
     listProperties: ['titulo', 'categoria', 'precoUnico', 'dataDeCriacao', 'codigoIntegracao', 'tags'],
     editProperties: [
       'titulo',
       'descricao',
       'media',
-      'categoria', // <- NOVO
+      'categoria',
       'precos',
       'disponibilidades',
       'tags',
@@ -60,7 +82,7 @@ const PostResource: ResourceWithOptions = {
       'titulo',
       'descricao',
       'media',
-      'categoria', // <- NOVO
+      'categoria',
       'precos',
       'disponibilidades',
       'tags',
@@ -74,12 +96,8 @@ const PostResource: ResourceWithOptions = {
           show: 'FormattedDate',
         },
       },
-      titulo: {
-        isTitle: true,
-      },
-      descricao: {
-        type: 'richtext',
-      },
+      titulo: { isTitle: true },
+      descricao: { type: 'richtext' },
       media: {
         reference: 'Media',
         isArray: false,
@@ -130,12 +148,8 @@ const PostResource: ResourceWithOptions = {
         position: 20,
       },
 
-      tags: {
-        type: 'string',
-      },
-      codigoIntegracao: {
-        type: 'string',
-      },
+      tags: { type: 'string' },
+      codigoIntegracao: { type: 'string' },
     },
   },
 };

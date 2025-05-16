@@ -24,7 +24,7 @@ export const ValePizzaResource: ResourceWithOptions = {
   options: {
     navigation: {
       name: 'Configurar Vale Pizza',
-      icon: 'Ticket',
+      icon: 'Tag',
     },
     properties: {
       _id: { isVisible: false },

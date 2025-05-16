@@ -8,42 +8,42 @@ export declare class ProductsController {
     } & {
         __v: number;
     }) | (import("mongoose").FlattenMaps<Model<{
-        dataDeCriacao: NativeDate;
         titulo: string;
+        dataDeCriacao: NativeDate;
         descricao?: string;
-        precoMedio?: number;
-        precoGrande?: number;
         media?: import("mongoose").Types.ObjectId;
         categoria?: import("mongoose").Types.ObjectId;
         precoUnico?: number;
+        precoMedio?: number;
+        precoGrande?: number;
         precoIndividual?: number;
         jantar?: boolean;
         delivery?: boolean;
         tags?: string;
         codigoIntegracao?: string;
     }, {}, {}, {}, import("mongoose").Document<unknown, {}, {
-        dataDeCriacao: NativeDate;
         titulo: string;
+        dataDeCriacao: NativeDate;
         descricao?: string;
-        precoMedio?: number;
-        precoGrande?: number;
         media?: import("mongoose").Types.ObjectId;
         categoria?: import("mongoose").Types.ObjectId;
         precoUnico?: number;
+        precoMedio?: number;
+        precoGrande?: number;
         precoIndividual?: number;
         jantar?: boolean;
         delivery?: boolean;
         tags?: string;
         codigoIntegracao?: string;
     }, {}> & {
-        dataDeCriacao: NativeDate;
         titulo: string;
+        dataDeCriacao: NativeDate;
         descricao?: string;
-        precoMedio?: number;
-        precoGrande?: number;
         media?: import("mongoose").Types.ObjectId;
         categoria?: import("mongoose").Types.ObjectId;
         precoUnico?: number;
+        precoMedio?: number;
+        precoGrande?: number;
         precoIndividual?: number;
         jantar?: boolean;
         delivery?: boolean;
@@ -54,42 +54,42 @@ export declare class ProductsController {
     } & {
         __v: number;
     }, import("mongoose").Schema<any, Model<any, any, any, any, any, any>, {}, {}, {}, {}, import("mongoose").DefaultSchemaOptions, {
-        dataDeCriacao: NativeDate;
         titulo: string;
+        dataDeCriacao: NativeDate;
         descricao?: string;
-        precoMedio?: number;
-        precoGrande?: number;
         media?: import("mongoose").Types.ObjectId;
         categoria?: import("mongoose").Types.ObjectId;
         precoUnico?: number;
+        precoMedio?: number;
+        precoGrande?: number;
         precoIndividual?: number;
         jantar?: boolean;
         delivery?: boolean;
         tags?: string;
         codigoIntegracao?: string;
     }, import("mongoose").Document<unknown, {}, import("mongoose").FlatRecord<{
-        dataDeCriacao: NativeDate;
         titulo: string;
+        dataDeCriacao: NativeDate;
         descricao?: string;
-        precoMedio?: number;
-        precoGrande?: number;
         media?: import("mongoose").Types.ObjectId;
         categoria?: import("mongoose").Types.ObjectId;
         precoUnico?: number;
+        precoMedio?: number;
+        precoGrande?: number;
         precoIndividual?: number;
         jantar?: boolean;
         delivery?: boolean;
         tags?: string;
         codigoIntegracao?: string;
     }>, {}> & import("mongoose").FlatRecord<{
-        dataDeCriacao: NativeDate;
         titulo: string;
+        dataDeCriacao: NativeDate;
         descricao?: string;
-        precoMedio?: number;
-        precoGrande?: number;
         media?: import("mongoose").Types.ObjectId;
         categoria?: import("mongoose").Types.ObjectId;
         precoUnico?: number;
+        precoMedio?: number;
+        precoGrande?: number;
         precoIndividual?: number;
         jantar?: boolean;
         delivery?: boolean;
