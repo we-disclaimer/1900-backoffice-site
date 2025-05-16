@@ -1,7 +1,6 @@
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
-import serverless from '@vendia/serverless-express';
 import { NestFactory } from '@nestjs/core';
 import * as express from 'express';
 import session from 'express-session';

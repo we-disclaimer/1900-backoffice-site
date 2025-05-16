@@ -1,0 +1,13 @@
+{
+    "extends": "./tsconfig.json",
+    "compilerOptions": {
+      "outDir": "dist/api",
+      "module": "NodeNext",
+      "moduleResolution": "NodeNext",
+      "target": "ES2022",
+      "esModuleInterop": true,
+      "allowSyntheticDefaultImports": true
+    },
+    "include": ["api/**/*.ts"]
+  }
+  
