@@ -7,7 +7,7 @@ import session from 'express-session';
 import AdminJS from 'adminjs';
 import AdminJSExpress from '@adminjs/express';
 
-import options from './src/admin/options.js'; // Caminho certo
+import options from './src/admin/options.ts'; // Caminho certo
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
