@@ -3,6 +3,9 @@ import { ResourceWithOptions } from 'adminjs';
 declare const UnidadeSchema: mongoose.Schema<any, mongoose.Model<any, any, any, any, any, any>, {}, {}, {}, {}, mongoose.DefaultSchemaOptions, {
     nome: string;
     criadoEm: NativeDate;
+    urlCustomizada: string;
+    metaTagTitle?: string;
+    metaTagDescription?: string;
     resumo?: string;
     mediaCapa?: mongoose.Types.ObjectId;
     mediaPrincipal?: mongoose.Types.ObjectId;
@@ -17,6 +20,9 @@ declare const UnidadeSchema: mongoose.Schema<any, mongoose.Model<any, any, any, 
 }, mongoose.Document<unknown, {}, mongoose.FlatRecord<{
     nome: string;
     criadoEm: NativeDate;
+    urlCustomizada: string;
+    metaTagTitle?: string;
+    metaTagDescription?: string;
     resumo?: string;
     mediaCapa?: mongoose.Types.ObjectId;
     mediaPrincipal?: mongoose.Types.ObjectId;
@@ -31,6 +37,9 @@ declare const UnidadeSchema: mongoose.Schema<any, mongoose.Model<any, any, any, 
 }>, {}> & mongoose.FlatRecord<{
     nome: string;
     criadoEm: NativeDate;
+    urlCustomizada: string;
+    metaTagTitle?: string;
+    metaTagDescription?: string;
     resumo?: string;
     mediaCapa?: mongoose.Types.ObjectId;
     mediaPrincipal?: mongoose.Types.ObjectId;
@@ -50,6 +59,9 @@ declare const UnidadeSchema: mongoose.Schema<any, mongoose.Model<any, any, any, 
 declare const UnidadeModel: mongoose.Model<any, {}, {}, {}, any, any> | mongoose.Model<{
     nome: string;
     criadoEm: NativeDate;
+    urlCustomizada: string;
+    metaTagTitle?: string;
+    metaTagDescription?: string;
     resumo?: string;
     mediaCapa?: mongoose.Types.ObjectId;
     mediaPrincipal?: mongoose.Types.ObjectId;
@@ -64,6 +76,9 @@ declare const UnidadeModel: mongoose.Model<any, {}, {}, {}, any, any> | mongoose
 }, {}, {}, {}, mongoose.Document<unknown, {}, {
     nome: string;
     criadoEm: NativeDate;
+    urlCustomizada: string;
+    metaTagTitle?: string;
+    metaTagDescription?: string;
     resumo?: string;
     mediaCapa?: mongoose.Types.ObjectId;
     mediaPrincipal?: mongoose.Types.ObjectId;
@@ -78,6 +93,9 @@ declare const UnidadeModel: mongoose.Model<any, {}, {}, {}, any, any> | mongoose
 }, {}> & {
     nome: string;
     criadoEm: NativeDate;
+    urlCustomizada: string;
+    metaTagTitle?: string;
+    metaTagDescription?: string;
     resumo?: string;
     mediaCapa?: mongoose.Types.ObjectId;
     mediaPrincipal?: mongoose.Types.ObjectId;
@@ -96,6 +114,9 @@ declare const UnidadeModel: mongoose.Model<any, {}, {}, {}, any, any> | mongoose
 }, mongoose.Schema<any, mongoose.Model<any, any, any, any, any, any>, {}, {}, {}, {}, mongoose.DefaultSchemaOptions, {
     nome: string;
     criadoEm: NativeDate;
+    urlCustomizada: string;
+    metaTagTitle?: string;
+    metaTagDescription?: string;
     resumo?: string;
     mediaCapa?: mongoose.Types.ObjectId;
     mediaPrincipal?: mongoose.Types.ObjectId;
@@ -110,6 +131,9 @@ declare const UnidadeModel: mongoose.Model<any, {}, {}, {}, any, any> | mongoose
 }, mongoose.Document<unknown, {}, mongoose.FlatRecord<{
     nome: string;
     criadoEm: NativeDate;
+    urlCustomizada: string;
+    metaTagTitle?: string;
+    metaTagDescription?: string;
     resumo?: string;
     mediaCapa?: mongoose.Types.ObjectId;
     mediaPrincipal?: mongoose.Types.ObjectId;
@@ -124,6 +148,9 @@ declare const UnidadeModel: mongoose.Model<any, {}, {}, {}, any, any> | mongoose
 }>, {}> & mongoose.FlatRecord<{
     nome: string;
     criadoEm: NativeDate;
+    urlCustomizada: string;
+    metaTagTitle?: string;
+    metaTagDescription?: string;
     resumo?: string;
     mediaCapa?: mongoose.Types.ObjectId;
     mediaPrincipal?: mongoose.Types.ObjectId;

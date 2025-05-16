@@ -17,6 +17,9 @@ const UnidadeSchema = new mongoose.Schema({
   tags: { type: String },
   outrasInformacoes: { type: String },
   criadoEm: { type: Date, default: Date.now },
+  urlCustomizada: { type: String, required: true },
+  metaTagTitle: String,
+  metaTagDescription: String,
 });
 
 const UnidadeModel = mongoose.models.Unidade || mongoose.model('Unidade', UnidadeSchema);
@@ -49,10 +52,12 @@ const UnidadeResource: ResourceWithOptions = {
       },
     },
 
-    listProperties: ['nome', 'resumo', 'mediaCapa', 'linkVideo', 'tags'],
+    listProperties: ['nome', 'urlCustomizada', 'resumo', 'mediaCapa', 'linkVideo', 'tags'],
     editProperties: [
       'nome',
       'resumo',
+      'urlCustomizada',
+      'metaTagTitle', 'metaTagDescription',
       'mediaCapa',
       'mediaPrincipal',
       'mediaSecundaria',
@@ -63,10 +68,13 @@ const UnidadeResource: ResourceWithOptions = {
       'linkGoogleMaps',
       'tags',
       'outrasInformacoes',
+
     ],
     showProperties: [
       'nome',
       'resumo',
+      'urlCustomizada',
+      'metaTagTitle', 'metaTagDescription',
       'mediaCapa',
       'mediaPrincipal',
       'mediaSecundaria',

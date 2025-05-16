@@ -10,6 +10,9 @@ export declare class UnidadesController {
     }) | (import("mongoose").FlattenMaps<Model<{
         nome: string;
         criadoEm: NativeDate;
+        urlCustomizada: string;
+        metaTagTitle?: string;
+        metaTagDescription?: string;
         resumo?: string;
         mediaCapa?: import("mongoose").Types.ObjectId;
         mediaPrincipal?: import("mongoose").Types.ObjectId;
@@ -24,6 +27,9 @@ export declare class UnidadesController {
     }, {}, {}, {}, import("mongoose").Document<unknown, {}, {
         nome: string;
         criadoEm: NativeDate;
+        urlCustomizada: string;
+        metaTagTitle?: string;
+        metaTagDescription?: string;
         resumo?: string;
         mediaCapa?: import("mongoose").Types.ObjectId;
         mediaPrincipal?: import("mongoose").Types.ObjectId;
@@ -38,6 +44,9 @@ export declare class UnidadesController {
     }, {}> & {
         nome: string;
         criadoEm: NativeDate;
+        urlCustomizada: string;
+        metaTagTitle?: string;
+        metaTagDescription?: string;
         resumo?: string;
         mediaCapa?: import("mongoose").Types.ObjectId;
         mediaPrincipal?: import("mongoose").Types.ObjectId;
@@ -56,6 +65,9 @@ export declare class UnidadesController {
     }, import("mongoose").Schema<any, Model<any, any, any, any, any, any>, {}, {}, {}, {}, import("mongoose").DefaultSchemaOptions, {
         nome: string;
         criadoEm: NativeDate;
+        urlCustomizada: string;
+        metaTagTitle?: string;
+        metaTagDescription?: string;
         resumo?: string;
         mediaCapa?: import("mongoose").Types.ObjectId;
         mediaPrincipal?: import("mongoose").Types.ObjectId;
@@ -70,6 +82,9 @@ export declare class UnidadesController {
     }, import("mongoose").Document<unknown, {}, import("mongoose").FlatRecord<{
         nome: string;
         criadoEm: NativeDate;
+        urlCustomizada: string;
+        metaTagTitle?: string;
+        metaTagDescription?: string;
         resumo?: string;
         mediaCapa?: import("mongoose").Types.ObjectId;
         mediaPrincipal?: import("mongoose").Types.ObjectId;
@@ -84,6 +99,9 @@ export declare class UnidadesController {
     }>, {}> & import("mongoose").FlatRecord<{
         nome: string;
         criadoEm: NativeDate;
+        urlCustomizada: string;
+        metaTagTitle?: string;
+        metaTagDescription?: string;
         resumo?: string;
         mediaCapa?: import("mongoose").Types.ObjectId;
         mediaPrincipal?: import("mongoose").Types.ObjectId;
