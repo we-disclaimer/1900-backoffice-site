@@ -13,7 +13,7 @@ export const ValePizzaResource = {
     resource: ValePizzaModel,
     options: {
         navigation: {
-            name: 'Promoções',
+            name: 'Configurar Vale Pizza',
             icon: 'Ticket',
         },
         properties: {
