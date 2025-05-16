@@ -11,13 +11,15 @@ import CardapioDeliveryResource from './resources/cardapio-delivery.resource.js'
 import ValePizzaResource from './resources/vale-pizza.resource.js';
 import { MediaResource } from './resources/media.resource.js';
 import PostResource from './resources/post.resource.js';
+import { CategoriaResource } from './resources/categoria.resource.js';
+import CardapioResource from './resources/cardapio.resource.js';
 
 const mongooseDb = await mongoose.connect('mongodb+srv://admin:TXCCMCCQvgQhmKwZ@cluster0.j7wteli.mongodb.net/website?retryWrites=true&w=majority');
 
 const options: AdminJSOptions = {
 
   rootPath: '/admin',
-  resources: [HomeResource, UnidadeResource, MediaResource, PostResource],
+  resources: [HomeResource, UnidadeResource, MediaResource, CardapioResource, PostResource, CategoriaResource],
   databases: [mongooseDb],
   componentLoader,
   locale: {

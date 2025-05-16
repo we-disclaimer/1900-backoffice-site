@@ -17,16 +17,24 @@ import { ResourceWithOptions } from 'adminjs';
 
 import { MediaModel } from './media.resource.js';
 
+// 🔥 Importa o model de categoria
+import { CategoriaModel } from './categoria.resource.js';
+
 const PostSchema = new mongoose.Schema({
   titulo: { type: String, required: true },
   descricao: { type: String },
   media: { type: mongoose.Schema.Types.ObjectId, ref: 'Media', label: 'Imagem' },
+
+  categoria: { type: mongoose.Schema.Types.ObjectId, ref: 'Categoria' }, // <- NOVO
+
   precoUnico: { type: Number },
   precoMedio: { type: Number },
   precoGrande: { type: Number },
   precoIndividual: { type: Number },
+
   jantar: { type: Boolean },
   delivery: { type: Boolean },
+
   tags: { type: String },
   codigoIntegracao: { type: String },
   dataDeCriacao: { type: Date, default: Date.now },
@@ -51,13 +59,14 @@ const PostResource: ResourceWithOptions = {
         },
       },
     },
-    listProperties: ['titulo', 'precoUnico', 'dataDeCriacao', 'codigoIntegracao', 'tags'],
+    listProperties: ['titulo', 'categoria', 'precoUnico', 'dataDeCriacao', 'codigoIntegracao', 'tags'],
     editProperties: [
       'titulo',
       'descricao',
       'media',
-      'precos', // campo virtual preços
-      'disponibilidades', // campo virtual jantar + delivery
+      'categoria', // <- NOVO
+      'precos',
+      'disponibilidades',
       'tags',
       'codigoIntegracao',
     ],
@@ -65,6 +74,7 @@ const PostResource: ResourceWithOptions = {
       'titulo',
       'descricao',
       'media',
+      'categoria', // <- NOVO
       'precos',
       'disponibilidades',
       'tags',
@@ -91,6 +101,13 @@ const PostResource: ResourceWithOptions = {
           show: 'ShowProductImage',
         },
       },
+      categoria: {
+        reference: 'Categoria',
+        isVisible: {
+          list: true, filter: true, show: true, edit: true,
+        },
+      },
+
       precoUnico: { isVisible: false },
       precoMedio: { isVisible: false },
       precoGrande: { isVisible: false },

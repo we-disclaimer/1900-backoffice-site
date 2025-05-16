@@ -4,6 +4,7 @@ const PostSchema = new mongoose.Schema({
     titulo: { type: String, required: true },
     descricao: { type: String },
     media: { type: mongoose.Schema.Types.ObjectId, ref: 'Media', label: 'Imagem' },
+    categoria: { type: mongoose.Schema.Types.ObjectId, ref: 'Categoria' },
     precoUnico: { type: Number },
     precoMedio: { type: Number },
     precoGrande: { type: Number },
@@ -32,11 +33,12 @@ const PostResource = {
                 },
             },
         },
-        listProperties: ['titulo', 'precoUnico', 'dataDeCriacao', 'codigoIntegracao', 'tags'],
+        listProperties: ['titulo', 'categoria', 'precoUnico', 'dataDeCriacao', 'codigoIntegracao', 'tags'],
         editProperties: [
             'titulo',
             'descricao',
             'media',
+            'categoria',
             'precos',
             'disponibilidades',
             'tags',
@@ -46,6 +48,7 @@ const PostResource = {
             'titulo',
             'descricao',
             'media',
+            'categoria',
             'precos',
             'disponibilidades',
             'tags',
@@ -70,6 +73,12 @@ const PostResource = {
                 isArray: false,
                 components: {
                     show: 'ShowProductImage',
+                },
+            },
+            categoria: {
+                reference: 'Categoria',
+                isVisible: {
+                    list: true, filter: true, show: true, edit: true,
                 },
             },
             precoUnico: { isVisible: false },
