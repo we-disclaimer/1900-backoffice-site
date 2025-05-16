@@ -1,17 +1,3 @@
-// const PostResource: ResourceWithOptions = {
-//     resource: PostModel,
-//     options: {
-//       listProperties: ['titulo', 'dataDeCriacao'],
-//       editProperties: ['titulo', 'content', 'media'],
-//       showProperties: ['titulo', 'content', 'media', 'dataDeCriacao'],
-//       properties: {
-//         media: {
-//           reference: 'Media', // importante: referencia o resource Media
-//           isArray: true, // pode ser vários
-//         },
-//       },
-//     },
-//   };
 import mongoose from 'mongoose';
 import { ResourceWithOptions } from 'adminjs';
 
@@ -154,4 +140,4 @@ const PostResource: ResourceWithOptions = {
   },
 };
 
-export default PostResource;
+export { PostResource, PostModel, PostSchema };

@@ -122,5 +122,5 @@ const PostResource = {
         },
     },
 };
-export default PostResource;
+export { PostResource, PostModel, PostSchema };
 //# sourceMappingURL=post.resource.js.map

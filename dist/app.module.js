@@ -14,6 +14,7 @@ import { AppController } from './app.controller.js';
 import { AppService } from './app.service.js';
 import provider from './admin/auth-provider.js';
 import options from './admin/options.js';
+import { ProductsModule } from './products.module.js';
 AdminJS.registerAdapter({
     Resource: AdminJSMongoose.Resource,
     Database: AdminJSMongoose.Database,
@@ -26,6 +27,7 @@ AppModule = __decorate([
             ConfigModule.forRoot({
                 envFilePath: '.env',
             }),
+            ProductsModule,
             MongooseModule.forRoot('mongodb+srv://admin:TXCCMCCQvgQhmKwZ@cluster0.j7wteli.mongodb.net/website?retryWrites=true&w=majority'),
             AdminModule.createAdminAsync({
                 useFactory: async () => ({

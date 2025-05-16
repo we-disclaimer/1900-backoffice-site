@@ -1,5 +1,22 @@
 import mongoose from 'mongoose';
 import { ResourceWithOptions } from 'adminjs';
+declare const MediaSchema: mongoose.Schema<any, mongoose.Model<any, any, any, any, any, any>, {}, {}, {}, {}, mongoose.DefaultSchemaOptions, {
+    dataDeCriacao: NativeDate;
+    url?: string;
+    alt?: string;
+}, mongoose.Document<unknown, {}, mongoose.FlatRecord<{
+    dataDeCriacao: NativeDate;
+    url?: string;
+    alt?: string;
+}>, {}> & mongoose.FlatRecord<{
+    dataDeCriacao: NativeDate;
+    url?: string;
+    alt?: string;
+}> & {
+    _id: mongoose.Types.ObjectId;
+} & {
+    __v: number;
+}>;
 declare const MediaModel: mongoose.Model<any, {}, {}, {}, any, any> | mongoose.Model<{
     dataDeCriacao: NativeDate;
     url?: string;
@@ -34,4 +51,4 @@ declare const MediaModel: mongoose.Model<any, {}, {}, {}, any, any> | mongoose.M
     __v: number;
 }>>;
 declare const MediaResource: ResourceWithOptions;
-export { MediaResource, MediaModel };
+export { MediaResource, MediaModel, MediaSchema };

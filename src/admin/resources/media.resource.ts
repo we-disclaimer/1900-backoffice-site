@@ -86,4 +86,4 @@ const MediaResource: ResourceWithOptions = {
   ],
 };
 
-export { MediaResource, MediaModel };
+export { MediaResource, MediaModel, MediaSchema };

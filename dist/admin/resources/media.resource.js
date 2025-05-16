@@ -75,5 +75,5 @@ const MediaResource = {
         }),
     ],
 };
-export { MediaResource, MediaModel };
+export { MediaResource, MediaModel, MediaSchema };
 //# sourceMappingURL=media.resource.js.map

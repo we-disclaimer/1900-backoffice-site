@@ -37,4 +37,4 @@ const CategoriaResource: ResourceWithOptions = {
   },
 };
 
-export { CategoriaModel, CategoriaResource };
+export { CategoriaModel, CategoriaResource, CategoriaSchema };

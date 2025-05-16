@@ -32,5 +32,5 @@ const CategoriaResource = {
         filterProperties: ['nome', 'mostrarNoDelivery', 'mostrarNoJantar'],
     },
 };
-export { CategoriaModel, CategoriaResource };
+export { CategoriaModel, CategoriaResource, CategoriaSchema };
 //# sourceMappingURL=subcategoria.resource.js.map
