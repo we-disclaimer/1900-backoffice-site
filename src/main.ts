@@ -12,7 +12,12 @@ const __dirname = dirname(__filename);
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  await app.listen(process.env.PORT ?? 3000);
+
+  // Libera CORS para qualquer origem
+  app.enableCors({
+    origin: '*',
+  });
+
   app.use('/public', express.static(join(__dirname, '..', 'public')));
 
   app.use(
@@ -21,9 +26,11 @@ async function bootstrap() {
       resave: false,
       saveUninitialized: true,
       cookie: {
-        maxAge: 24 * 60 * 60 * 1000, // ← 1 dia em ms
+        maxAge: 24 * 60 * 60 * 1000, // 1 dia
       },
     }),
   );
+
+  await app.listen(process.env.PORT ?? 3000);
 }
 bootstrap();
