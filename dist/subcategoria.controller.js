@@ -10,7 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-import { Controller, Get, Param, NotFoundException, } from '@nestjs/common';
+import { Controller, Get, Param, NotFoundException, BadRequestException, } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 let CategoriaController = class CategoriaController {
@@ -20,12 +20,16 @@ let CategoriaController = class CategoriaController {
     async getAllCategoria() {
         return this.categoriaModel.find().lean().exec();
     }
-    async getCategoriaById(id) {
-        const categoria = await this.categoriaModel.findById(id).lean().exec();
-        if (!categoria) {
-            throw new NotFoundException(`Categoria com id ${id} não encontrada`);
+    async getCategoriasByIds(ids) {
+        const idArray = ids.split(',').map((id) => id.trim()).filter(Boolean);
+        if (idArray.length === 0) {
+            throw new BadRequestException('Nenhum ID válido fornecido.');
         }
-        return categoria;
+        const categorias = await this.categoriaModel.find({ _id: { $in: idArray } }).lean().exec();
+        if (!categorias || categorias.length === 0) {
+            throw new NotFoundException('Nenhuma categoria encontrada para os IDs fornecidos.');
+        }
+        return categorias;
     }
 };
 __decorate([
@@ -35,12 +39,12 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], CategoriaController.prototype, "getAllCategoria", null);
 __decorate([
-    Get(':id'),
-    __param(0, Param('id')),
+    Get('by-ids/:ids'),
+    __param(0, Param('ids')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
-], CategoriaController.prototype, "getCategoriaById", null);
+], CategoriaController.prototype, "getCategoriasByIds", null);
 CategoriaController = __decorate([
     Controller('categoria'),
     __param(0, InjectModel('Categoria')),

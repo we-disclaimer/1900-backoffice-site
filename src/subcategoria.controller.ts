@@ -1,6 +1,10 @@
 /* eslint-disable no-empty-function */
 import {
-  Controller, Get, Param, NotFoundException,
+  Controller,
+  Get,
+  Param,
+  NotFoundException,
+  BadRequestException,
 } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
@@ -18,12 +22,20 @@ export class CategoriaController {
     return this.categoriaModel.find().lean().exec();
   }
 
-  @Get(':id')
-  async getCategoriaById(@Param('id') id: string) {
-    const categoria = await this.categoriaModel.findById(id).lean().exec();
-    if (!categoria) {
-      throw new NotFoundException(`Categoria com id ${id} não encontrada`);
+  @Get('by-ids/:ids')
+  async getCategoriasByIds(@Param('ids') ids: string) {
+    const idArray = ids.split(',').map((id) => id.trim()).filter(Boolean);
+
+    if (idArray.length === 0) {
+      throw new BadRequestException('Nenhum ID válido fornecido.');
     }
-    return categoria;
+
+    const categorias = await this.categoriaModel.find({ _id: { $in: idArray } }).lean().exec();
+
+    if (!categorias || categorias.length === 0) {
+      throw new NotFoundException('Nenhuma categoria encontrada para os IDs fornecidos.');
+    }
+
+    return categorias;
   }
 }

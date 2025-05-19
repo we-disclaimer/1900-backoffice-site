@@ -76,7 +76,7 @@ export declare class CategoriaController {
     } & {
         __v: number;
     }))[]>;
-    getCategoriaById(id: string): Promise<(import("mongoose").FlattenMaps<Model<any, {}, {}, {}, any, any>> & {
+    getCategoriasByIds(ids: string): Promise<((import("mongoose").FlattenMaps<Model<any, {}, {}, {}, any, any>> & {
         _id: import("mongoose").Types.ObjectId;
     } & {
         __v: number;
@@ -148,5 +148,5 @@ export declare class CategoriaController {
         _id: import("mongoose").Types.ObjectId;
     } & {
         __v: number;
-    })>;
+    }))[]>;
 }
