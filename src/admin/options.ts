@@ -12,7 +12,7 @@ import ValePizzaResource from './resources/vale-pizza.resource.js';
 import { MediaResource } from './resources/media.resource.js';
 import { PostResource } from './resources/post.resource.js';
 import { CategoriaResource } from './resources/subcategoria.resource.js';
-import CardapioResource from './resources/cardapio.resource.js';
+import { CardapioResource } from './resources/cardapio.resource.js';
 import { TeatroResource } from './resources/teatro.resource.js';
 import { MusicaisResource } from './resources/musicais.js';
 

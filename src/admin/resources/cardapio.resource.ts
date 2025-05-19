@@ -58,5 +58,4 @@ const CardapioResource: ResourceWithOptions = {
   },
 };
 
-export { CardapioModel };
-export default CardapioResource;
+export { CardapioModel, CardapioResource, CardapioSchema };

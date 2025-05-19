@@ -51,6 +51,5 @@ const CardapioResource = {
         },
     },
 };
-export { CardapioModel };
-export default CardapioResource;
+export { CardapioModel, CardapioResource, CardapioSchema };
 //# sourceMappingURL=cardapio.resource.js.map

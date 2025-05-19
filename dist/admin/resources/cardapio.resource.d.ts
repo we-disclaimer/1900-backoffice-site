@@ -1,5 +1,31 @@
 import mongoose from 'mongoose';
 import { ResourceWithOptions } from 'adminjs';
+declare const CardapioSchema: mongoose.Schema<any, mongoose.Model<any, any, any, any, any, any>, {}, {}, {}, {}, mongoose.DefaultSchemaOptions, {
+    nome: string;
+    categorias: mongoose.Types.ObjectId[];
+    descricao?: string;
+    mostrarNoDelivery?: boolean;
+    mostrarNoJantar?: boolean;
+    tituloSessao?: string;
+}, mongoose.Document<unknown, {}, mongoose.FlatRecord<{
+    nome: string;
+    categorias: mongoose.Types.ObjectId[];
+    descricao?: string;
+    mostrarNoDelivery?: boolean;
+    mostrarNoJantar?: boolean;
+    tituloSessao?: string;
+}>, {}> & mongoose.FlatRecord<{
+    nome: string;
+    categorias: mongoose.Types.ObjectId[];
+    descricao?: string;
+    mostrarNoDelivery?: boolean;
+    mostrarNoJantar?: boolean;
+    tituloSessao?: string;
+}> & {
+    _id: mongoose.Types.ObjectId;
+} & {
+    __v: number;
+}>;
 declare const CardapioModel: mongoose.Model<any, {}, {}, {}, any, any> | mongoose.Model<{
     nome: string;
     categorias: mongoose.Types.ObjectId[];
@@ -52,5 +78,4 @@ declare const CardapioModel: mongoose.Model<any, {}, {}, {}, any, any> | mongoos
     __v: number;
 }>>;
 declare const CardapioResource: ResourceWithOptions;
-export { CardapioModel };
-export default CardapioResource;
+export { CardapioModel, CardapioResource, CardapioSchema };
