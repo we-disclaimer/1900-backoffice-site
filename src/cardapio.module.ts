@@ -3,7 +3,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 
 import { MediaSchema } from './admin/resources/media.resource.js';
 import { CardapioSchema } from './admin/resources/cardapio.resource.js';
-import { CardapioController } from './Cardapio.controller.js';
+import { CardapioController } from './cardapio.controller.js';
 
 @Module({
   imports: [
