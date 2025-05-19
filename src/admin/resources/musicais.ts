@@ -8,6 +8,7 @@ const MusicaisSchema = new mongoose.Schema({
   descricao: { type: String },
   media: { type: mongoose.Schema.Types.ObjectId, ref: 'Media', label: 'Imagem' },
   emBreve: { type: Boolean, default: false },
+  finalizado: { type: Boolean, default: false },
   linkDaCompra: { type: String },
 });
 
@@ -42,16 +43,17 @@ const MusicaisResource: ResourceWithOptions = {
       },
       emBreve: {
         type: 'boolean',
-        label: 'Em breve',
+      },
+      finalizado: {
+        type: 'boolean',
       },
       linkDaCompra: {
         type: 'string',
-        label: 'Link da compra',
       },
     },
-    listProperties: ['nome', 'media', 'emBreve'],
-    editProperties: ['nome', 'descricao', 'media', 'emBreve', 'linkDaCompra'],
-    showProperties: ['nome', 'descricao', 'media', 'emBreve', 'linkDaCompra'],
+    listProperties: ['nome', 'media', 'emBreve', 'finalizado'],
+    editProperties: ['nome', 'descricao', 'media', 'emBreve', 'finalizado', 'linkDaCompra'],
+    showProperties: ['nome', 'descricao', 'media', 'emBreve', 'finalizado', 'linkDaCompra'],
   },
 };
 
