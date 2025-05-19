@@ -15,6 +15,7 @@ import { UnidadesModule } from './unidades.module.js';
 import { TeatroModule } from './teatro.module.js';
 import { MusicaisModule } from './musicais.module.js';
 import { CardapioModule } from './cardapio.module.js';
+import { CategoriaModule } from './subcategoria.module.js';
 
 AdminJS.registerAdapter({
   Resource: AdminJSMongoose.Resource,
@@ -31,6 +32,7 @@ AdminJS.registerAdapter({
     TeatroModule,
     MusicaisModule,
     CardapioModule,
+    CategoriaModule,
     MongooseModule.forRoot('mongodb+srv://admin:TXCCMCCQvgQhmKwZ@cluster0.j7wteli.mongodb.net/website?retryWrites=true&w=majority'),
     AdminModule.createAdminAsync({
       useFactory: async () => ({

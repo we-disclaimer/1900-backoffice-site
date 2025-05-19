@@ -6,21 +6,19 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
-import { MediaSchema } from './admin/resources/media.resource.js';
-import { CardapioSchema } from './admin/resources/cardapio.resource.js';
-import { CardapioController } from './cardapio.controller.js';
-let CardapioModule = class CardapioModule {
+import { CategoriaSchema } from './admin/resources/subcategoria.resource.js';
+import { CategoriaController } from './subcategoria.controller.js';
+let CategoriaModule = class CategoriaModule {
 };
-CardapioModule = __decorate([
+CategoriaModule = __decorate([
     Module({
         imports: [
             MongooseModule.forFeature([
-                { name: 'Cardapio', schema: CardapioSchema },
-                { name: 'Media', schema: MediaSchema },
+                { name: 'Categoria', schema: CategoriaSchema },
             ]),
         ],
-        controllers: [CardapioController],
+        controllers: [CategoriaController],
     })
-], CardapioModule);
-export { CardapioModule };
-//# sourceMappingURL=cardapio.module.js.map
+], CategoriaModule);
+export { CategoriaModule };
+//# sourceMappingURL=subcategoria.module.js.map

@@ -3,20 +3,19 @@ import { Controller, Get } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 
-import { TeatroModel } from './admin/resources/teatro.resource.js';
+import { CategoriaModel } from './admin/resources/subcategoria.resource.js';
 
-@Controller('teatro')
-export class TeatroController {
+@Controller('categoria')
+export class CategoriaController {
   // eslint-disable-next-line no-useless-constructor
   constructor(
-    @InjectModel('Teatro') private readonly teatroModel: Model<typeof TeatroModel>,
+    @InjectModel('Categoria') private readonly categoriaModel: Model<typeof CategoriaModel>,
   ) {}
 
   @Get()
-  async getAllTeatros() {
-    return this.teatroModel
+  async getAllCategoria() {
+    return this.categoriaModel
       .find()
-      .populate('media')
       .lean()
       .exec();
   }

@@ -13,12 +13,12 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 import { Controller, Get } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-let CardapioController = class CardapioController {
-    constructor(cardapioModel) {
-        this.cardapioModel = cardapioModel;
+let CategoriaController = class CategoriaController {
+    constructor(categoriaModel) {
+        this.categoriaModel = categoriaModel;
     }
-    async getAllCardapio() {
-        return this.cardapioModel
+    async getAllCategoria() {
+        return this.categoriaModel
             .find()
             .lean()
             .exec();
@@ -29,11 +29,11 @@ __decorate([
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
-], CardapioController.prototype, "getAllCardapio", null);
-CardapioController = __decorate([
-    Controller('cardapio'),
-    __param(0, InjectModel('Cardapio')),
+], CategoriaController.prototype, "getAllCategoria", null);
+CategoriaController = __decorate([
+    Controller('categoria'),
+    __param(0, InjectModel('Categoria')),
     __metadata("design:paramtypes", [Model])
-], CardapioController);
-export { CardapioController };
-//# sourceMappingURL=cardapio.controller.js.map
+], CategoriaController);
+export { CategoriaController };
+//# sourceMappingURL=subcategoria.controller.js.map
