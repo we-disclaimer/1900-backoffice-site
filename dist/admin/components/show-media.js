@@ -3,6 +3,7 @@ import { Box, Label } from '@adminjs/design-system';
 const ShowProductImage = ({ record, property }) => {
     if (!record || !property)
         return null;
+    console.log('record', record);
     const fieldName = property.name;
     const mediaKey = `${fieldName}Url`;
     const mediaPath = record.params?.[mediaKey];

@@ -8,7 +8,9 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 async function bootstrap() {
     const app = await NestFactory.create(AppModule);
-    await app.listen(process.env.PORT ?? 3000);
+    app.enableCors({
+        origin: '*',
+    });
     app.use('/public', express.static(join(__dirname, '..', 'public')));
     app.use(session({
         secret: 'sua-chave-secreta',
@@ -18,6 +20,7 @@ async function bootstrap() {
             maxAge: 24 * 60 * 60 * 1000,
         },
     }));
+    await app.listen(process.env.PORT ?? 3000);
 }
 bootstrap();
 //# sourceMappingURL=main.js.map

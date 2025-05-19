@@ -8,6 +8,8 @@ import { BasePropertyProps } from 'adminjs';
 const ShowProductImage: React.FC<BasePropertyProps> = ({ record, property }) => {
   if (!record || !property) return null;
 
+  console.log('record', record);
+
   const fieldName = property.name; // mediaCapa, mediaPrincipal, etc.
   const mediaKey = `${fieldName}Url`; // mediaCapaUrl, etc.
   const mediaPath = record.params?.[mediaKey];

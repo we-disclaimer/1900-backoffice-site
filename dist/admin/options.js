@@ -8,10 +8,11 @@ import { MediaResource } from './resources/media.resource.js';
 import { PostResource } from './resources/post.resource.js';
 import { CategoriaResource } from './resources/subcategoria.resource.js';
 import CardapioResource from './resources/cardapio.resource.js';
+import { TeatroResource } from './resources/teatro.resource.js';
 const mongooseDb = await mongoose.connect('mongodb+srv://admin:TXCCMCCQvgQhmKwZ@cluster0.j7wteli.mongodb.net/website?retryWrites=true&w=majority');
 const options = {
     rootPath: '/admin',
-    resources: [HomeResource, UnidadeResource, MediaResource, CardapioResource, PostResource, CategoriaResource, ValePizzaResource],
+    resources: [HomeResource, UnidadeResource, MediaResource, CardapioResource, PostResource, CategoriaResource, ValePizzaResource, TeatroResource],
     dashboard: {
         component: 'RedirectDashboard',
     },
