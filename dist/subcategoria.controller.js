@@ -10,7 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Param, NotFoundException, } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 let CategoriaController = class CategoriaController {
@@ -18,10 +18,14 @@ let CategoriaController = class CategoriaController {
         this.categoriaModel = categoriaModel;
     }
     async getAllCategoria() {
-        return this.categoriaModel
-            .find()
-            .lean()
-            .exec();
+        return this.categoriaModel.find().lean().exec();
+    }
+    async getCategoriaById(id) {
+        const categoria = await this.categoriaModel.findById(id).lean().exec();
+        if (!categoria) {
+            throw new NotFoundException(`Categoria com id ${id} não encontrada`);
+        }
+        return categoria;
     }
 };
 __decorate([
@@ -30,6 +34,13 @@ __decorate([
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], CategoriaController.prototype, "getAllCategoria", null);
+__decorate([
+    Get(':id'),
+    __param(0, Param('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], CategoriaController.prototype, "getCategoriaById", null);
 CategoriaController = __decorate([
     Controller('categoria'),
     __param(0, InjectModel('Categoria')),
