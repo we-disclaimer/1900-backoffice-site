@@ -86,7 +86,8 @@ const PostResource: ResourceWithOptions = {
       'media',
       'categoria',
       'precos',
-      'disponibilidades',
+      'jantar',
+      'delivery',
       'tags',
       'codigoIntegracao',
     ],
@@ -96,12 +97,14 @@ const PostResource: ResourceWithOptions = {
       'media',
       'categoria',
       'precos',
-      'disponibilidades',
+      'jantar',
+      'delivery',
       'tags',
       'codigoIntegracao',
       'dataDeCriacao',
     ],
     properties: {
+
       dataDeCriacao: {
         components: {
           list: 'FormattedDate',

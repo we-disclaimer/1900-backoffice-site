@@ -1,0 +1,1 @@
+{"version":3,"file":"gtm.js","sourceRoot":"","sources":["../../../src/admin/resources/gtm.ts"],"names":[],"mappings":"AAMA,MAAM,CAAC,MAAM,MAAM,GAAG,cAAc,CAAC;AAErC,MAAM,CAAC,MAAM,QAAQ,GAAG,CAAC,GAAG,EAAE,EAAE;IAC9B,MAAM,CAAC,SAAS,CAAC,IAAI,CAAC;QACpB,KAAK,EAAE,UAAU;QACjB,IAAI,EAAE,GAAG;KACV,CAAC,CAAC;AACL,CAAC,CAAC"}
