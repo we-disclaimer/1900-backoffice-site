@@ -14,9 +14,9 @@ const HomeSchema = new Schema(
   { timestamps: true },
 );
 
-export const HomeModel = model('Home', HomeSchema);
+const HomeModel = model('Home', HomeSchema);
 
-export const HomeResource: ResourceWithOptions = {
+const HomeResource: ResourceWithOptions = {
   resource: HomeModel,
   options: {
     listProperties: ['title', 'metaTagTitle', 'metaTagDescription'], // ✅ exibidos na listagem
@@ -56,4 +56,4 @@ export const HomeResource: ResourceWithOptions = {
   },
 };
 
-export default HomeResource;
+export { HomeResource, HomeSchema, HomeModel };

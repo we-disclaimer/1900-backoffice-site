@@ -7,8 +7,8 @@ const HomeSchema = new Schema({
     metaTagTitle: String,
     metaTagDescription: String,
 }, { timestamps: true });
-export const HomeModel = model('Home', HomeSchema);
-export const HomeResource = {
+const HomeModel = model('Home', HomeSchema);
+const HomeResource = {
     resource: HomeModel,
     options: {
         listProperties: ['title', 'metaTagTitle', 'metaTagDescription'],
@@ -44,5 +44,5 @@ export const HomeResource = {
         },
     },
 };
-export default HomeResource;
+export { HomeResource, HomeSchema, HomeModel };
 //# sourceMappingURL=home.entity.js.map
