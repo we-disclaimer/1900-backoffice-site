@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable no-empty-function */
 import {
   Controller,
@@ -24,18 +25,27 @@ export class CategoriaController {
 
   @Get('by-ids/:ids')
   async getCategoriasByIds(@Param('ids') ids: string) {
-    const idArray = ids.split(',').map((id) => id.trim()).filter(Boolean);
+    const idArray = ids
+      .split(',')
+      .map((id) => id.trim())
+      .filter(Boolean);
 
     if (idArray.length === 0) {
       throw new BadRequestException('Nenhum ID válido fornecido.');
     }
 
-    const categorias = await this.categoriaModel.find({ _id: { $in: idArray } }).lean().exec();
+    const categorias = await this.categoriaModel
+      .find({ _id: { $in: idArray } })
+      .lean()
+      .exec();
 
     if (!categorias || categorias.length === 0) {
       throw new NotFoundException('Nenhuma categoria encontrada para os IDs fornecidos.');
     }
 
-    return categorias;
+    // Reordena os resultados de acordo com a ordem dos IDs recebidos
+    const categoriasOrdenadas = idArray.map((id) => categorias.find((cat) => cat._id.toString() === id)).filter(Boolean); // Filtra os que não foram encontrados, por segurança
+
+    return categoriasOrdenadas;
   }
 }

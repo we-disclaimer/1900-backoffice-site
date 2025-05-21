@@ -21,15 +21,22 @@ let CategoriaController = class CategoriaController {
         return this.categoriaModel.find().lean().exec();
     }
     async getCategoriasByIds(ids) {
-        const idArray = ids.split(',').map((id) => id.trim()).filter(Boolean);
+        const idArray = ids
+            .split(',')
+            .map((id) => id.trim())
+            .filter(Boolean);
         if (idArray.length === 0) {
             throw new BadRequestException('Nenhum ID válido fornecido.');
         }
-        const categorias = await this.categoriaModel.find({ _id: { $in: idArray } }).lean().exec();
+        const categorias = await this.categoriaModel
+            .find({ _id: { $in: idArray } })
+            .lean()
+            .exec();
         if (!categorias || categorias.length === 0) {
             throw new NotFoundException('Nenhuma categoria encontrada para os IDs fornecidos.');
         }
-        return categorias;
+        const categoriasOrdenadas = idArray.map((id) => categorias.find((cat) => cat._id.toString() === id)).filter(Boolean);
+        return categoriasOrdenadas;
     }
 };
 __decorate([
