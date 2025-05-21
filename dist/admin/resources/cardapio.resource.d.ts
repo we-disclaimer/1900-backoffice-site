@@ -6,6 +6,7 @@ declare const CardapioSchema: mongoose.Schema<any, mongoose.Model<any, any, any,
     descricao?: string;
     mostrarNoDelivery?: boolean;
     mostrarNoJantar?: boolean;
+    ordemNoMenu?: number;
     tituloSessao?: string;
 }, mongoose.Document<unknown, {}, mongoose.FlatRecord<{
     nome: string;
@@ -13,6 +14,7 @@ declare const CardapioSchema: mongoose.Schema<any, mongoose.Model<any, any, any,
     descricao?: string;
     mostrarNoDelivery?: boolean;
     mostrarNoJantar?: boolean;
+    ordemNoMenu?: number;
     tituloSessao?: string;
 }>, {}> & mongoose.FlatRecord<{
     nome: string;
@@ -20,6 +22,7 @@ declare const CardapioSchema: mongoose.Schema<any, mongoose.Model<any, any, any,
     descricao?: string;
     mostrarNoDelivery?: boolean;
     mostrarNoJantar?: boolean;
+    ordemNoMenu?: number;
     tituloSessao?: string;
 }> & {
     _id: mongoose.Types.ObjectId;
@@ -32,6 +35,7 @@ declare const CardapioModel: mongoose.Model<any, {}, {}, {}, any, any> | mongoos
     descricao?: string;
     mostrarNoDelivery?: boolean;
     mostrarNoJantar?: boolean;
+    ordemNoMenu?: number;
     tituloSessao?: string;
 }, {}, {}, {}, mongoose.Document<unknown, {}, {
     nome: string;
@@ -39,6 +43,7 @@ declare const CardapioModel: mongoose.Model<any, {}, {}, {}, any, any> | mongoos
     descricao?: string;
     mostrarNoDelivery?: boolean;
     mostrarNoJantar?: boolean;
+    ordemNoMenu?: number;
     tituloSessao?: string;
 }, {}> & {
     nome: string;
@@ -46,6 +51,7 @@ declare const CardapioModel: mongoose.Model<any, {}, {}, {}, any, any> | mongoos
     descricao?: string;
     mostrarNoDelivery?: boolean;
     mostrarNoJantar?: boolean;
+    ordemNoMenu?: number;
     tituloSessao?: string;
 } & {
     _id: mongoose.Types.ObjectId;
@@ -57,6 +63,7 @@ declare const CardapioModel: mongoose.Model<any, {}, {}, {}, any, any> | mongoos
     descricao?: string;
     mostrarNoDelivery?: boolean;
     mostrarNoJantar?: boolean;
+    ordemNoMenu?: number;
     tituloSessao?: string;
 }, mongoose.Document<unknown, {}, mongoose.FlatRecord<{
     nome: string;
@@ -64,6 +71,7 @@ declare const CardapioModel: mongoose.Model<any, {}, {}, {}, any, any> | mongoos
     descricao?: string;
     mostrarNoDelivery?: boolean;
     mostrarNoJantar?: boolean;
+    ordemNoMenu?: number;
     tituloSessao?: string;
 }>, {}> & mongoose.FlatRecord<{
     nome: string;
@@ -71,6 +79,7 @@ declare const CardapioModel: mongoose.Model<any, {}, {}, {}, any, any> | mongoos
     descricao?: string;
     mostrarNoDelivery?: boolean;
     mostrarNoJantar?: boolean;
+    ordemNoMenu?: number;
     tituloSessao?: string;
 }> & {
     _id: mongoose.Types.ObjectId;

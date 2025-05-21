@@ -6,12 +6,13 @@ const CardapioSchema = new mongoose.Schema({
     mostrarNoJantar: { type: Boolean },
     mostrarNoDelivery: { type: Boolean },
     categorias: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Categoria' }],
+    ordemNoMenu: { type: Number },
 });
 const CardapioModel = mongoose.models.Cardapio || mongoose.model('Cardapio', CardapioSchema);
 const CardapioResource = {
     resource: CardapioModel,
     options: {
-        listProperties: ['nome', 'mostrarNoJantar', 'mostrarNoDelivery', 'categorias'],
+        listProperties: ['nome', 'ordemNoMenu', 'mostrarNoJantar', 'mostrarNoDelivery', 'categorias'],
         editProperties: [
             'nome',
             'tituloSessao',
@@ -19,6 +20,7 @@ const CardapioResource = {
             'mostrarNoJantar',
             'mostrarNoDelivery',
             'categorias',
+            'ordemNoMenu',
         ],
         showProperties: [
             'nome',
@@ -27,6 +29,7 @@ const CardapioResource = {
             'mostrarNoJantar',
             'mostrarNoDelivery',
             'categorias',
+            'ordemNoMenu',
         ],
         properties: {
             nome: {

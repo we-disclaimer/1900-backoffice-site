@@ -13,6 +13,7 @@ export declare class CardapioController {
         descricao?: string;
         mostrarNoDelivery?: boolean;
         mostrarNoJantar?: boolean;
+        ordemNoMenu?: number;
         tituloSessao?: string;
     }, {}, {}, {}, import("mongoose").Document<unknown, {}, {
         nome: string;
@@ -20,6 +21,7 @@ export declare class CardapioController {
         descricao?: string;
         mostrarNoDelivery?: boolean;
         mostrarNoJantar?: boolean;
+        ordemNoMenu?: number;
         tituloSessao?: string;
     }, {}> & {
         nome: string;
@@ -27,6 +29,7 @@ export declare class CardapioController {
         descricao?: string;
         mostrarNoDelivery?: boolean;
         mostrarNoJantar?: boolean;
+        ordemNoMenu?: number;
         tituloSessao?: string;
     } & {
         _id: import("mongoose").Types.ObjectId;
@@ -38,6 +41,7 @@ export declare class CardapioController {
         descricao?: string;
         mostrarNoDelivery?: boolean;
         mostrarNoJantar?: boolean;
+        ordemNoMenu?: number;
         tituloSessao?: string;
     }, import("mongoose").Document<unknown, {}, import("mongoose").FlatRecord<{
         nome: string;
@@ -45,6 +49,7 @@ export declare class CardapioController {
         descricao?: string;
         mostrarNoDelivery?: boolean;
         mostrarNoJantar?: boolean;
+        ordemNoMenu?: number;
         tituloSessao?: string;
     }>, {}> & import("mongoose").FlatRecord<{
         nome: string;
@@ -52,6 +57,7 @@ export declare class CardapioController {
         descricao?: string;
         mostrarNoDelivery?: boolean;
         mostrarNoJantar?: boolean;
+        ordemNoMenu?: number;
         tituloSessao?: string;
     }> & {
         _id: import("mongoose").Types.ObjectId;
