@@ -15,6 +15,7 @@ declare const HomeSchema: Schema<any, import("mongoose").Model<any, any, any, an
     buttonText?: string;
     buttonLink?: string;
     bannerDescription?: string;
+    bannerTitle?: string;
     media?: import("mongoose").Types.ObjectId;
     banner?: import("mongoose").Types.ObjectId;
 }, import("mongoose").Document<unknown, {}, import("mongoose").FlatRecord<{
@@ -30,6 +31,7 @@ declare const HomeSchema: Schema<any, import("mongoose").Model<any, any, any, an
     buttonText?: string;
     buttonLink?: string;
     bannerDescription?: string;
+    bannerTitle?: string;
     media?: import("mongoose").Types.ObjectId;
     banner?: import("mongoose").Types.ObjectId;
 }>, {}> & import("mongoose").FlatRecord<{
@@ -45,6 +47,7 @@ declare const HomeSchema: Schema<any, import("mongoose").Model<any, any, any, an
     buttonText?: string;
     buttonLink?: string;
     bannerDescription?: string;
+    bannerTitle?: string;
     media?: import("mongoose").Types.ObjectId;
     banner?: import("mongoose").Types.ObjectId;
 }> & {
@@ -65,6 +68,7 @@ declare const HomeModel: import("mongoose").Model<{
     buttonText?: string;
     buttonLink?: string;
     bannerDescription?: string;
+    bannerTitle?: string;
     media?: import("mongoose").Types.ObjectId;
     banner?: import("mongoose").Types.ObjectId;
 }, {}, {}, {}, import("mongoose").Document<unknown, {}, {
@@ -80,6 +84,7 @@ declare const HomeModel: import("mongoose").Model<{
     buttonText?: string;
     buttonLink?: string;
     bannerDescription?: string;
+    bannerTitle?: string;
     media?: import("mongoose").Types.ObjectId;
     banner?: import("mongoose").Types.ObjectId;
 }, {}> & {
@@ -95,6 +100,7 @@ declare const HomeModel: import("mongoose").Model<{
     buttonText?: string;
     buttonLink?: string;
     bannerDescription?: string;
+    bannerTitle?: string;
     media?: import("mongoose").Types.ObjectId;
     banner?: import("mongoose").Types.ObjectId;
 } & {
@@ -116,6 +122,7 @@ declare const HomeModel: import("mongoose").Model<{
     buttonText?: string;
     buttonLink?: string;
     bannerDescription?: string;
+    bannerTitle?: string;
     media?: import("mongoose").Types.ObjectId;
     banner?: import("mongoose").Types.ObjectId;
 }, import("mongoose").Document<unknown, {}, import("mongoose").FlatRecord<{
@@ -131,6 +138,7 @@ declare const HomeModel: import("mongoose").Model<{
     buttonText?: string;
     buttonLink?: string;
     bannerDescription?: string;
+    bannerTitle?: string;
     media?: import("mongoose").Types.ObjectId;
     banner?: import("mongoose").Types.ObjectId;
 }>, {}> & import("mongoose").FlatRecord<{
@@ -146,6 +154,7 @@ declare const HomeModel: import("mongoose").Model<{
     buttonText?: string;
     buttonLink?: string;
     bannerDescription?: string;
+    bannerTitle?: string;
     media?: import("mongoose").Types.ObjectId;
     banner?: import("mongoose").Types.ObjectId;
 }> & {

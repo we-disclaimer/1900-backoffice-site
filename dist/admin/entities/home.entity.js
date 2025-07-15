@@ -12,6 +12,7 @@ const HomeSchema = new Schema({
     buttonLink: String,
     banner: { type: Schema.Types.ObjectId, ref: 'Media' },
     bannerDescription: String,
+    bannerTitle: String,
 }, { timestamps: true });
 const HomeModel = model('Home', HomeSchema);
 const HomeResource = {
@@ -26,6 +27,7 @@ const HomeResource = {
             'buttonText',
             'buttonLink',
             'banner',
+            'bannerTitle',
             'bannerDescription',
         ],
         showProperties: [
@@ -36,6 +38,7 @@ const HomeResource = {
             'buttonText',
             'buttonLink',
             'banner',
+            'bannerTitle',
             'bannerDescription',
         ],
         properties: {
@@ -54,7 +57,17 @@ const HomeResource = {
                 components: {
                     show: 'ShowProductImage',
                 },
+                label: 'Banner',
+                group: 'Banner',
             },
+            title: { label: 'Titulo' },
+            subtitle: { label: 'Subtitulo' },
+            metaTagTitle: { label: 'Meta Tag Titulo' },
+            metaTagDescription: { label: 'Meta Tag Descricao' },
+            buttonText: { label: 'Texto do Botao', group: 'Banner' },
+            buttonLink: { label: 'Link do Botao', group: 'Banner' },
+            bannerTitle: { label: 'Titulo do Banner', group: 'Banner' },
+            bannerDescription: { label: 'Descricao do Banner', group: 'Banner' },
         },
         actions: {
             list: { isAccessible: true },

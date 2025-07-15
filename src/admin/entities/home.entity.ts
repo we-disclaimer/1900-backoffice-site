@@ -21,6 +21,9 @@ const HomeSchema = new Schema(
     // Banner principal (mp4/webp) + descrição
     banner: { type: Schema.Types.ObjectId, ref: 'Media' },
     bannerDescription: String,
+
+    // Título do banner
+    bannerTitle: String,
   },
   { timestamps: true },
 );
@@ -39,6 +42,7 @@ const HomeResource: ResourceWithOptions = {
       'buttonText',
       'buttonLink',
       'banner',
+      'bannerTitle',
       'bannerDescription',
     ],
 
@@ -50,6 +54,7 @@ const HomeResource: ResourceWithOptions = {
       'buttonText',
       'buttonLink',
       'banner',
+      'bannerTitle',
       'bannerDescription',
     ],
     properties: {
@@ -70,7 +75,37 @@ const HomeResource: ResourceWithOptions = {
         components: {
           show: 'ShowProductImage',
         },
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        label: 'Banner',
+        /* eslint-disable-next-line @typescript-eslint/ban-ts-comment */ /* @ts-ignore */ group: 'Banner',
       },
+
+      // Traduções de labels (portugues sem acento)
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      title: { label: 'Titulo' },
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      subtitle: { label: 'Subtitulo' },
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      metaTagTitle: { label: 'Meta Tag Titulo' },
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      metaTagDescription: { label: 'Meta Tag Descricao' },
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      buttonText: { label: 'Texto do Botao', /* eslint-disable-next-line @typescript-eslint/ban-ts-comment */ /* @ts-ignore */ group: 'Banner' },
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      buttonLink: { label: 'Link do Botao', /* eslint-disable-next-line @typescript-eslint/ban-ts-comment */ /* @ts-ignore */ group: 'Banner' },
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      bannerTitle: { /* eslint-disable-next-line @typescript-eslint/ban-ts-comment */ /* @ts-ignore */ label: 'Titulo do Banner', /* eslint-disable-next-line @typescript-eslint/ban-ts-comment */ /* @ts-ignore */ group: 'Banner' },
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      bannerDescription: { /* eslint-disable-next-line @typescript-eslint/ban-ts-comment */ /* @ts-ignore */ label: 'Descricao do Banner', /* eslint-disable-next-line @typescript-eslint/ban-ts-comment */ /* @ts-ignore */ group: 'Banner' },
     },
     actions: {
       list: { isAccessible: true },

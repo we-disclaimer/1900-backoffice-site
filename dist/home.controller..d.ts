@@ -16,6 +16,7 @@ export declare class HomeController {
         buttonText?: string;
         buttonLink?: string;
         bannerDescription?: string;
+        bannerTitle?: string;
         media?: import("mongoose").Types.ObjectId;
         banner?: import("mongoose").Types.ObjectId;
     }, {}, {}, {}, import("mongoose").Document<unknown, {}, {
@@ -31,6 +32,7 @@ export declare class HomeController {
         buttonText?: string;
         buttonLink?: string;
         bannerDescription?: string;
+        bannerTitle?: string;
         media?: import("mongoose").Types.ObjectId;
         banner?: import("mongoose").Types.ObjectId;
     }, {}> & {
@@ -46,6 +48,7 @@ export declare class HomeController {
         buttonText?: string;
         buttonLink?: string;
         bannerDescription?: string;
+        bannerTitle?: string;
         media?: import("mongoose").Types.ObjectId;
         banner?: import("mongoose").Types.ObjectId;
     } & {
@@ -67,6 +70,7 @@ export declare class HomeController {
         buttonText?: string;
         buttonLink?: string;
         bannerDescription?: string;
+        bannerTitle?: string;
         media?: import("mongoose").Types.ObjectId;
         banner?: import("mongoose").Types.ObjectId;
     }, import("mongoose").Document<unknown, {}, import("mongoose").FlatRecord<{
@@ -82,6 +86,7 @@ export declare class HomeController {
         buttonText?: string;
         buttonLink?: string;
         bannerDescription?: string;
+        bannerTitle?: string;
         media?: import("mongoose").Types.ObjectId;
         banner?: import("mongoose").Types.ObjectId;
     }>, {}> & import("mongoose").FlatRecord<{
@@ -97,6 +102,7 @@ export declare class HomeController {
         buttonText?: string;
         buttonLink?: string;
         bannerDescription?: string;
+        bannerTitle?: string;
         media?: import("mongoose").Types.ObjectId;
         banner?: import("mongoose").Types.ObjectId;
     }> & {
