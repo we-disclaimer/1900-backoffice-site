@@ -12,6 +12,11 @@ declare const HomeSchema: Schema<any, import("mongoose").Model<any, any, any, an
     content?: string;
     metaTagTitle?: string;
     metaTagDescription?: string;
+    buttonText?: string;
+    buttonLink?: string;
+    bannerDescription?: string;
+    media?: import("mongoose").Types.ObjectId;
+    banner?: import("mongoose").Types.ObjectId;
 }, import("mongoose").Document<unknown, {}, import("mongoose").FlatRecord<{
     createdAt: NativeDate;
     updatedAt: NativeDate;
@@ -22,6 +27,11 @@ declare const HomeSchema: Schema<any, import("mongoose").Model<any, any, any, an
     content?: string;
     metaTagTitle?: string;
     metaTagDescription?: string;
+    buttonText?: string;
+    buttonLink?: string;
+    bannerDescription?: string;
+    media?: import("mongoose").Types.ObjectId;
+    banner?: import("mongoose").Types.ObjectId;
 }>, {}> & import("mongoose").FlatRecord<{
     createdAt: NativeDate;
     updatedAt: NativeDate;
@@ -32,6 +42,11 @@ declare const HomeSchema: Schema<any, import("mongoose").Model<any, any, any, an
     content?: string;
     metaTagTitle?: string;
     metaTagDescription?: string;
+    buttonText?: string;
+    buttonLink?: string;
+    bannerDescription?: string;
+    media?: import("mongoose").Types.ObjectId;
+    banner?: import("mongoose").Types.ObjectId;
 }> & {
     _id: import("mongoose").Types.ObjectId;
 } & {
@@ -47,6 +62,11 @@ declare const HomeModel: import("mongoose").Model<{
     content?: string;
     metaTagTitle?: string;
     metaTagDescription?: string;
+    buttonText?: string;
+    buttonLink?: string;
+    bannerDescription?: string;
+    media?: import("mongoose").Types.ObjectId;
+    banner?: import("mongoose").Types.ObjectId;
 }, {}, {}, {}, import("mongoose").Document<unknown, {}, {
     createdAt: NativeDate;
     updatedAt: NativeDate;
@@ -57,6 +77,11 @@ declare const HomeModel: import("mongoose").Model<{
     content?: string;
     metaTagTitle?: string;
     metaTagDescription?: string;
+    buttonText?: string;
+    buttonLink?: string;
+    bannerDescription?: string;
+    media?: import("mongoose").Types.ObjectId;
+    banner?: import("mongoose").Types.ObjectId;
 }, {}> & {
     createdAt: NativeDate;
     updatedAt: NativeDate;
@@ -67,6 +92,11 @@ declare const HomeModel: import("mongoose").Model<{
     content?: string;
     metaTagTitle?: string;
     metaTagDescription?: string;
+    buttonText?: string;
+    buttonLink?: string;
+    bannerDescription?: string;
+    media?: import("mongoose").Types.ObjectId;
+    banner?: import("mongoose").Types.ObjectId;
 } & {
     _id: import("mongoose").Types.ObjectId;
 } & {
@@ -83,6 +113,11 @@ declare const HomeModel: import("mongoose").Model<{
     content?: string;
     metaTagTitle?: string;
     metaTagDescription?: string;
+    buttonText?: string;
+    buttonLink?: string;
+    bannerDescription?: string;
+    media?: import("mongoose").Types.ObjectId;
+    banner?: import("mongoose").Types.ObjectId;
 }, import("mongoose").Document<unknown, {}, import("mongoose").FlatRecord<{
     createdAt: NativeDate;
     updatedAt: NativeDate;
@@ -93,6 +128,11 @@ declare const HomeModel: import("mongoose").Model<{
     content?: string;
     metaTagTitle?: string;
     metaTagDescription?: string;
+    buttonText?: string;
+    buttonLink?: string;
+    bannerDescription?: string;
+    media?: import("mongoose").Types.ObjectId;
+    banner?: import("mongoose").Types.ObjectId;
 }>, {}> & import("mongoose").FlatRecord<{
     createdAt: NativeDate;
     updatedAt: NativeDate;
@@ -103,6 +143,11 @@ declare const HomeModel: import("mongoose").Model<{
     content?: string;
     metaTagTitle?: string;
     metaTagDescription?: string;
+    buttonText?: string;
+    buttonLink?: string;
+    bannerDescription?: string;
+    media?: import("mongoose").Types.ObjectId;
+    banner?: import("mongoose").Types.ObjectId;
 }> & {
     _id: import("mongoose").Types.ObjectId;
 } & {

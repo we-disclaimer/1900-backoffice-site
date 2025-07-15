@@ -20,6 +20,8 @@ let HomeController = class HomeController {
     async getAllTeatros() {
         return this.homeModel
             .find()
+            .populate('media', 'url')
+            .populate('banner', 'url')
             .lean()
             .exec();
     }

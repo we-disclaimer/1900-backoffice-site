@@ -1,5 +1,5 @@
 export const DEFAULT_ADMIN = {
-    email: 'admin',
-    password: '1900',
+    email: '1900@1900.com.br',
+    password: '1900@2025#Pizzeria',
 };
 //# sourceMappingURL=constants.js.map

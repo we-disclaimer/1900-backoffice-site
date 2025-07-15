@@ -8,6 +8,7 @@ import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { HomeController } from './home.controller..js';
 import { HomeSchema } from './admin/entities/home.entity.js';
+import { MediaSchema } from './admin/resources/media.resource.js';
 let HomeModule = class HomeModule {
 };
 HomeModule = __decorate([
@@ -15,6 +16,7 @@ HomeModule = __decorate([
         imports: [
             MongooseModule.forFeature([
                 { name: 'Home', schema: HomeSchema },
+                { name: 'Media', schema: MediaSchema },
             ]),
         ],
         controllers: [HomeController],

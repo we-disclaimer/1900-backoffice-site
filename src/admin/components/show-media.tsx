@@ -11,27 +11,43 @@ const ShowProductImage: React.FC<BasePropertyProps> = ({ record, property }) => 
   console.log('record', record);
 
   const fieldName = property.name; // mediaCapa, mediaPrincipal, etc.
-  const mediaKey = `${fieldName}Url`; // mediaCapaUrl, etc.
-  const mediaPath = record.params?.[mediaKey];
+  const mediaKey = `${fieldName}Url`; // bannerUrl, etc.
+  const altKey = `${fieldName}Alt`;
 
-  const imageUrl = mediaPath
+  const mediaPath = record.params?.[mediaKey];
+  const altText = record.params?.[altKey] || '';
+
+  const fullUrl = mediaPath
     ? `https://backoffice-app-assets.s3.us-east-1.amazonaws.com/${mediaPath}`
     : null;
 
   return (
     <Box mb="36px">
       <Label>{property.label || 'Imagem'}</Label>
-      {imageUrl ? (
+      {fullUrl ? (
         <Box mt="default">
-          <img
-            src={imageUrl}
-            alt={`Imagem - ${fieldName}`}
-            style={{ maxWidth: '100%', maxHeight: '300px', borderRadius: 8 }}
-          />
+          {fullUrl.endsWith('.mp4') ? (
+            <video
+              src={fullUrl}
+              style={{ maxWidth: '100%', maxHeight: '300px', borderRadius: 8 }}
+              controls
+            />
+          ) : (
+            <img
+              src={fullUrl}
+              alt={altText || `Imagem - ${fieldName}`}
+              style={{ maxWidth: '100%', maxHeight: '300px', borderRadius: 8 }}
+            />
+          )}
+          {altText && (
+            <Box mt="sm" color="grey60">
+              {altText}
+            </Box>
+          )}
         </Box>
       ) : (
         <Box mt="default" color="grey60">
-          Nenhuma imagem disponível
+          {altText || 'Nenhum arquivo disponível'}
         </Box>
       )}
     </Box>
