@@ -9,5 +9,7 @@ componentLoader.add('ShowProductImage', path.resolve('src/admin/components/show-
 componentLoader.add('FormattedDate', path.resolve('src/admin/components/formatted-date.tsx'));
 componentLoader.add('RedirectDashboard', path.resolve('src/admin/components/redirect-dashboard.tsx'));
 componentLoader.add('SyncPricesAction', path.resolve('src/admin/components/sync-button.tsx'));
+componentLoader.add('CategoriaSelectReal', path.resolve('src/admin/components/categoria-select-real.tsx'));
+componentLoader.add('PeriodoSelect', path.resolve('src/admin/components/periodo-select.tsx'));
 export default componentLoader;
 //# sourceMappingURL=component-loader.js.map

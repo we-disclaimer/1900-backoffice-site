@@ -9,32 +9,32 @@ export declare class TeatroController {
         __v: number;
     }) | (import("mongoose").FlattenMaps<Model<{
         nome: string;
-        media?: import("mongoose").Types.ObjectId;
         descricao?: string;
+        media?: import("mongoose").Types.ObjectId;
     }, {}, {}, {}, import("mongoose").Document<unknown, {}, {
         nome: string;
-        media?: import("mongoose").Types.ObjectId;
         descricao?: string;
+        media?: import("mongoose").Types.ObjectId;
     }, {}> & {
         nome: string;
-        media?: import("mongoose").Types.ObjectId;
         descricao?: string;
+        media?: import("mongoose").Types.ObjectId;
     } & {
         _id: import("mongoose").Types.ObjectId;
     } & {
         __v: number;
     }, import("mongoose").Schema<any, Model<any, any, any, any, any, any>, {}, {}, {}, {}, import("mongoose").DefaultSchemaOptions, {
         nome: string;
-        media?: import("mongoose").Types.ObjectId;
         descricao?: string;
+        media?: import("mongoose").Types.ObjectId;
     }, import("mongoose").Document<unknown, {}, import("mongoose").FlatRecord<{
         nome: string;
-        media?: import("mongoose").Types.ObjectId;
         descricao?: string;
+        media?: import("mongoose").Types.ObjectId;
     }>, {}> & import("mongoose").FlatRecord<{
         nome: string;
-        media?: import("mongoose").Types.ObjectId;
         descricao?: string;
+        media?: import("mongoose").Types.ObjectId;
     }> & {
         _id: import("mongoose").Types.ObjectId;
     } & {

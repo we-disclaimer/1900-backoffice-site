@@ -8,48 +8,48 @@ export declare class HomeController {
         updatedAt: NativeDate;
     } & {
         title: string;
+        media?: import("mongoose").Types.ObjectId;
+        metaTagTitle?: string;
+        metaTagDescription?: string;
         subtitle?: string;
         bannerImage?: string;
         content?: string;
-        metaTagTitle?: string;
-        metaTagDescription?: string;
         buttonText?: string;
         buttonLink?: string;
         bannerDescription?: string;
         bannerTitle?: string;
-        media?: import("mongoose").Types.ObjectId;
         banner?: import("mongoose").Types.ObjectId;
     }, {}, {}, {}, import("mongoose").Document<unknown, {}, {
         createdAt: NativeDate;
         updatedAt: NativeDate;
     } & {
         title: string;
+        media?: import("mongoose").Types.ObjectId;
+        metaTagTitle?: string;
+        metaTagDescription?: string;
         subtitle?: string;
         bannerImage?: string;
         content?: string;
-        metaTagTitle?: string;
-        metaTagDescription?: string;
         buttonText?: string;
         buttonLink?: string;
         bannerDescription?: string;
         bannerTitle?: string;
-        media?: import("mongoose").Types.ObjectId;
         banner?: import("mongoose").Types.ObjectId;
     }, {}> & {
         createdAt: NativeDate;
         updatedAt: NativeDate;
     } & {
         title: string;
+        media?: import("mongoose").Types.ObjectId;
+        metaTagTitle?: string;
+        metaTagDescription?: string;
         subtitle?: string;
         bannerImage?: string;
         content?: string;
-        metaTagTitle?: string;
-        metaTagDescription?: string;
         buttonText?: string;
         buttonLink?: string;
         bannerDescription?: string;
         bannerTitle?: string;
-        media?: import("mongoose").Types.ObjectId;
         banner?: import("mongoose").Types.ObjectId;
     } & {
         _id: import("mongoose").Types.ObjectId;
@@ -62,48 +62,48 @@ export declare class HomeController {
         updatedAt: NativeDate;
     } & {
         title: string;
+        media?: import("mongoose").Types.ObjectId;
+        metaTagTitle?: string;
+        metaTagDescription?: string;
         subtitle?: string;
         bannerImage?: string;
         content?: string;
-        metaTagTitle?: string;
-        metaTagDescription?: string;
         buttonText?: string;
         buttonLink?: string;
         bannerDescription?: string;
         bannerTitle?: string;
-        media?: import("mongoose").Types.ObjectId;
         banner?: import("mongoose").Types.ObjectId;
     }, import("mongoose").Document<unknown, {}, import("mongoose").FlatRecord<{
         createdAt: NativeDate;
         updatedAt: NativeDate;
     } & {
         title: string;
+        media?: import("mongoose").Types.ObjectId;
+        metaTagTitle?: string;
+        metaTagDescription?: string;
         subtitle?: string;
         bannerImage?: string;
         content?: string;
-        metaTagTitle?: string;
-        metaTagDescription?: string;
         buttonText?: string;
         buttonLink?: string;
         bannerDescription?: string;
         bannerTitle?: string;
-        media?: import("mongoose").Types.ObjectId;
         banner?: import("mongoose").Types.ObjectId;
     }>, {}> & import("mongoose").FlatRecord<{
         createdAt: NativeDate;
         updatedAt: NativeDate;
     } & {
         title: string;
+        media?: import("mongoose").Types.ObjectId;
+        metaTagTitle?: string;
+        metaTagDescription?: string;
         subtitle?: string;
         bannerImage?: string;
         content?: string;
-        metaTagTitle?: string;
-        metaTagDescription?: string;
         buttonText?: string;
         buttonLink?: string;
         bannerDescription?: string;
         bannerTitle?: string;
-        media?: import("mongoose").Types.ObjectId;
         banner?: import("mongoose").Types.ObjectId;
     }> & {
         _id: import("mongoose").Types.ObjectId;

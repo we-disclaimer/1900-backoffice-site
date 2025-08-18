@@ -11,22 +11,22 @@ export declare class MusicaisController {
         nome: string;
         emBreve: boolean;
         finalizado: boolean;
-        media?: import("mongoose").Types.ObjectId;
         descricao?: string;
+        media?: import("mongoose").Types.ObjectId;
         linkDaCompra?: string;
     }, {}, {}, {}, import("mongoose").Document<unknown, {}, {
         nome: string;
         emBreve: boolean;
         finalizado: boolean;
-        media?: import("mongoose").Types.ObjectId;
         descricao?: string;
+        media?: import("mongoose").Types.ObjectId;
         linkDaCompra?: string;
     }, {}> & {
         nome: string;
         emBreve: boolean;
         finalizado: boolean;
-        media?: import("mongoose").Types.ObjectId;
         descricao?: string;
+        media?: import("mongoose").Types.ObjectId;
         linkDaCompra?: string;
     } & {
         _id: import("mongoose").Types.ObjectId;
@@ -36,22 +36,22 @@ export declare class MusicaisController {
         nome: string;
         emBreve: boolean;
         finalizado: boolean;
-        media?: import("mongoose").Types.ObjectId;
         descricao?: string;
+        media?: import("mongoose").Types.ObjectId;
         linkDaCompra?: string;
     }, import("mongoose").Document<unknown, {}, import("mongoose").FlatRecord<{
         nome: string;
         emBreve: boolean;
         finalizado: boolean;
-        media?: import("mongoose").Types.ObjectId;
         descricao?: string;
+        media?: import("mongoose").Types.ObjectId;
         linkDaCompra?: string;
     }>, {}> & import("mongoose").FlatRecord<{
         nome: string;
         emBreve: boolean;
         finalizado: boolean;
-        media?: import("mongoose").Types.ObjectId;
         descricao?: string;
+        media?: import("mongoose").Types.ObjectId;
         linkDaCompra?: string;
     }> & {
         _id: import("mongoose").Types.ObjectId;
@@ -70,22 +70,22 @@ export declare class MusicaisController {
         nome: string;
         emBreve: boolean;
         finalizado: boolean;
-        media?: import("mongoose").Types.ObjectId;
         descricao?: string;
+        media?: import("mongoose").Types.ObjectId;
         linkDaCompra?: string;
     }, {}, {}, {}, import("mongoose").Document<unknown, {}, {
         nome: string;
         emBreve: boolean;
         finalizado: boolean;
-        media?: import("mongoose").Types.ObjectId;
         descricao?: string;
+        media?: import("mongoose").Types.ObjectId;
         linkDaCompra?: string;
     }, {}> & {
         nome: string;
         emBreve: boolean;
         finalizado: boolean;
-        media?: import("mongoose").Types.ObjectId;
         descricao?: string;
+        media?: import("mongoose").Types.ObjectId;
         linkDaCompra?: string;
     } & {
         _id: import("mongoose").Types.ObjectId;
@@ -95,22 +95,22 @@ export declare class MusicaisController {
         nome: string;
         emBreve: boolean;
         finalizado: boolean;
-        media?: import("mongoose").Types.ObjectId;
         descricao?: string;
+        media?: import("mongoose").Types.ObjectId;
         linkDaCompra?: string;
     }, import("mongoose").Document<unknown, {}, import("mongoose").FlatRecord<{
         nome: string;
         emBreve: boolean;
         finalizado: boolean;
-        media?: import("mongoose").Types.ObjectId;
         descricao?: string;
+        media?: import("mongoose").Types.ObjectId;
         linkDaCompra?: string;
     }>, {}> & import("mongoose").FlatRecord<{
         nome: string;
         emBreve: boolean;
         finalizado: boolean;
-        media?: import("mongoose").Types.ObjectId;
         descricao?: string;
+        media?: import("mongoose").Types.ObjectId;
         linkDaCompra?: string;
     }> & {
         _id: import("mongoose").Types.ObjectId;
@@ -129,22 +129,22 @@ export declare class MusicaisController {
         nome: string;
         emBreve: boolean;
         finalizado: boolean;
-        media?: import("mongoose").Types.ObjectId;
         descricao?: string;
+        media?: import("mongoose").Types.ObjectId;
         linkDaCompra?: string;
     }, {}, {}, {}, import("mongoose").Document<unknown, {}, {
         nome: string;
         emBreve: boolean;
         finalizado: boolean;
-        media?: import("mongoose").Types.ObjectId;
         descricao?: string;
+        media?: import("mongoose").Types.ObjectId;
         linkDaCompra?: string;
     }, {}> & {
         nome: string;
         emBreve: boolean;
         finalizado: boolean;
-        media?: import("mongoose").Types.ObjectId;
         descricao?: string;
+        media?: import("mongoose").Types.ObjectId;
         linkDaCompra?: string;
     } & {
         _id: import("mongoose").Types.ObjectId;
@@ -154,22 +154,22 @@ export declare class MusicaisController {
         nome: string;
         emBreve: boolean;
         finalizado: boolean;
-        media?: import("mongoose").Types.ObjectId;
         descricao?: string;
+        media?: import("mongoose").Types.ObjectId;
         linkDaCompra?: string;
     }, import("mongoose").Document<unknown, {}, import("mongoose").FlatRecord<{
         nome: string;
         emBreve: boolean;
         finalizado: boolean;
-        media?: import("mongoose").Types.ObjectId;
         descricao?: string;
+        media?: import("mongoose").Types.ObjectId;
         linkDaCompra?: string;
     }>, {}> & import("mongoose").FlatRecord<{
         nome: string;
         emBreve: boolean;
         finalizado: boolean;
-        media?: import("mongoose").Types.ObjectId;
         descricao?: string;
+        media?: import("mongoose").Types.ObjectId;
         linkDaCompra?: string;
     }> & {
         _id: import("mongoose").Types.ObjectId;

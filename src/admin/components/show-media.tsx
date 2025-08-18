@@ -8,8 +8,6 @@ import { BasePropertyProps } from 'adminjs';
 const ShowProductImage: React.FC<BasePropertyProps> = ({ record, property }) => {
   if (!record || !property) return null;
 
-  console.log('record', record);
-
   const fieldName = property.name; // mediaCapa, mediaPrincipal, etc.
   const mediaKey = `${fieldName}Url`; // bannerUrl, etc.
   const altKey = `${fieldName}Alt`;
@@ -17,8 +15,11 @@ const ShowProductImage: React.FC<BasePropertyProps> = ({ record, property }) => 
   const mediaPath = record.params?.[mediaKey];
   const altText = record.params?.[altKey] || '';
 
+  // Verificar se a URL já é completa ou se precisa ser concatenada
   const fullUrl = mediaPath
-    ? `https://backoffice-app-assets.s3.us-east-1.amazonaws.com/${mediaPath}`
+    ? (mediaPath.startsWith('http') 
+        ? mediaPath 
+        : `https://backoffice-app-assets.s3.us-east-1.amazonaws.com/${mediaPath}`)
     : null;
 
   return (

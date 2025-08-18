@@ -21,6 +21,8 @@ import { MusicaisModule } from './musicais.module.js';
 import { CardapioModule } from './cardapio.module.js';
 import { CategoriaModule } from './subcategoria.module.js';
 import { HomeModule } from './home.module.js';
+import { NoticiasModule } from './noticias.module.js';
+import { HorarioModule } from './horario.module.js';
 AdminJS.registerAdapter({
     Resource: AdminJSMongoose.Resource,
     Database: AdminJSMongoose.Database,
@@ -40,6 +42,8 @@ AppModule = __decorate([
             CardapioModule,
             CategoriaModule,
             HomeModule,
+            NoticiasModule,
+            HorarioModule,
             MongooseModule.forRoot('mongodb+srv://admin:TXCCMCCQvgQhmKwZ@cluster0.j7wteli.mongodb.net/website?retryWrites=true&w=majority'),
             AdminModule.createAdminAsync({
                 useFactory: async () => ({

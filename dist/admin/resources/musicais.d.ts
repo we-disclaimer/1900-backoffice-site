@@ -4,22 +4,22 @@ declare const MusicaisSchema: mongoose.Schema<any, mongoose.Model<any, any, any,
     nome: string;
     emBreve: boolean;
     finalizado: boolean;
-    media?: mongoose.Types.ObjectId;
     descricao?: string;
+    media?: mongoose.Types.ObjectId;
     linkDaCompra?: string;
 }, mongoose.Document<unknown, {}, mongoose.FlatRecord<{
     nome: string;
     emBreve: boolean;
     finalizado: boolean;
-    media?: mongoose.Types.ObjectId;
     descricao?: string;
+    media?: mongoose.Types.ObjectId;
     linkDaCompra?: string;
 }>, {}> & mongoose.FlatRecord<{
     nome: string;
     emBreve: boolean;
     finalizado: boolean;
-    media?: mongoose.Types.ObjectId;
     descricao?: string;
+    media?: mongoose.Types.ObjectId;
     linkDaCompra?: string;
 }> & {
     _id: mongoose.Types.ObjectId;
@@ -30,22 +30,22 @@ declare const MusicaisModel: mongoose.Model<any, {}, {}, {}, any, any> | mongoos
     nome: string;
     emBreve: boolean;
     finalizado: boolean;
-    media?: mongoose.Types.ObjectId;
     descricao?: string;
+    media?: mongoose.Types.ObjectId;
     linkDaCompra?: string;
 }, {}, {}, {}, mongoose.Document<unknown, {}, {
     nome: string;
     emBreve: boolean;
     finalizado: boolean;
-    media?: mongoose.Types.ObjectId;
     descricao?: string;
+    media?: mongoose.Types.ObjectId;
     linkDaCompra?: string;
 }, {}> & {
     nome: string;
     emBreve: boolean;
     finalizado: boolean;
-    media?: mongoose.Types.ObjectId;
     descricao?: string;
+    media?: mongoose.Types.ObjectId;
     linkDaCompra?: string;
 } & {
     _id: mongoose.Types.ObjectId;
@@ -55,22 +55,22 @@ declare const MusicaisModel: mongoose.Model<any, {}, {}, {}, any, any> | mongoos
     nome: string;
     emBreve: boolean;
     finalizado: boolean;
-    media?: mongoose.Types.ObjectId;
     descricao?: string;
+    media?: mongoose.Types.ObjectId;
     linkDaCompra?: string;
 }, mongoose.Document<unknown, {}, mongoose.FlatRecord<{
     nome: string;
     emBreve: boolean;
     finalizado: boolean;
-    media?: mongoose.Types.ObjectId;
     descricao?: string;
+    media?: mongoose.Types.ObjectId;
     linkDaCompra?: string;
 }>, {}> & mongoose.FlatRecord<{
     nome: string;
     emBreve: boolean;
     finalizado: boolean;
-    media?: mongoose.Types.ObjectId;
     descricao?: string;
+    media?: mongoose.Types.ObjectId;
     linkDaCompra?: string;
 }> & {
     _id: mongoose.Types.ObjectId;

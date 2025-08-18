@@ -3,14 +3,15 @@ import { Box, Label } from '@adminjs/design-system';
 const ShowProductImage = ({ record, property }) => {
     if (!record || !property)
         return null;
-    console.log('record', record);
     const fieldName = property.name;
     const mediaKey = `${fieldName}Url`;
     const altKey = `${fieldName}Alt`;
     const mediaPath = record.params?.[mediaKey];
     const altText = record.params?.[altKey] || '';
     const fullUrl = mediaPath
-        ? `https://backoffice-app-assets.s3.us-east-1.amazonaws.com/${mediaPath}`
+        ? (mediaPath.startsWith('http')
+            ? mediaPath
+            : `https://backoffice-app-assets.s3.us-east-1.amazonaws.com/${mediaPath}`)
         : null;
     return (React.createElement(Box, { mb: "36px" },
         React.createElement(Label, null, property.label || 'Imagem'),
