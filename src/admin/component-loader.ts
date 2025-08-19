@@ -16,5 +16,9 @@ componentLoader.add('RedirectDashboard', path.resolve('src/admin/components/redi
 componentLoader.add('SyncPricesAction', path.resolve('src/admin/components/sync-button.tsx'));
 componentLoader.add('CategoriaSelectReal', path.resolve('src/admin/components/categoria-select-real.tsx'));
 componentLoader.add('PeriodoSelect', path.resolve('src/admin/components/periodo-select.tsx'));
+componentLoader.add('TinyMCEEditor', path.resolve('src/admin/components/tinymce-editor.tsx'));
+componentLoader.add('QuillEditor', path.resolve('src/admin/components/quill-editor.tsx'));
+componentLoader.add('BlockBuilder', path.resolve('src/admin/components/block-builder.tsx'));
+componentLoader.add('TiptapEditor', path.resolve('src/admin/components/tiptap-editor.tsx'));
 
 export default componentLoader;

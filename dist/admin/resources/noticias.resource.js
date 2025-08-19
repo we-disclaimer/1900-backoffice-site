@@ -128,9 +128,11 @@ const NoticiasResource = {
                 isRequired: true,
             },
             conteudo: {
-                type: 'richtext',
+                components: {
+                    edit: 'TinyMCEEditor',
+                },
                 isRequired: true,
-                description: 'Editor de texto rico. ATENÇÃO: Imagens inseridas podem não aparecer na edição, mas são salvas corretamente.',
+                description: '✨ Editor profissional TinyMCE com upload de imagens, formatação avançada e preview.',
             },
             fotoDestaque: {
                 reference: 'Media',

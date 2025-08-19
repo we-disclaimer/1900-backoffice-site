@@ -161,9 +161,11 @@ const NoticiasResource: ResourceWithOptions = {
         isRequired: true,
       },
       conteudo: { 
-        type: 'richtext',
+        components: {
+          edit: 'TinyMCEEditor',
+        },
         isRequired: true,
-        description: 'Editor de texto rico. ATENÇÃO: Imagens inseridas podem não aparecer na edição, mas são salvas corretamente.',
+        description: '✨ Editor profissional TinyMCE com upload de imagens, formatação avançada e preview.',
       },
       fotoDestaque: {
         reference: 'Media',
@@ -177,12 +179,14 @@ const NoticiasResource: ResourceWithOptions = {
           list: true,
           filter: true,
           show: true,
-          edit: false, // não editável pois é automática
+          edit: true, // agora editável
         },
         components: {
           list: 'FormattedDate',
           show: 'FormattedDate',
         },
+        type: 'datetime',
+        description: 'Data e hora de publicação da notícia',
       },
       categorias: {
         reference: 'CategoriaNoticias',
@@ -206,7 +210,7 @@ const NoticiasResource: ResourceWithOptions = {
       },
     },
     listProperties: ['titulo', 'slugPermanente', 'dataPublicacao', 'categorias', 'fotoDestaque'],
-    editProperties: ['titulo', 'slugPermanente', 'resumo', 'conteudo', 'fotoDestaque', 'categorias'],
+    editProperties: ['titulo', 'slugPermanente', 'dataPublicacao', 'resumo', 'conteudo', 'fotoDestaque', 'categorias'],
     showProperties: ['titulo', 'slugPermanente', 'resumo', 'conteudo', 'infoConteudo', 'fotoDestaque', 'categorias', 'dataPublicacao'],
     sort: {
       sortBy: 'dataPublicacao',

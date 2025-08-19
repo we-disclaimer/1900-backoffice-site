@@ -8,12 +8,12 @@ export declare class HomeController {
         updatedAt: NativeDate;
     } & {
         title: string;
+        content?: string;
         media?: import("mongoose").Types.ObjectId;
-        metaTagTitle?: string;
-        metaTagDescription?: string;
         subtitle?: string;
         bannerImage?: string;
-        content?: string;
+        metaTagTitle?: string;
+        metaTagDescription?: string;
         buttonText?: string;
         buttonLink?: string;
         bannerDescription?: string;
@@ -24,12 +24,12 @@ export declare class HomeController {
         updatedAt: NativeDate;
     } & {
         title: string;
+        content?: string;
         media?: import("mongoose").Types.ObjectId;
-        metaTagTitle?: string;
-        metaTagDescription?: string;
         subtitle?: string;
         bannerImage?: string;
-        content?: string;
+        metaTagTitle?: string;
+        metaTagDescription?: string;
         buttonText?: string;
         buttonLink?: string;
         bannerDescription?: string;
@@ -40,12 +40,12 @@ export declare class HomeController {
         updatedAt: NativeDate;
     } & {
         title: string;
+        content?: string;
         media?: import("mongoose").Types.ObjectId;
-        metaTagTitle?: string;
-        metaTagDescription?: string;
         subtitle?: string;
         bannerImage?: string;
-        content?: string;
+        metaTagTitle?: string;
+        metaTagDescription?: string;
         buttonText?: string;
         buttonLink?: string;
         bannerDescription?: string;
@@ -62,12 +62,12 @@ export declare class HomeController {
         updatedAt: NativeDate;
     } & {
         title: string;
+        content?: string;
         media?: import("mongoose").Types.ObjectId;
-        metaTagTitle?: string;
-        metaTagDescription?: string;
         subtitle?: string;
         bannerImage?: string;
-        content?: string;
+        metaTagTitle?: string;
+        metaTagDescription?: string;
         buttonText?: string;
         buttonLink?: string;
         bannerDescription?: string;
@@ -78,12 +78,12 @@ export declare class HomeController {
         updatedAt: NativeDate;
     } & {
         title: string;
+        content?: string;
         media?: import("mongoose").Types.ObjectId;
-        metaTagTitle?: string;
-        metaTagDescription?: string;
         subtitle?: string;
         bannerImage?: string;
-        content?: string;
+        metaTagTitle?: string;
+        metaTagDescription?: string;
         buttonText?: string;
         buttonLink?: string;
         bannerDescription?: string;
@@ -94,12 +94,12 @@ export declare class HomeController {
         updatedAt: NativeDate;
     } & {
         title: string;
+        content?: string;
         media?: import("mongoose").Types.ObjectId;
-        metaTagTitle?: string;
-        metaTagDescription?: string;
         subtitle?: string;
         bannerImage?: string;
-        content?: string;
+        metaTagTitle?: string;
+        metaTagDescription?: string;
         buttonText?: string;
         buttonLink?: string;
         bannerDescription?: string;

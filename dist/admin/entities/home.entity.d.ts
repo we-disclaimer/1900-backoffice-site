@@ -7,12 +7,12 @@ declare const HomeSchema: Schema<any, import("mongoose").Model<any, any, any, an
     updatedAt: NativeDate;
 } & {
     title: string;
+    content?: string;
     media?: import("mongoose").Types.ObjectId;
-    metaTagTitle?: string;
-    metaTagDescription?: string;
     subtitle?: string;
     bannerImage?: string;
-    content?: string;
+    metaTagTitle?: string;
+    metaTagDescription?: string;
     buttonText?: string;
     buttonLink?: string;
     bannerDescription?: string;
@@ -23,12 +23,12 @@ declare const HomeSchema: Schema<any, import("mongoose").Model<any, any, any, an
     updatedAt: NativeDate;
 } & {
     title: string;
+    content?: string;
     media?: import("mongoose").Types.ObjectId;
-    metaTagTitle?: string;
-    metaTagDescription?: string;
     subtitle?: string;
     bannerImage?: string;
-    content?: string;
+    metaTagTitle?: string;
+    metaTagDescription?: string;
     buttonText?: string;
     buttonLink?: string;
     bannerDescription?: string;
@@ -39,12 +39,12 @@ declare const HomeSchema: Schema<any, import("mongoose").Model<any, any, any, an
     updatedAt: NativeDate;
 } & {
     title: string;
+    content?: string;
     media?: import("mongoose").Types.ObjectId;
-    metaTagTitle?: string;
-    metaTagDescription?: string;
     subtitle?: string;
     bannerImage?: string;
-    content?: string;
+    metaTagTitle?: string;
+    metaTagDescription?: string;
     buttonText?: string;
     buttonLink?: string;
     bannerDescription?: string;
@@ -60,12 +60,12 @@ declare const HomeModel: import("mongoose").Model<{
     updatedAt: NativeDate;
 } & {
     title: string;
+    content?: string;
     media?: import("mongoose").Types.ObjectId;
-    metaTagTitle?: string;
-    metaTagDescription?: string;
     subtitle?: string;
     bannerImage?: string;
-    content?: string;
+    metaTagTitle?: string;
+    metaTagDescription?: string;
     buttonText?: string;
     buttonLink?: string;
     bannerDescription?: string;
@@ -76,12 +76,12 @@ declare const HomeModel: import("mongoose").Model<{
     updatedAt: NativeDate;
 } & {
     title: string;
+    content?: string;
     media?: import("mongoose").Types.ObjectId;
-    metaTagTitle?: string;
-    metaTagDescription?: string;
     subtitle?: string;
     bannerImage?: string;
-    content?: string;
+    metaTagTitle?: string;
+    metaTagDescription?: string;
     buttonText?: string;
     buttonLink?: string;
     bannerDescription?: string;
@@ -92,12 +92,12 @@ declare const HomeModel: import("mongoose").Model<{
     updatedAt: NativeDate;
 } & {
     title: string;
+    content?: string;
     media?: import("mongoose").Types.ObjectId;
-    metaTagTitle?: string;
-    metaTagDescription?: string;
     subtitle?: string;
     bannerImage?: string;
-    content?: string;
+    metaTagTitle?: string;
+    metaTagDescription?: string;
     buttonText?: string;
     buttonLink?: string;
     bannerDescription?: string;
@@ -114,12 +114,12 @@ declare const HomeModel: import("mongoose").Model<{
     updatedAt: NativeDate;
 } & {
     title: string;
+    content?: string;
     media?: import("mongoose").Types.ObjectId;
-    metaTagTitle?: string;
-    metaTagDescription?: string;
     subtitle?: string;
     bannerImage?: string;
-    content?: string;
+    metaTagTitle?: string;
+    metaTagDescription?: string;
     buttonText?: string;
     buttonLink?: string;
     bannerDescription?: string;
@@ -130,12 +130,12 @@ declare const HomeModel: import("mongoose").Model<{
     updatedAt: NativeDate;
 } & {
     title: string;
+    content?: string;
     media?: import("mongoose").Types.ObjectId;
-    metaTagTitle?: string;
-    metaTagDescription?: string;
     subtitle?: string;
     bannerImage?: string;
-    content?: string;
+    metaTagTitle?: string;
+    metaTagDescription?: string;
     buttonText?: string;
     buttonLink?: string;
     bannerDescription?: string;
@@ -146,12 +146,12 @@ declare const HomeModel: import("mongoose").Model<{
     updatedAt: NativeDate;
 } & {
     title: string;
+    content?: string;
     media?: import("mongoose").Types.ObjectId;
-    metaTagTitle?: string;
-    metaTagDescription?: string;
     subtitle?: string;
     bannerImage?: string;
-    content?: string;
+    metaTagTitle?: string;
+    metaTagDescription?: string;
     buttonText?: string;
     buttonLink?: string;
     bannerDescription?: string;

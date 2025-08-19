@@ -9,32 +9,32 @@ export declare class TeatroController {
         __v: number;
     }) | (import("mongoose").FlattenMaps<Model<{
         nome: string;
-        descricao?: string;
         media?: import("mongoose").Types.ObjectId;
+        descricao?: string;
     }, {}, {}, {}, import("mongoose").Document<unknown, {}, {
         nome: string;
-        descricao?: string;
         media?: import("mongoose").Types.ObjectId;
+        descricao?: string;
     }, {}> & {
         nome: string;
-        descricao?: string;
         media?: import("mongoose").Types.ObjectId;
+        descricao?: string;
     } & {
         _id: import("mongoose").Types.ObjectId;
     } & {
         __v: number;
     }, import("mongoose").Schema<any, Model<any, any, any, any, any, any>, {}, {}, {}, {}, import("mongoose").DefaultSchemaOptions, {
         nome: string;
-        descricao?: string;
         media?: import("mongoose").Types.ObjectId;
+        descricao?: string;
     }, import("mongoose").Document<unknown, {}, import("mongoose").FlatRecord<{
         nome: string;
-        descricao?: string;
         media?: import("mongoose").Types.ObjectId;
+        descricao?: string;
     }>, {}> & import("mongoose").FlatRecord<{
         nome: string;
-        descricao?: string;
         media?: import("mongoose").Types.ObjectId;
+        descricao?: string;
     }> & {
         _id: import("mongoose").Types.ObjectId;
     } & {

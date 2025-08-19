@@ -19,6 +19,14 @@ import CategoriaSelectReal from '../src/admin/components/categoria-select-real'
 AdminJS.UserComponents.CategoriaSelectReal = CategoriaSelectReal
 import PeriodoSelect from '../src/admin/components/periodo-select'
 AdminJS.UserComponents.PeriodoSelect = PeriodoSelect
+import TinyMCEEditor from '../src/admin/components/tinymce-editor'
+AdminJS.UserComponents.TinyMCEEditor = TinyMCEEditor
+import QuillEditor from '../src/admin/components/quill-editor'
+AdminJS.UserComponents.QuillEditor = QuillEditor
+import BlockBuilder from '../src/admin/components/block-builder'
+AdminJS.UserComponents.BlockBuilder = BlockBuilder
+import TiptapEditor from '../src/admin/components/tiptap-editor'
+AdminJS.UserComponents.TiptapEditor = TiptapEditor
 import UploadEditComponent from '../node_modules/@adminjs/upload/build/features/upload-file/components/UploadEditComponent'
 AdminJS.UserComponents.UploadEditComponent = UploadEditComponent
 import UploadListComponent from '../node_modules/@adminjs/upload/build/features/upload-file/components/UploadListComponent'

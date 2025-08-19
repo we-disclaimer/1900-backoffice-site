@@ -2,16 +2,16 @@ import mongoose from 'mongoose';
 import { ResourceWithOptions } from 'adminjs';
 declare const TeatroSchema: mongoose.Schema<any, mongoose.Model<any, any, any, any, any, any>, {}, {}, {}, {}, mongoose.DefaultSchemaOptions, {
     nome: string;
-    descricao?: string;
     media?: mongoose.Types.ObjectId;
+    descricao?: string;
 }, mongoose.Document<unknown, {}, mongoose.FlatRecord<{
     nome: string;
-    descricao?: string;
     media?: mongoose.Types.ObjectId;
+    descricao?: string;
 }>, {}> & mongoose.FlatRecord<{
     nome: string;
-    descricao?: string;
     media?: mongoose.Types.ObjectId;
+    descricao?: string;
 }> & {
     _id: mongoose.Types.ObjectId;
 } & {
@@ -19,32 +19,32 @@ declare const TeatroSchema: mongoose.Schema<any, mongoose.Model<any, any, any, a
 }>;
 declare const TeatroModel: mongoose.Model<any, {}, {}, {}, any, any> | mongoose.Model<{
     nome: string;
-    descricao?: string;
     media?: mongoose.Types.ObjectId;
+    descricao?: string;
 }, {}, {}, {}, mongoose.Document<unknown, {}, {
     nome: string;
-    descricao?: string;
     media?: mongoose.Types.ObjectId;
+    descricao?: string;
 }, {}> & {
     nome: string;
-    descricao?: string;
     media?: mongoose.Types.ObjectId;
+    descricao?: string;
 } & {
     _id: mongoose.Types.ObjectId;
 } & {
     __v: number;
 }, mongoose.Schema<any, mongoose.Model<any, any, any, any, any, any>, {}, {}, {}, {}, mongoose.DefaultSchemaOptions, {
     nome: string;
-    descricao?: string;
     media?: mongoose.Types.ObjectId;
+    descricao?: string;
 }, mongoose.Document<unknown, {}, mongoose.FlatRecord<{
     nome: string;
-    descricao?: string;
     media?: mongoose.Types.ObjectId;
+    descricao?: string;
 }>, {}> & mongoose.FlatRecord<{
     nome: string;
-    descricao?: string;
     media?: mongoose.Types.ObjectId;
+    descricao?: string;
 }> & {
     _id: mongoose.Types.ObjectId;
 } & {
