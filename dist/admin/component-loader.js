@@ -15,5 +15,6 @@ componentLoader.add('TinyMCEEditor', path.resolve('src/admin/components/tinymce-
 componentLoader.add('QuillEditor', path.resolve('src/admin/components/quill-editor.tsx'));
 componentLoader.add('BlockBuilder', path.resolve('src/admin/components/block-builder.tsx'));
 componentLoader.add('TiptapEditor', path.resolve('src/admin/components/tiptap-editor.tsx'));
+componentLoader.add('VisualComposer', path.resolve('src/admin/components/visual-composer.tsx'));
 export default componentLoader;
 //# sourceMappingURL=component-loader.js.map

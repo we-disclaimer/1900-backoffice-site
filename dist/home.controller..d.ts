@@ -8,10 +8,10 @@ export declare class HomeController {
         updatedAt: NativeDate;
     } & {
         title: string;
-        content?: string;
         media?: import("mongoose").Types.ObjectId;
         subtitle?: string;
         bannerImage?: string;
+        content?: string;
         metaTagTitle?: string;
         metaTagDescription?: string;
         buttonText?: string;
@@ -24,10 +24,10 @@ export declare class HomeController {
         updatedAt: NativeDate;
     } & {
         title: string;
-        content?: string;
         media?: import("mongoose").Types.ObjectId;
         subtitle?: string;
         bannerImage?: string;
+        content?: string;
         metaTagTitle?: string;
         metaTagDescription?: string;
         buttonText?: string;
@@ -40,10 +40,10 @@ export declare class HomeController {
         updatedAt: NativeDate;
     } & {
         title: string;
-        content?: string;
         media?: import("mongoose").Types.ObjectId;
         subtitle?: string;
         bannerImage?: string;
+        content?: string;
         metaTagTitle?: string;
         metaTagDescription?: string;
         buttonText?: string;
@@ -62,10 +62,10 @@ export declare class HomeController {
         updatedAt: NativeDate;
     } & {
         title: string;
-        content?: string;
         media?: import("mongoose").Types.ObjectId;
         subtitle?: string;
         bannerImage?: string;
+        content?: string;
         metaTagTitle?: string;
         metaTagDescription?: string;
         buttonText?: string;
@@ -78,10 +78,10 @@ export declare class HomeController {
         updatedAt: NativeDate;
     } & {
         title: string;
-        content?: string;
         media?: import("mongoose").Types.ObjectId;
         subtitle?: string;
         bannerImage?: string;
+        content?: string;
         metaTagTitle?: string;
         metaTagDescription?: string;
         buttonText?: string;
@@ -94,10 +94,10 @@ export declare class HomeController {
         updatedAt: NativeDate;
     } & {
         title: string;
-        content?: string;
         media?: import("mongoose").Types.ObjectId;
         subtitle?: string;
         bannerImage?: string;
+        content?: string;
         metaTagTitle?: string;
         metaTagDescription?: string;
         buttonText?: string;

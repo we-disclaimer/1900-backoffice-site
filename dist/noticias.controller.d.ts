@@ -8,29 +8,29 @@ export declare class NoticiasController {
     } & {
         __v: number;
     }) | (import("mongoose").FlattenMaps<Model<{
-        dataPublicacao: NativeDate;
-        titulo: string;
         resumo: string;
-        conteudo: string;
+        titulo: string;
         categorias: import("mongoose").Types.ObjectId[];
+        dataPublicacao: NativeDate;
+        conteudo: string;
         curtidas: number;
         fotoDestaque?: import("mongoose").Types.ObjectId;
         slugPermanente?: string;
     }, {}, {}, {}, import("mongoose").Document<unknown, {}, {
-        dataPublicacao: NativeDate;
-        titulo: string;
         resumo: string;
-        conteudo: string;
+        titulo: string;
         categorias: import("mongoose").Types.ObjectId[];
+        dataPublicacao: NativeDate;
+        conteudo: string;
         curtidas: number;
         fotoDestaque?: import("mongoose").Types.ObjectId;
         slugPermanente?: string;
     }, {}> & {
-        dataPublicacao: NativeDate;
-        titulo: string;
         resumo: string;
-        conteudo: string;
+        titulo: string;
         categorias: import("mongoose").Types.ObjectId[];
+        dataPublicacao: NativeDate;
+        conteudo: string;
         curtidas: number;
         fotoDestaque?: import("mongoose").Types.ObjectId;
         slugPermanente?: string;
@@ -39,29 +39,29 @@ export declare class NoticiasController {
     } & {
         __v: number;
     }, import("mongoose").Schema<any, Model<any, any, any, any, any, any>, {}, {}, {}, {}, import("mongoose").DefaultSchemaOptions, {
-        dataPublicacao: NativeDate;
-        titulo: string;
         resumo: string;
-        conteudo: string;
+        titulo: string;
         categorias: import("mongoose").Types.ObjectId[];
+        dataPublicacao: NativeDate;
+        conteudo: string;
         curtidas: number;
         fotoDestaque?: import("mongoose").Types.ObjectId;
         slugPermanente?: string;
     }, import("mongoose").Document<unknown, {}, import("mongoose").FlatRecord<{
-        dataPublicacao: NativeDate;
-        titulo: string;
         resumo: string;
-        conteudo: string;
+        titulo: string;
         categorias: import("mongoose").Types.ObjectId[];
+        dataPublicacao: NativeDate;
+        conteudo: string;
         curtidas: number;
         fotoDestaque?: import("mongoose").Types.ObjectId;
         slugPermanente?: string;
     }>, {}> & import("mongoose").FlatRecord<{
-        dataPublicacao: NativeDate;
-        titulo: string;
         resumo: string;
-        conteudo: string;
+        titulo: string;
         categorias: import("mongoose").Types.ObjectId[];
+        dataPublicacao: NativeDate;
+        conteudo: string;
         curtidas: number;
         fotoDestaque?: import("mongoose").Types.ObjectId;
         slugPermanente?: string;
@@ -79,29 +79,29 @@ export declare class NoticiasController {
     } & {
         __v: number;
     }) | (import("mongoose").FlattenMaps<Model<{
-        dataPublicacao: NativeDate;
-        titulo: string;
         resumo: string;
-        conteudo: string;
+        titulo: string;
         categorias: import("mongoose").Types.ObjectId[];
+        dataPublicacao: NativeDate;
+        conteudo: string;
         curtidas: number;
         fotoDestaque?: import("mongoose").Types.ObjectId;
         slugPermanente?: string;
     }, {}, {}, {}, import("mongoose").Document<unknown, {}, {
-        dataPublicacao: NativeDate;
-        titulo: string;
         resumo: string;
-        conteudo: string;
+        titulo: string;
         categorias: import("mongoose").Types.ObjectId[];
+        dataPublicacao: NativeDate;
+        conteudo: string;
         curtidas: number;
         fotoDestaque?: import("mongoose").Types.ObjectId;
         slugPermanente?: string;
     }, {}> & {
-        dataPublicacao: NativeDate;
-        titulo: string;
         resumo: string;
-        conteudo: string;
+        titulo: string;
         categorias: import("mongoose").Types.ObjectId[];
+        dataPublicacao: NativeDate;
+        conteudo: string;
         curtidas: number;
         fotoDestaque?: import("mongoose").Types.ObjectId;
         slugPermanente?: string;
@@ -110,29 +110,29 @@ export declare class NoticiasController {
     } & {
         __v: number;
     }, import("mongoose").Schema<any, Model<any, any, any, any, any, any>, {}, {}, {}, {}, import("mongoose").DefaultSchemaOptions, {
-        dataPublicacao: NativeDate;
-        titulo: string;
         resumo: string;
-        conteudo: string;
+        titulo: string;
         categorias: import("mongoose").Types.ObjectId[];
+        dataPublicacao: NativeDate;
+        conteudo: string;
         curtidas: number;
         fotoDestaque?: import("mongoose").Types.ObjectId;
         slugPermanente?: string;
     }, import("mongoose").Document<unknown, {}, import("mongoose").FlatRecord<{
-        dataPublicacao: NativeDate;
-        titulo: string;
         resumo: string;
-        conteudo: string;
+        titulo: string;
         categorias: import("mongoose").Types.ObjectId[];
+        dataPublicacao: NativeDate;
+        conteudo: string;
         curtidas: number;
         fotoDestaque?: import("mongoose").Types.ObjectId;
         slugPermanente?: string;
     }>, {}> & import("mongoose").FlatRecord<{
-        dataPublicacao: NativeDate;
-        titulo: string;
         resumo: string;
-        conteudo: string;
+        titulo: string;
         categorias: import("mongoose").Types.ObjectId[];
+        dataPublicacao: NativeDate;
+        conteudo: string;
         curtidas: number;
         fotoDestaque?: import("mongoose").Types.ObjectId;
         slugPermanente?: string;
@@ -151,29 +151,29 @@ export declare class NoticiasController {
     } & {
         __v: number;
     }) | (import("mongoose").FlattenMaps<Model<{
-        dataPublicacao: NativeDate;
-        titulo: string;
         resumo: string;
-        conteudo: string;
+        titulo: string;
         categorias: import("mongoose").Types.ObjectId[];
+        dataPublicacao: NativeDate;
+        conteudo: string;
         curtidas: number;
         fotoDestaque?: import("mongoose").Types.ObjectId;
         slugPermanente?: string;
     }, {}, {}, {}, import("mongoose").Document<unknown, {}, {
-        dataPublicacao: NativeDate;
-        titulo: string;
         resumo: string;
-        conteudo: string;
+        titulo: string;
         categorias: import("mongoose").Types.ObjectId[];
+        dataPublicacao: NativeDate;
+        conteudo: string;
         curtidas: number;
         fotoDestaque?: import("mongoose").Types.ObjectId;
         slugPermanente?: string;
     }, {}> & {
-        dataPublicacao: NativeDate;
-        titulo: string;
         resumo: string;
-        conteudo: string;
+        titulo: string;
         categorias: import("mongoose").Types.ObjectId[];
+        dataPublicacao: NativeDate;
+        conteudo: string;
         curtidas: number;
         fotoDestaque?: import("mongoose").Types.ObjectId;
         slugPermanente?: string;
@@ -182,29 +182,29 @@ export declare class NoticiasController {
     } & {
         __v: number;
     }, import("mongoose").Schema<any, Model<any, any, any, any, any, any>, {}, {}, {}, {}, import("mongoose").DefaultSchemaOptions, {
-        dataPublicacao: NativeDate;
-        titulo: string;
         resumo: string;
-        conteudo: string;
+        titulo: string;
         categorias: import("mongoose").Types.ObjectId[];
+        dataPublicacao: NativeDate;
+        conteudo: string;
         curtidas: number;
         fotoDestaque?: import("mongoose").Types.ObjectId;
         slugPermanente?: string;
     }, import("mongoose").Document<unknown, {}, import("mongoose").FlatRecord<{
-        dataPublicacao: NativeDate;
-        titulo: string;
         resumo: string;
-        conteudo: string;
+        titulo: string;
         categorias: import("mongoose").Types.ObjectId[];
+        dataPublicacao: NativeDate;
+        conteudo: string;
         curtidas: number;
         fotoDestaque?: import("mongoose").Types.ObjectId;
         slugPermanente?: string;
     }>, {}> & import("mongoose").FlatRecord<{
-        dataPublicacao: NativeDate;
-        titulo: string;
         resumo: string;
-        conteudo: string;
+        titulo: string;
         categorias: import("mongoose").Types.ObjectId[];
+        dataPublicacao: NativeDate;
+        conteudo: string;
         curtidas: number;
         fotoDestaque?: import("mongoose").Types.ObjectId;
         slugPermanente?: string;
@@ -222,29 +222,29 @@ export declare class NoticiasController {
     } & {
         __v: number;
     }) | (import("mongoose").FlattenMaps<Model<{
-        dataPublicacao: NativeDate;
-        titulo: string;
         resumo: string;
-        conteudo: string;
+        titulo: string;
         categorias: import("mongoose").Types.ObjectId[];
+        dataPublicacao: NativeDate;
+        conteudo: string;
         curtidas: number;
         fotoDestaque?: import("mongoose").Types.ObjectId;
         slugPermanente?: string;
     }, {}, {}, {}, import("mongoose").Document<unknown, {}, {
-        dataPublicacao: NativeDate;
-        titulo: string;
         resumo: string;
-        conteudo: string;
+        titulo: string;
         categorias: import("mongoose").Types.ObjectId[];
+        dataPublicacao: NativeDate;
+        conteudo: string;
         curtidas: number;
         fotoDestaque?: import("mongoose").Types.ObjectId;
         slugPermanente?: string;
     }, {}> & {
-        dataPublicacao: NativeDate;
-        titulo: string;
         resumo: string;
-        conteudo: string;
+        titulo: string;
         categorias: import("mongoose").Types.ObjectId[];
+        dataPublicacao: NativeDate;
+        conteudo: string;
         curtidas: number;
         fotoDestaque?: import("mongoose").Types.ObjectId;
         slugPermanente?: string;
@@ -253,29 +253,29 @@ export declare class NoticiasController {
     } & {
         __v: number;
     }, import("mongoose").Schema<any, Model<any, any, any, any, any, any>, {}, {}, {}, {}, import("mongoose").DefaultSchemaOptions, {
-        dataPublicacao: NativeDate;
-        titulo: string;
         resumo: string;
-        conteudo: string;
+        titulo: string;
         categorias: import("mongoose").Types.ObjectId[];
+        dataPublicacao: NativeDate;
+        conteudo: string;
         curtidas: number;
         fotoDestaque?: import("mongoose").Types.ObjectId;
         slugPermanente?: string;
     }, import("mongoose").Document<unknown, {}, import("mongoose").FlatRecord<{
-        dataPublicacao: NativeDate;
-        titulo: string;
         resumo: string;
-        conteudo: string;
+        titulo: string;
         categorias: import("mongoose").Types.ObjectId[];
+        dataPublicacao: NativeDate;
+        conteudo: string;
         curtidas: number;
         fotoDestaque?: import("mongoose").Types.ObjectId;
         slugPermanente?: string;
     }>, {}> & import("mongoose").FlatRecord<{
-        dataPublicacao: NativeDate;
-        titulo: string;
         resumo: string;
-        conteudo: string;
+        titulo: string;
         categorias: import("mongoose").Types.ObjectId[];
+        dataPublicacao: NativeDate;
+        conteudo: string;
         curtidas: number;
         fotoDestaque?: import("mongoose").Types.ObjectId;
         slugPermanente?: string;

@@ -162,10 +162,10 @@ const NoticiasResource: ResourceWithOptions = {
       },
       conteudo: { 
         components: {
-          edit: 'TinyMCEEditor',
+          edit: 'VisualComposer',
         },
         isRequired: true,
-        description: '✨ Editor profissional TinyMCE com upload de imagens, formatação avançada e preview.',
+        description: '🎨 Editor visual estilo WordPress Composer com blocos arraståveis, imagens, vídeos e layouts personalizados.',
       },
       fotoDestaque: {
         reference: 'Media',

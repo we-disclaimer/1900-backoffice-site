@@ -27,6 +27,8 @@ import BlockBuilder from '../src/admin/components/block-builder'
 AdminJS.UserComponents.BlockBuilder = BlockBuilder
 import TiptapEditor from '../src/admin/components/tiptap-editor'
 AdminJS.UserComponents.TiptapEditor = TiptapEditor
+import VisualComposer from '../src/admin/components/visual-composer'
+AdminJS.UserComponents.VisualComposer = VisualComposer
 import UploadEditComponent from '../node_modules/@adminjs/upload/build/features/upload-file/components/UploadEditComponent'
 AdminJS.UserComponents.UploadEditComponent = UploadEditComponent
 import UploadListComponent from '../node_modules/@adminjs/upload/build/features/upload-file/components/UploadListComponent'

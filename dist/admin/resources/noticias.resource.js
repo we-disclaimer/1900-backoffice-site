@@ -129,10 +129,10 @@ const NoticiasResource = {
             },
             conteudo: {
                 components: {
-                    edit: 'TinyMCEEditor',
+                    edit: 'VisualComposer',
                 },
                 isRequired: true,
-                description: '✨ Editor profissional TinyMCE com upload de imagens, formatação avançada e preview.',
+                description: '🎨 Editor visual estilo WordPress Composer com blocos arraståveis, imagens, vídeos e layouts personalizados.',
             },
             fotoDestaque: {
                 reference: 'Media',
@@ -146,12 +146,14 @@ const NoticiasResource = {
                     list: true,
                     filter: true,
                     show: true,
-                    edit: false,
+                    edit: true,
                 },
                 components: {
                     list: 'FormattedDate',
                     show: 'FormattedDate',
                 },
+                type: 'datetime',
+                description: 'Data e hora de publicação da notícia',
             },
             categorias: {
                 reference: 'CategoriaNoticias',
@@ -175,7 +177,7 @@ const NoticiasResource = {
             },
         },
         listProperties: ['titulo', 'slugPermanente', 'dataPublicacao', 'categorias', 'fotoDestaque'],
-        editProperties: ['titulo', 'slugPermanente', 'resumo', 'conteudo', 'fotoDestaque', 'categorias'],
+        editProperties: ['titulo', 'slugPermanente', 'dataPublicacao', 'resumo', 'conteudo', 'fotoDestaque', 'categorias'],
         showProperties: ['titulo', 'slugPermanente', 'resumo', 'conteudo', 'infoConteudo', 'fotoDestaque', 'categorias', 'dataPublicacao'],
         sort: {
             sortBy: 'dataPublicacao',
