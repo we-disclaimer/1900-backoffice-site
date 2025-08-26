@@ -1,8 +1,72 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { DndContext, closestCenter, KeyboardSensor, PointerSensor, useSensor, useSensors } from '@dnd-kit/core';
 import { arrayMove, SortableContext, sortableKeyboardCoordinates, verticalListSortingStrategy, } from '@dnd-kit/sortable';
 import { useSortable, } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
+const ColumnBlockManager = ({ columnIndex, blocks, onUpdateBlocks }) => {
+    const sensors = useSensors(useSensor(PointerSensor), useSensor(KeyboardSensor, {
+        coordinateGetter: sortableKeyboardCoordinates,
+    }));
+    const generateId = () => Math.random().toString(36).substr(2, 9);
+    const addBlockToColumn = (type) => {
+        const newBlock = {
+            id: generateId(),
+            type,
+            content: '',
+            attributes: {}
+        };
+        const updatedBlocks = [...blocks, newBlock];
+        onUpdateBlocks(columnIndex, updatedBlocks);
+    };
+    const updateColumnBlock = (id, content, attributes) => {
+        const updatedBlocks = blocks.map(block => block.id === id
+            ? { ...block, content, attributes: { ...block.attributes, ...attributes } }
+            : block);
+        onUpdateBlocks(columnIndex, updatedBlocks);
+    };
+    const deleteColumnBlock = (id) => {
+        const updatedBlocks = blocks.filter(block => block.id !== id);
+        onUpdateBlocks(columnIndex, updatedBlocks);
+    };
+    const handleDragEnd = (event) => {
+        const { active, over } = event;
+        if (active.id !== over?.id) {
+            const oldIndex = blocks.findIndex(block => block.id === active.id);
+            const newIndex = blocks.findIndex(block => block.id === over?.id);
+            const updatedBlocks = arrayMove(blocks, oldIndex, newIndex);
+            onUpdateBlocks(columnIndex, updatedBlocks);
+        }
+    };
+    return (React.createElement("div", { style: { height: '100%' } },
+        React.createElement("div", { style: {
+                padding: '8px',
+                backgroundColor: '#f1f3f4',
+                borderRadius: '4px',
+                marginBottom: '8px',
+                border: '1px solid #dadce0'
+            } },
+            React.createElement("div", { style: { fontSize: '10px', fontWeight: '600', marginBottom: '6px', color: '#5f6368' } },
+                "Adicionar \u00E0 Coluna ",
+                columnIndex + 1,
+                ":"),
+            React.createElement("div", { style: { display: 'flex', flexWrap: 'wrap', gap: '4px' } },
+                React.createElement("button", { onClick: () => addBlockToColumn('paragraph'), style: miniButtonStyle }, "\uD83D\uDCDD Texto"),
+                React.createElement("button", { onClick: () => addBlockToColumn('heading2'), style: miniButtonStyle }, "H2"),
+                React.createElement("button", { onClick: () => addBlockToColumn('image'), style: miniButtonStyle }, "\uD83D\uDDBC\uFE0F"),
+                React.createElement("button", { onClick: () => addBlockToColumn('youtube'), style: miniButtonStyle }, "\uD83D\uDCFA"),
+                React.createElement("button", { onClick: () => addBlockToColumn('link'), style: miniButtonStyle }, "\uD83D\uDD17"))),
+        React.createElement(DndContext, { sensors: sensors, collisionDetection: closestCenter, onDragEnd: handleDragEnd },
+            React.createElement(SortableContext, { items: blocks.map(b => b.id), strategy: verticalListSortingStrategy },
+                React.createElement("div", { style: { minHeight: '100px' } }, blocks.length === 0 ? (React.createElement("div", { style: {
+                        textAlign: 'center',
+                        padding: '20px',
+                        color: '#9aa0a6',
+                        backgroundColor: '#f8f9fa',
+                        borderRadius: '4px',
+                        border: '1px dashed #dadce0',
+                        fontSize: '11px'
+                    } }, "Adicione blocos nesta coluna")) : (blocks.map((block) => (React.createElement(SortableBlock, { key: block.id, block: block, onUpdate: updateColumnBlock, onDelete: deleteColumnBlock })))))))));
+};
 const SortableBlock = ({ block, onUpdate, onDelete }) => {
     const { attributes, listeners, setNodeRef, transform, transition, isDragging, } = useSortable({ id: block.id });
     const style = {
@@ -124,13 +188,21 @@ const SortableBlock = ({ block, onUpdate, onDelete }) => {
                                     border: 'none'
                                 }, allowFullScreen: true }))))));
             case 'columns':
+                const handleColumnBlocksUpdate = (columnIndex, columnBlocks) => {
+                    const updatedColumns = [...(block.attributes?.columns || [])];
+                    updatedColumns[columnIndex] = columnBlocks;
+                    handleContentChange(block.content, {
+                        ...block.attributes,
+                        columns: updatedColumns
+                    });
+                };
                 return (React.createElement("div", { className: "block-content" },
                     React.createElement("div", { style: { border: '1px solid #e0e0e0', borderRadius: '4px', padding: '12px' } },
                         React.createElement("div", { style: { marginBottom: '10px' } },
                             React.createElement("label", { style: { fontSize: '12px', fontWeight: '500', marginBottom: '4px', display: 'block' } }, "N\u00FAmero de colunas:"),
                             React.createElement("select", { value: block.attributes?.columnCount || 2, onChange: (e) => {
                                     const columnCount = parseInt(e.target.value);
-                                    const columns = Array(columnCount).fill('');
+                                    const columns = Array(columnCount).fill(null).map(() => []);
                                     handleContentChange(block.content, {
                                         ...block.attributes,
                                         columnCount,
@@ -148,34 +220,16 @@ const SortableBlock = ({ block, onUpdate, onDelete }) => {
                         React.createElement("div", { style: {
                                 display: 'grid',
                                 gridTemplateColumns: `repeat(${block.attributes?.columnCount || 2}, 1fr)`,
-                                gap: '16px'
+                                gap: '16px',
+                                minHeight: '200px'
                             } }, Array(block.attributes?.columnCount || 2).fill(null).map((_, colIndex) => (React.createElement("div", { key: colIndex, style: {
-                                border: '2px dashed #dee2e6',
-                                borderRadius: '4px',
-                                padding: '12px',
-                                minHeight: '100px',
-                                backgroundColor: '#fafafa'
+                                border: '2px solid #e9ecef',
+                                borderRadius: '8px',
+                                padding: '8px',
+                                backgroundColor: '#f8f9fa',
+                                minHeight: '180px'
                             } },
-                            React.createElement("div", { style: { fontSize: '12px', color: '#6c757d', marginBottom: '8px' } },
-                                "Coluna ",
-                                colIndex + 1),
-                            React.createElement("textarea", { placeholder: `Conteúdo da coluna ${colIndex + 1}`, value: block.attributes?.columns?.[colIndex] || '', onChange: (e) => {
-                                    const columns = [...(block.attributes?.columns || [])];
-                                    columns[colIndex] = e.target.value;
-                                    handleContentChange(block.content, {
-                                        ...block.attributes,
-                                        columns
-                                    });
-                                }, style: {
-                                    width: '100%',
-                                    minHeight: '60px',
-                                    padding: '8px',
-                                    border: '1px solid #ddd',
-                                    borderRadius: '4px',
-                                    fontSize: '14px',
-                                    resize: 'vertical',
-                                    outline: 'none'
-                                } }))))))));
+                            React.createElement(ColumnBlockManager, { columnIndex: colIndex, blocks: block.attributes?.columns?.[colIndex] || [], onUpdateBlocks: handleColumnBlocksUpdate }))))))));
             case 'link':
                 return (React.createElement("div", { className: "block-content" },
                     React.createElement("div", { style: { border: '1px solid #e0e0e0', borderRadius: '4px', padding: '12px' } },
@@ -268,7 +322,7 @@ const VisualComposer = ({ record, property, onChange }) => {
             id: generateId(),
             type,
             content: '',
-            attributes: type === 'columns' ? { columnCount: 2, columns: ['', ''] } : {}
+            attributes: type === 'columns' ? { columnCount: 2, columns: [[], []] } : {}
         };
         const updatedBlocks = [...blocks, newBlock];
         setBlocks(updatedBlocks);
@@ -286,10 +340,11 @@ const VisualComposer = ({ record, property, onChange }) => {
         setBlocks(updatedBlocks);
         updateValue(updatedBlocks);
     };
-    const updateValue = (updatedBlocks) => {
+    const updateValue = useCallback((updatedBlocks) => {
         const html = blocksToHtml(updatedBlocks);
         onChange(property.name, html);
-    };
+        console.log('🔄 Conteúdo atualizado localmente (não salvo no banco ainda)');
+    }, [property.name, onChange]);
     const blocksToHtml = (blocks) => {
         return blocks.map(block => {
             switch (block.type) {
@@ -312,7 +367,10 @@ const VisualComposer = ({ record, property, onChange }) => {
                 case 'youtube':
                     return `<iframe src="https://www.youtube.com/embed/${block.attributes?.videoId}" frameborder="0" allowfullscreen></iframe>`;
                 case 'columns':
-                    const columnHtml = block.attributes?.columns?.map(col => `<div class="column">${col}</div>`).join('') || '';
+                    const columnHtml = block.attributes?.columns?.map(columnBlocks => {
+                        const columnContent = blocksToHtml(columnBlocks || []);
+                        return `<div class="column">${columnContent}</div>`;
+                    }).join('') || '';
                     return `<div class="columns" style="display: grid; grid-template-columns: repeat(${block.attributes?.columnCount || 2}, 1fr); gap: 16px;">${columnHtml}</div>`;
                 case 'link':
                     return `<a href="${block.attributes?.href || ''}">${block.content}</a>`;
@@ -332,6 +390,20 @@ const VisualComposer = ({ record, property, onChange }) => {
         }
     };
     return (React.createElement("div", { style: { width: '100%' } },
+        React.createElement("div", { style: {
+                padding: '8px 16px',
+                backgroundColor: '#d1ecf1',
+                border: '1px solid #bee5eb',
+                borderRadius: '4px',
+                marginBottom: '16px',
+                fontSize: '12px',
+                color: '#0c5460',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px'
+            } },
+            React.createElement("span", null, "\uD83D\uDCA1"),
+            React.createElement("span", null, "Fa\u00E7a suas edi\u00E7\u00F5es normalmente. Clique em \"Salvar\" no final da p\u00E1gina para persistir as mudan\u00E7as.")),
         React.createElement("div", { style: {
                 padding: '16px',
                 backgroundColor: '#f8f9fa',
@@ -382,6 +454,17 @@ const toolbarButtonStyle = {
     fontWeight: '500',
     minWidth: '28px',
     transition: 'all 0.2s'
+};
+const miniButtonStyle = {
+    padding: '4px 6px',
+    border: '1px solid #d1d5db',
+    borderRadius: '3px',
+    backgroundColor: 'white',
+    cursor: 'pointer',
+    fontSize: '10px',
+    fontWeight: '500',
+    transition: 'all 0.15s',
+    whiteSpace: 'nowrap'
 };
 export default VisualComposer;
 //# sourceMappingURL=visual-composer.js.map

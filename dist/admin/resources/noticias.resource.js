@@ -3,12 +3,14 @@ import { MediaModel } from './media.resource.js';
 import { CategoriaNoticiasModel } from './categoria-noticias.resource.js';
 const NoticiasSchema = new mongoose.Schema({
     fotoDestaque: { type: mongoose.Schema.Types.ObjectId, ref: 'Media', label: 'Foto de Destaque' },
-    dataPublicacao: { type: Date, default: Date.now },
+    dataPublicacao: { type: Date, default: Date.now, required: false },
     titulo: { type: String, required: true },
     slugPermanente: { type: String, required: false },
     resumo: { type: String, required: true },
     conteudo: { type: String, required: true },
     categorias: [{ type: mongoose.Schema.Types.ObjectId, ref: 'CategoriaNoticias' }],
+    metaTitle: { type: String },
+    metaDescription: { type: String },
     curtidas: { type: Number, default: 0 },
 });
 const NoticiasModel = mongoose.models.Noticias || mongoose.model('Noticias', NoticiasSchema);
@@ -77,6 +79,8 @@ const NoticiasResource = {
                             };
                         }
                     }
+                    response.redirectUrl = null;
+                    response.record = response.record;
                     return response;
                 },
             },

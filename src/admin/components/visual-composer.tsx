@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useRef } from 'react';
+import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { EditPropertyProps } from 'adminjs';
 import { 
   DndContext, 
@@ -45,7 +45,7 @@ interface Block {
     src?: string;
     videoId?: string;
     columnCount?: number;
-    columns?: string[];
+    columns?: Block[][]; // Agora cada coluna contém um array de blocos
   };
 }
 
@@ -54,6 +54,130 @@ interface SortableBlockProps {
   onUpdate: (id: string, content: string, attributes?: any) => void;
   onDelete: (id: string) => void;
 }
+
+interface ColumnBlockManagerProps {
+  columnIndex: number;
+  blocks: Block[];
+  onUpdateBlocks: (columnIndex: number, blocks: Block[]) => void;
+}
+
+// Componente para gerenciar blocos dentro de uma coluna
+const ColumnBlockManager: React.FC<ColumnBlockManagerProps> = ({ columnIndex, blocks, onUpdateBlocks }) => {
+  const sensors = useSensors(
+    useSensor(PointerSensor),
+    useSensor(KeyboardSensor, {
+      coordinateGetter: sortableKeyboardCoordinates,
+    })
+  );
+
+  const generateId = () => Math.random().toString(36).substr(2, 9);
+
+  const addBlockToColumn = (type: BlockType) => {
+    const newBlock: Block = {
+      id: generateId(),
+      type,
+      content: '',
+      attributes: {}
+    };
+    
+    const updatedBlocks = [...blocks, newBlock];
+    onUpdateBlocks(columnIndex, updatedBlocks);
+  };
+
+  const updateColumnBlock = (id: string, content: string, attributes?: any) => {
+    const updatedBlocks = blocks.map(block =>
+      block.id === id
+        ? { ...block, content, attributes: { ...block.attributes, ...attributes } }
+        : block
+    );
+    onUpdateBlocks(columnIndex, updatedBlocks);
+  };
+
+  const deleteColumnBlock = (id: string) => {
+    const updatedBlocks = blocks.filter(block => block.id !== id);
+    onUpdateBlocks(columnIndex, updatedBlocks);
+  };
+
+  const handleDragEnd = (event: DragEndEvent) => {
+    const { active, over } = event;
+
+    if (active.id !== over?.id) {
+      const oldIndex = blocks.findIndex(block => block.id === active.id);
+      const newIndex = blocks.findIndex(block => block.id === over?.id);
+
+      const updatedBlocks = arrayMove(blocks, oldIndex, newIndex);
+      onUpdateBlocks(columnIndex, updatedBlocks);
+    }
+  };
+
+  return (
+    <div style={{ height: '100%' }}>
+      {/* Toolbar mini para adicionar blocos na coluna */}
+      <div style={{
+        padding: '8px',
+        backgroundColor: '#f1f3f4',
+        borderRadius: '4px',
+        marginBottom: '8px',
+        border: '1px solid #dadce0'
+      }}>
+        <div style={{ fontSize: '10px', fontWeight: '600', marginBottom: '6px', color: '#5f6368' }}>
+          Adicionar à Coluna {columnIndex + 1}:
+        </div>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px' }}>
+          <button onClick={() => addBlockToColumn('paragraph')} style={miniButtonStyle}>
+            📝 Texto
+          </button>
+          <button onClick={() => addBlockToColumn('heading2')} style={miniButtonStyle}>
+            H2
+          </button>
+          <button onClick={() => addBlockToColumn('image')} style={miniButtonStyle}>
+            🖼️
+          </button>
+          <button onClick={() => addBlockToColumn('youtube')} style={miniButtonStyle}>
+            📺
+          </button>
+          <button onClick={() => addBlockToColumn('link')} style={miniButtonStyle}>
+            🔗
+          </button>
+        </div>
+      </div>
+
+      {/* Lista de blocos na coluna */}
+      <DndContext
+        sensors={sensors}
+        collisionDetection={closestCenter}
+        onDragEnd={handleDragEnd}
+      >
+        <SortableContext items={blocks.map(b => b.id)} strategy={verticalListSortingStrategy}>
+          <div style={{ minHeight: '100px' }}>
+            {blocks.length === 0 ? (
+              <div style={{
+                textAlign: 'center',
+                padding: '20px',
+                color: '#9aa0a6',
+                backgroundColor: '#f8f9fa',
+                borderRadius: '4px',
+                border: '1px dashed #dadce0',
+                fontSize: '11px'
+              }}>
+                Adicione blocos nesta coluna
+              </div>
+            ) : (
+              blocks.map((block) => (
+                <SortableBlock
+                  key={block.id}
+                  block={block}
+                  onUpdate={updateColumnBlock}
+                  onDelete={deleteColumnBlock}
+                />
+              ))
+            )}
+          </div>
+        </SortableContext>
+      </DndContext>
+    </div>
+  );
+};
 
 // Componente de bloco arrastável
 const SortableBlock: React.FC<SortableBlockProps> = ({ block, onUpdate, onDelete }) => {
@@ -274,6 +398,15 @@ const SortableBlock: React.FC<SortableBlockProps> = ({ block, onUpdate, onDelete
         );
 
       case 'columns':
+        const handleColumnBlocksUpdate = (columnIndex: number, columnBlocks: Block[]) => {
+          const updatedColumns = [...(block.attributes?.columns || [])];
+          updatedColumns[columnIndex] = columnBlocks;
+          handleContentChange(block.content, {
+            ...block.attributes,
+            columns: updatedColumns
+          });
+        };
+
         return (
           <div className="block-content">
             <div style={{ border: '1px solid #e0e0e0', borderRadius: '4px', padding: '12px' }}>
@@ -285,7 +418,8 @@ const SortableBlock: React.FC<SortableBlockProps> = ({ block, onUpdate, onDelete
                   value={block.attributes?.columnCount || 2}
                   onChange={(e) => {
                     const columnCount = parseInt(e.target.value);
-                    const columns = Array(columnCount).fill('');
+                    // Inicializa colunas como arrays de blocos vazios
+                    const columns = Array(columnCount).fill(null).map(() => []);
                     handleContentChange(block.content, {
                       ...block.attributes,
                       columnCount,
@@ -308,43 +442,24 @@ const SortableBlock: React.FC<SortableBlockProps> = ({ block, onUpdate, onDelete
               <div style={{ 
                 display: 'grid', 
                 gridTemplateColumns: `repeat(${block.attributes?.columnCount || 2}, 1fr)`,
-                gap: '16px'
+                gap: '16px',
+                minHeight: '200px'
               }}>
                 {Array(block.attributes?.columnCount || 2).fill(null).map((_, colIndex) => (
                   <div 
                     key={colIndex}
                     style={{ 
-                      border: '2px dashed #dee2e6', 
-                      borderRadius: '4px', 
-                      padding: '12px',
-                      minHeight: '100px',
-                      backgroundColor: '#fafafa'
+                      border: '2px solid #e9ecef', 
+                      borderRadius: '8px', 
+                      padding: '8px',
+                      backgroundColor: '#f8f9fa',
+                      minHeight: '180px'
                     }}
                   >
-                    <div style={{ fontSize: '12px', color: '#6c757d', marginBottom: '8px' }}>
-                      Coluna {colIndex + 1}
-                    </div>
-                    <textarea
-                      placeholder={`Conteúdo da coluna ${colIndex + 1}`}
-                      value={block.attributes?.columns?.[colIndex] || ''}
-                      onChange={(e) => {
-                        const columns = [...(block.attributes?.columns || [])];
-                        columns[colIndex] = e.target.value;
-                        handleContentChange(block.content, {
-                          ...block.attributes,
-                          columns
-                        });
-                      }}
-                      style={{
-                        width: '100%',
-                        minHeight: '60px',
-                        padding: '8px',
-                        border: '1px solid #ddd',
-                        borderRadius: '4px',
-                        fontSize: '14px',
-                        resize: 'vertical',
-                        outline: 'none'
-                      }}
+                    <ColumnBlockManager
+                      columnIndex={colIndex}
+                      blocks={block.attributes?.columns?.[colIndex] || []}
+                      onUpdateBlocks={handleColumnBlocksUpdate}
                     />
                   </div>
                 ))}
@@ -490,6 +605,8 @@ const VisualComposer: React.FC<EditPropertyProps> = ({ record, property, onChang
     }
   });
 
+  // Removido: não precisamos mais de debounce ou indicador de salvamento
+
   const sensors = useSensors(
     useSensor(PointerSensor),
     useSensor(KeyboardSensor, {
@@ -504,7 +621,7 @@ const VisualComposer: React.FC<EditPropertyProps> = ({ record, property, onChang
       id: generateId(),
       type,
       content: '',
-      attributes: type === 'columns' ? { columnCount: 2, columns: ['', ''] } : {}
+      attributes: type === 'columns' ? { columnCount: 2, columns: [[], []] } : {}
     };
     
     const updatedBlocks = [...blocks, newBlock];
@@ -528,11 +645,15 @@ const VisualComposer: React.FC<EditPropertyProps> = ({ record, property, onChang
     updateValue(updatedBlocks);
   };
 
-  const updateValue = (updatedBlocks: Block[]) => {
-    // Converte os blocos para HTML para compatibilidade
+  const updateValue = useCallback((updatedBlocks: Block[]) => {
+    // Apenas converte e atualiza o valor imediatamente, sem debounce
+    // O AdminJS não irá salvar automaticamente, apenas quando o usuário clicar em "Salvar"
     const html = blocksToHtml(updatedBlocks);
     onChange(property.name, html);
-  };
+    console.log('🔄 Conteúdo atualizado localmente (não salvo no banco ainda)');
+  }, [property.name, onChange]);
+
+  // Removido: cleanup do timer não é mais necessário
 
   const blocksToHtml = (blocks: Block[]): string => {
     return blocks.map(block => {
@@ -556,7 +677,10 @@ const VisualComposer: React.FC<EditPropertyProps> = ({ record, property, onChang
         case 'youtube':
           return `<iframe src="https://www.youtube.com/embed/${block.attributes?.videoId}" frameborder="0" allowfullscreen></iframe>`;
         case 'columns':
-          const columnHtml = block.attributes?.columns?.map(col => `<div class="column">${col}</div>`).join('') || '';
+          const columnHtml = block.attributes?.columns?.map(columnBlocks => {
+            const columnContent = blocksToHtml(columnBlocks || []);
+            return `<div class="column">${columnContent}</div>`;
+          }).join('') || '';
           return `<div class="columns" style="display: grid; grid-template-columns: repeat(${block.attributes?.columnCount || 2}, 1fr); gap: 16px;">${columnHtml}</div>`;
         case 'link':
           return `<a href="${block.attributes?.href || ''}">${block.content}</a>`;
@@ -581,6 +705,23 @@ const VisualComposer: React.FC<EditPropertyProps> = ({ record, property, onChang
 
   return (
     <div style={{ width: '100%' }}>
+      {/* Aviso sobre salvamento manual */}
+      <div style={{
+        padding: '8px 16px',
+        backgroundColor: '#d1ecf1',
+        border: '1px solid #bee5eb',
+        borderRadius: '4px',
+        marginBottom: '16px',
+        fontSize: '12px',
+        color: '#0c5460',
+        display: 'flex',
+        alignItems: 'center',
+        gap: '8px'
+      }}>
+        <span>💡</span>
+        <span>Faça suas edições normalmente. Clique em "Salvar" no final da página para persistir as mudanças.</span>
+      </div>
+
       {/* Toolbar de adicionar blocos */}
       <div style={{
         padding: '16px',
@@ -678,6 +819,18 @@ const toolbarButtonStyle: React.CSSProperties = {
   fontWeight: '500',
   minWidth: '28px',
   transition: 'all 0.2s'
+};
+
+const miniButtonStyle: React.CSSProperties = {
+  padding: '4px 6px',
+  border: '1px solid #d1d5db',
+  borderRadius: '3px',
+  backgroundColor: 'white',
+  cursor: 'pointer',
+  fontSize: '10px',
+  fontWeight: '500',
+  transition: 'all 0.15s',
+  whiteSpace: 'nowrap'
 };
 
 export default VisualComposer;
