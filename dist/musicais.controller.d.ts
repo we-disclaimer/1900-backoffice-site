@@ -11,6 +11,7 @@ export declare class MusicaisController {
         nome: string;
         emBreve: boolean;
         finalizado: boolean;
+        ordem: number;
         media?: import("mongoose").Types.ObjectId;
         descricao?: string;
         linkDaCompra?: string;
@@ -18,6 +19,7 @@ export declare class MusicaisController {
         nome: string;
         emBreve: boolean;
         finalizado: boolean;
+        ordem: number;
         media?: import("mongoose").Types.ObjectId;
         descricao?: string;
         linkDaCompra?: string;
@@ -25,6 +27,7 @@ export declare class MusicaisController {
         nome: string;
         emBreve: boolean;
         finalizado: boolean;
+        ordem: number;
         media?: import("mongoose").Types.ObjectId;
         descricao?: string;
         linkDaCompra?: string;
@@ -36,6 +39,7 @@ export declare class MusicaisController {
         nome: string;
         emBreve: boolean;
         finalizado: boolean;
+        ordem: number;
         media?: import("mongoose").Types.ObjectId;
         descricao?: string;
         linkDaCompra?: string;
@@ -43,6 +47,7 @@ export declare class MusicaisController {
         nome: string;
         emBreve: boolean;
         finalizado: boolean;
+        ordem: number;
         media?: import("mongoose").Types.ObjectId;
         descricao?: string;
         linkDaCompra?: string;
@@ -50,6 +55,7 @@ export declare class MusicaisController {
         nome: string;
         emBreve: boolean;
         finalizado: boolean;
+        ordem: number;
         media?: import("mongoose").Types.ObjectId;
         descricao?: string;
         linkDaCompra?: string;
@@ -70,6 +76,7 @@ export declare class MusicaisController {
         nome: string;
         emBreve: boolean;
         finalizado: boolean;
+        ordem: number;
         media?: import("mongoose").Types.ObjectId;
         descricao?: string;
         linkDaCompra?: string;
@@ -77,6 +84,7 @@ export declare class MusicaisController {
         nome: string;
         emBreve: boolean;
         finalizado: boolean;
+        ordem: number;
         media?: import("mongoose").Types.ObjectId;
         descricao?: string;
         linkDaCompra?: string;
@@ -84,6 +92,7 @@ export declare class MusicaisController {
         nome: string;
         emBreve: boolean;
         finalizado: boolean;
+        ordem: number;
         media?: import("mongoose").Types.ObjectId;
         descricao?: string;
         linkDaCompra?: string;
@@ -95,6 +104,7 @@ export declare class MusicaisController {
         nome: string;
         emBreve: boolean;
         finalizado: boolean;
+        ordem: number;
         media?: import("mongoose").Types.ObjectId;
         descricao?: string;
         linkDaCompra?: string;
@@ -102,6 +112,7 @@ export declare class MusicaisController {
         nome: string;
         emBreve: boolean;
         finalizado: boolean;
+        ordem: number;
         media?: import("mongoose").Types.ObjectId;
         descricao?: string;
         linkDaCompra?: string;
@@ -109,6 +120,7 @@ export declare class MusicaisController {
         nome: string;
         emBreve: boolean;
         finalizado: boolean;
+        ordem: number;
         media?: import("mongoose").Types.ObjectId;
         descricao?: string;
         linkDaCompra?: string;
@@ -129,6 +141,7 @@ export declare class MusicaisController {
         nome: string;
         emBreve: boolean;
         finalizado: boolean;
+        ordem: number;
         media?: import("mongoose").Types.ObjectId;
         descricao?: string;
         linkDaCompra?: string;
@@ -136,6 +149,7 @@ export declare class MusicaisController {
         nome: string;
         emBreve: boolean;
         finalizado: boolean;
+        ordem: number;
         media?: import("mongoose").Types.ObjectId;
         descricao?: string;
         linkDaCompra?: string;
@@ -143,6 +157,7 @@ export declare class MusicaisController {
         nome: string;
         emBreve: boolean;
         finalizado: boolean;
+        ordem: number;
         media?: import("mongoose").Types.ObjectId;
         descricao?: string;
         linkDaCompra?: string;
@@ -154,6 +169,7 @@ export declare class MusicaisController {
         nome: string;
         emBreve: boolean;
         finalizado: boolean;
+        ordem: number;
         media?: import("mongoose").Types.ObjectId;
         descricao?: string;
         linkDaCompra?: string;
@@ -161,6 +177,7 @@ export declare class MusicaisController {
         nome: string;
         emBreve: boolean;
         finalizado: boolean;
+        ordem: number;
         media?: import("mongoose").Types.ObjectId;
         descricao?: string;
         linkDaCompra?: string;
@@ -168,6 +185,7 @@ export declare class MusicaisController {
         nome: string;
         emBreve: boolean;
         finalizado: boolean;
+        ordem: number;
         media?: import("mongoose").Types.ObjectId;
         descricao?: string;
         linkDaCompra?: string;

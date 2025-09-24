@@ -1,10 +1,10 @@
 import mongoose from 'mongoose';
 import { ResourceWithOptions } from 'adminjs';
 declare const NoticiasSchema: mongoose.Schema<any, mongoose.Model<any, any, any, any, any, any>, {}, {}, {}, {}, mongoose.DefaultSchemaOptions, {
-    titulo: string;
     resumo: string;
-    conteudo: string;
+    titulo: string;
     categorias: mongoose.Types.ObjectId[];
+    conteudo: string;
     curtidas: number;
     fotoDestaque?: mongoose.Types.ObjectId;
     dataPublicacao?: NativeDate;
@@ -12,10 +12,10 @@ declare const NoticiasSchema: mongoose.Schema<any, mongoose.Model<any, any, any,
     metaTitle?: string;
     metaDescription?: string;
 }, mongoose.Document<unknown, {}, mongoose.FlatRecord<{
-    titulo: string;
     resumo: string;
-    conteudo: string;
+    titulo: string;
     categorias: mongoose.Types.ObjectId[];
+    conteudo: string;
     curtidas: number;
     fotoDestaque?: mongoose.Types.ObjectId;
     dataPublicacao?: NativeDate;
@@ -23,10 +23,10 @@ declare const NoticiasSchema: mongoose.Schema<any, mongoose.Model<any, any, any,
     metaTitle?: string;
     metaDescription?: string;
 }>, {}> & mongoose.FlatRecord<{
-    titulo: string;
     resumo: string;
-    conteudo: string;
+    titulo: string;
     categorias: mongoose.Types.ObjectId[];
+    conteudo: string;
     curtidas: number;
     fotoDestaque?: mongoose.Types.ObjectId;
     dataPublicacao?: NativeDate;
@@ -39,10 +39,10 @@ declare const NoticiasSchema: mongoose.Schema<any, mongoose.Model<any, any, any,
     __v: number;
 }>;
 declare const NoticiasModel: mongoose.Model<any, {}, {}, {}, any, any> | mongoose.Model<{
-    titulo: string;
     resumo: string;
-    conteudo: string;
+    titulo: string;
     categorias: mongoose.Types.ObjectId[];
+    conteudo: string;
     curtidas: number;
     fotoDestaque?: mongoose.Types.ObjectId;
     dataPublicacao?: NativeDate;
@@ -50,10 +50,10 @@ declare const NoticiasModel: mongoose.Model<any, {}, {}, {}, any, any> | mongoos
     metaTitle?: string;
     metaDescription?: string;
 }, {}, {}, {}, mongoose.Document<unknown, {}, {
-    titulo: string;
     resumo: string;
-    conteudo: string;
+    titulo: string;
     categorias: mongoose.Types.ObjectId[];
+    conteudo: string;
     curtidas: number;
     fotoDestaque?: mongoose.Types.ObjectId;
     dataPublicacao?: NativeDate;
@@ -61,10 +61,10 @@ declare const NoticiasModel: mongoose.Model<any, {}, {}, {}, any, any> | mongoos
     metaTitle?: string;
     metaDescription?: string;
 }, {}> & {
-    titulo: string;
     resumo: string;
-    conteudo: string;
+    titulo: string;
     categorias: mongoose.Types.ObjectId[];
+    conteudo: string;
     curtidas: number;
     fotoDestaque?: mongoose.Types.ObjectId;
     dataPublicacao?: NativeDate;
@@ -76,10 +76,10 @@ declare const NoticiasModel: mongoose.Model<any, {}, {}, {}, any, any> | mongoos
 } & {
     __v: number;
 }, mongoose.Schema<any, mongoose.Model<any, any, any, any, any, any>, {}, {}, {}, {}, mongoose.DefaultSchemaOptions, {
-    titulo: string;
     resumo: string;
-    conteudo: string;
+    titulo: string;
     categorias: mongoose.Types.ObjectId[];
+    conteudo: string;
     curtidas: number;
     fotoDestaque?: mongoose.Types.ObjectId;
     dataPublicacao?: NativeDate;
@@ -87,10 +87,10 @@ declare const NoticiasModel: mongoose.Model<any, {}, {}, {}, any, any> | mongoos
     metaTitle?: string;
     metaDescription?: string;
 }, mongoose.Document<unknown, {}, mongoose.FlatRecord<{
-    titulo: string;
     resumo: string;
-    conteudo: string;
+    titulo: string;
     categorias: mongoose.Types.ObjectId[];
+    conteudo: string;
     curtidas: number;
     fotoDestaque?: mongoose.Types.ObjectId;
     dataPublicacao?: NativeDate;
@@ -98,10 +98,10 @@ declare const NoticiasModel: mongoose.Model<any, {}, {}, {}, any, any> | mongoos
     metaTitle?: string;
     metaDescription?: string;
 }>, {}> & mongoose.FlatRecord<{
-    titulo: string;
     resumo: string;
-    conteudo: string;
+    titulo: string;
     categorias: mongoose.Types.ObjectId[];
+    conteudo: string;
     curtidas: number;
     fotoDestaque?: mongoose.Types.ObjectId;
     dataPublicacao?: NativeDate;

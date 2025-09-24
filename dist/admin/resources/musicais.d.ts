@@ -4,6 +4,7 @@ declare const MusicaisSchema: mongoose.Schema<any, mongoose.Model<any, any, any,
     nome: string;
     emBreve: boolean;
     finalizado: boolean;
+    ordem: number;
     media?: mongoose.Types.ObjectId;
     descricao?: string;
     linkDaCompra?: string;
@@ -11,6 +12,7 @@ declare const MusicaisSchema: mongoose.Schema<any, mongoose.Model<any, any, any,
     nome: string;
     emBreve: boolean;
     finalizado: boolean;
+    ordem: number;
     media?: mongoose.Types.ObjectId;
     descricao?: string;
     linkDaCompra?: string;
@@ -18,6 +20,7 @@ declare const MusicaisSchema: mongoose.Schema<any, mongoose.Model<any, any, any,
     nome: string;
     emBreve: boolean;
     finalizado: boolean;
+    ordem: number;
     media?: mongoose.Types.ObjectId;
     descricao?: string;
     linkDaCompra?: string;
@@ -30,6 +33,7 @@ declare const MusicaisModel: mongoose.Model<any, {}, {}, {}, any, any> | mongoos
     nome: string;
     emBreve: boolean;
     finalizado: boolean;
+    ordem: number;
     media?: mongoose.Types.ObjectId;
     descricao?: string;
     linkDaCompra?: string;
@@ -37,6 +41,7 @@ declare const MusicaisModel: mongoose.Model<any, {}, {}, {}, any, any> | mongoos
     nome: string;
     emBreve: boolean;
     finalizado: boolean;
+    ordem: number;
     media?: mongoose.Types.ObjectId;
     descricao?: string;
     linkDaCompra?: string;
@@ -44,6 +49,7 @@ declare const MusicaisModel: mongoose.Model<any, {}, {}, {}, any, any> | mongoos
     nome: string;
     emBreve: boolean;
     finalizado: boolean;
+    ordem: number;
     media?: mongoose.Types.ObjectId;
     descricao?: string;
     linkDaCompra?: string;
@@ -55,6 +61,7 @@ declare const MusicaisModel: mongoose.Model<any, {}, {}, {}, any, any> | mongoos
     nome: string;
     emBreve: boolean;
     finalizado: boolean;
+    ordem: number;
     media?: mongoose.Types.ObjectId;
     descricao?: string;
     linkDaCompra?: string;
@@ -62,6 +69,7 @@ declare const MusicaisModel: mongoose.Model<any, {}, {}, {}, any, any> | mongoos
     nome: string;
     emBreve: boolean;
     finalizado: boolean;
+    ordem: number;
     media?: mongoose.Types.ObjectId;
     descricao?: string;
     linkDaCompra?: string;
@@ -69,6 +77,7 @@ declare const MusicaisModel: mongoose.Model<any, {}, {}, {}, any, any> | mongoos
     nome: string;
     emBreve: boolean;
     finalizado: boolean;
+    ordem: number;
     media?: mongoose.Types.ObjectId;
     descricao?: string;
     linkDaCompra?: string;

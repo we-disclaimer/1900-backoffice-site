@@ -8,10 +8,10 @@ export declare class NoticiasController {
     } & {
         __v: number;
     }) | (import("mongoose").FlattenMaps<Model<{
-        titulo: string;
         resumo: string;
-        conteudo: string;
+        titulo: string;
         categorias: import("mongoose").Types.ObjectId[];
+        conteudo: string;
         curtidas: number;
         fotoDestaque?: import("mongoose").Types.ObjectId;
         dataPublicacao?: NativeDate;
@@ -19,10 +19,10 @@ export declare class NoticiasController {
         metaTitle?: string;
         metaDescription?: string;
     }, {}, {}, {}, import("mongoose").Document<unknown, {}, {
-        titulo: string;
         resumo: string;
-        conteudo: string;
+        titulo: string;
         categorias: import("mongoose").Types.ObjectId[];
+        conteudo: string;
         curtidas: number;
         fotoDestaque?: import("mongoose").Types.ObjectId;
         dataPublicacao?: NativeDate;
@@ -30,10 +30,10 @@ export declare class NoticiasController {
         metaTitle?: string;
         metaDescription?: string;
     }, {}> & {
-        titulo: string;
         resumo: string;
-        conteudo: string;
+        titulo: string;
         categorias: import("mongoose").Types.ObjectId[];
+        conteudo: string;
         curtidas: number;
         fotoDestaque?: import("mongoose").Types.ObjectId;
         dataPublicacao?: NativeDate;
@@ -45,10 +45,10 @@ export declare class NoticiasController {
     } & {
         __v: number;
     }, import("mongoose").Schema<any, Model<any, any, any, any, any, any>, {}, {}, {}, {}, import("mongoose").DefaultSchemaOptions, {
-        titulo: string;
         resumo: string;
-        conteudo: string;
+        titulo: string;
         categorias: import("mongoose").Types.ObjectId[];
+        conteudo: string;
         curtidas: number;
         fotoDestaque?: import("mongoose").Types.ObjectId;
         dataPublicacao?: NativeDate;
@@ -56,10 +56,10 @@ export declare class NoticiasController {
         metaTitle?: string;
         metaDescription?: string;
     }, import("mongoose").Document<unknown, {}, import("mongoose").FlatRecord<{
-        titulo: string;
         resumo: string;
-        conteudo: string;
+        titulo: string;
         categorias: import("mongoose").Types.ObjectId[];
+        conteudo: string;
         curtidas: number;
         fotoDestaque?: import("mongoose").Types.ObjectId;
         dataPublicacao?: NativeDate;
@@ -67,10 +67,10 @@ export declare class NoticiasController {
         metaTitle?: string;
         metaDescription?: string;
     }>, {}> & import("mongoose").FlatRecord<{
-        titulo: string;
         resumo: string;
-        conteudo: string;
+        titulo: string;
         categorias: import("mongoose").Types.ObjectId[];
+        conteudo: string;
         curtidas: number;
         fotoDestaque?: import("mongoose").Types.ObjectId;
         dataPublicacao?: NativeDate;
@@ -91,10 +91,10 @@ export declare class NoticiasController {
     } & {
         __v: number;
     }) | (import("mongoose").FlattenMaps<Model<{
-        titulo: string;
         resumo: string;
-        conteudo: string;
+        titulo: string;
         categorias: import("mongoose").Types.ObjectId[];
+        conteudo: string;
         curtidas: number;
         fotoDestaque?: import("mongoose").Types.ObjectId;
         dataPublicacao?: NativeDate;
@@ -102,10 +102,10 @@ export declare class NoticiasController {
         metaTitle?: string;
         metaDescription?: string;
     }, {}, {}, {}, import("mongoose").Document<unknown, {}, {
-        titulo: string;
         resumo: string;
-        conteudo: string;
+        titulo: string;
         categorias: import("mongoose").Types.ObjectId[];
+        conteudo: string;
         curtidas: number;
         fotoDestaque?: import("mongoose").Types.ObjectId;
         dataPublicacao?: NativeDate;
@@ -113,10 +113,10 @@ export declare class NoticiasController {
         metaTitle?: string;
         metaDescription?: string;
     }, {}> & {
-        titulo: string;
         resumo: string;
-        conteudo: string;
+        titulo: string;
         categorias: import("mongoose").Types.ObjectId[];
+        conteudo: string;
         curtidas: number;
         fotoDestaque?: import("mongoose").Types.ObjectId;
         dataPublicacao?: NativeDate;
@@ -128,10 +128,10 @@ export declare class NoticiasController {
     } & {
         __v: number;
     }, import("mongoose").Schema<any, Model<any, any, any, any, any, any>, {}, {}, {}, {}, import("mongoose").DefaultSchemaOptions, {
-        titulo: string;
         resumo: string;
-        conteudo: string;
+        titulo: string;
         categorias: import("mongoose").Types.ObjectId[];
+        conteudo: string;
         curtidas: number;
         fotoDestaque?: import("mongoose").Types.ObjectId;
         dataPublicacao?: NativeDate;
@@ -139,10 +139,10 @@ export declare class NoticiasController {
         metaTitle?: string;
         metaDescription?: string;
     }, import("mongoose").Document<unknown, {}, import("mongoose").FlatRecord<{
-        titulo: string;
         resumo: string;
-        conteudo: string;
+        titulo: string;
         categorias: import("mongoose").Types.ObjectId[];
+        conteudo: string;
         curtidas: number;
         fotoDestaque?: import("mongoose").Types.ObjectId;
         dataPublicacao?: NativeDate;
@@ -150,10 +150,10 @@ export declare class NoticiasController {
         metaTitle?: string;
         metaDescription?: string;
     }>, {}> & import("mongoose").FlatRecord<{
-        titulo: string;
         resumo: string;
-        conteudo: string;
+        titulo: string;
         categorias: import("mongoose").Types.ObjectId[];
+        conteudo: string;
         curtidas: number;
         fotoDestaque?: import("mongoose").Types.ObjectId;
         dataPublicacao?: NativeDate;
@@ -175,10 +175,10 @@ export declare class NoticiasController {
     } & {
         __v: number;
     }) | (import("mongoose").FlattenMaps<Model<{
-        titulo: string;
         resumo: string;
-        conteudo: string;
+        titulo: string;
         categorias: import("mongoose").Types.ObjectId[];
+        conteudo: string;
         curtidas: number;
         fotoDestaque?: import("mongoose").Types.ObjectId;
         dataPublicacao?: NativeDate;
@@ -186,10 +186,10 @@ export declare class NoticiasController {
         metaTitle?: string;
         metaDescription?: string;
     }, {}, {}, {}, import("mongoose").Document<unknown, {}, {
-        titulo: string;
         resumo: string;
-        conteudo: string;
+        titulo: string;
         categorias: import("mongoose").Types.ObjectId[];
+        conteudo: string;
         curtidas: number;
         fotoDestaque?: import("mongoose").Types.ObjectId;
         dataPublicacao?: NativeDate;
@@ -197,10 +197,10 @@ export declare class NoticiasController {
         metaTitle?: string;
         metaDescription?: string;
     }, {}> & {
-        titulo: string;
         resumo: string;
-        conteudo: string;
+        titulo: string;
         categorias: import("mongoose").Types.ObjectId[];
+        conteudo: string;
         curtidas: number;
         fotoDestaque?: import("mongoose").Types.ObjectId;
         dataPublicacao?: NativeDate;
@@ -212,10 +212,10 @@ export declare class NoticiasController {
     } & {
         __v: number;
     }, import("mongoose").Schema<any, Model<any, any, any, any, any, any>, {}, {}, {}, {}, import("mongoose").DefaultSchemaOptions, {
-        titulo: string;
         resumo: string;
-        conteudo: string;
+        titulo: string;
         categorias: import("mongoose").Types.ObjectId[];
+        conteudo: string;
         curtidas: number;
         fotoDestaque?: import("mongoose").Types.ObjectId;
         dataPublicacao?: NativeDate;
@@ -223,10 +223,10 @@ export declare class NoticiasController {
         metaTitle?: string;
         metaDescription?: string;
     }, import("mongoose").Document<unknown, {}, import("mongoose").FlatRecord<{
-        titulo: string;
         resumo: string;
-        conteudo: string;
+        titulo: string;
         categorias: import("mongoose").Types.ObjectId[];
+        conteudo: string;
         curtidas: number;
         fotoDestaque?: import("mongoose").Types.ObjectId;
         dataPublicacao?: NativeDate;
@@ -234,10 +234,10 @@ export declare class NoticiasController {
         metaTitle?: string;
         metaDescription?: string;
     }>, {}> & import("mongoose").FlatRecord<{
-        titulo: string;
         resumo: string;
-        conteudo: string;
+        titulo: string;
         categorias: import("mongoose").Types.ObjectId[];
+        conteudo: string;
         curtidas: number;
         fotoDestaque?: import("mongoose").Types.ObjectId;
         dataPublicacao?: NativeDate;
@@ -258,10 +258,10 @@ export declare class NoticiasController {
     } & {
         __v: number;
     }) | (import("mongoose").FlattenMaps<Model<{
-        titulo: string;
         resumo: string;
-        conteudo: string;
+        titulo: string;
         categorias: import("mongoose").Types.ObjectId[];
+        conteudo: string;
         curtidas: number;
         fotoDestaque?: import("mongoose").Types.ObjectId;
         dataPublicacao?: NativeDate;
@@ -269,10 +269,10 @@ export declare class NoticiasController {
         metaTitle?: string;
         metaDescription?: string;
     }, {}, {}, {}, import("mongoose").Document<unknown, {}, {
-        titulo: string;
         resumo: string;
-        conteudo: string;
+        titulo: string;
         categorias: import("mongoose").Types.ObjectId[];
+        conteudo: string;
         curtidas: number;
         fotoDestaque?: import("mongoose").Types.ObjectId;
         dataPublicacao?: NativeDate;
@@ -280,10 +280,10 @@ export declare class NoticiasController {
         metaTitle?: string;
         metaDescription?: string;
     }, {}> & {
-        titulo: string;
         resumo: string;
-        conteudo: string;
+        titulo: string;
         categorias: import("mongoose").Types.ObjectId[];
+        conteudo: string;
         curtidas: number;
         fotoDestaque?: import("mongoose").Types.ObjectId;
         dataPublicacao?: NativeDate;
@@ -295,10 +295,10 @@ export declare class NoticiasController {
     } & {
         __v: number;
     }, import("mongoose").Schema<any, Model<any, any, any, any, any, any>, {}, {}, {}, {}, import("mongoose").DefaultSchemaOptions, {
-        titulo: string;
         resumo: string;
-        conteudo: string;
+        titulo: string;
         categorias: import("mongoose").Types.ObjectId[];
+        conteudo: string;
         curtidas: number;
         fotoDestaque?: import("mongoose").Types.ObjectId;
         dataPublicacao?: NativeDate;
@@ -306,10 +306,10 @@ export declare class NoticiasController {
         metaTitle?: string;
         metaDescription?: string;
     }, import("mongoose").Document<unknown, {}, import("mongoose").FlatRecord<{
-        titulo: string;
         resumo: string;
-        conteudo: string;
+        titulo: string;
         categorias: import("mongoose").Types.ObjectId[];
+        conteudo: string;
         curtidas: number;
         fotoDestaque?: import("mongoose").Types.ObjectId;
         dataPublicacao?: NativeDate;
@@ -317,10 +317,10 @@ export declare class NoticiasController {
         metaTitle?: string;
         metaDescription?: string;
     }>, {}> & import("mongoose").FlatRecord<{
-        titulo: string;
         resumo: string;
-        conteudo: string;
+        titulo: string;
         categorias: import("mongoose").Types.ObjectId[];
+        conteudo: string;
         curtidas: number;
         fotoDestaque?: import("mongoose").Types.ObjectId;
         dataPublicacao?: NativeDate;
