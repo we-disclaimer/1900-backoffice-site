@@ -152,6 +152,26 @@ const NoticiasResource: ResourceWithOptions = {
           }
           return request;
         },
+        after: async (response, request, context) => {
+          // Adicionar informação sobre o problema de exibição de imagens
+          if (response.record?.params?.conteudo) {
+            const content = response.record.params.conteudo;
+            const imageCount = (content.match(/<img/g) || []).length;
+            if (imageCount > 0) {
+              response.notice = {
+                message: `Conteúdo salvo com ${imageCount} imagem(ns). As imagens podem não aparecer no editor, mas estão salvas.`,
+                type: 'success'
+              };
+            }
+          }
+          
+          // CRÍTICO: Força o AdminJS a NÃO redirecionar após salvar durante criação
+          // Permanece na página de criação/edição atual
+          response.redirectUrl = null;
+          response.record = response.record; // Mantém o record para continuar editando
+          
+          return response;
+        },
       },
     },
     properties: {
