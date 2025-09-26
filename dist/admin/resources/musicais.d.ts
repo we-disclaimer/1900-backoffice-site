@@ -4,26 +4,26 @@ declare const MusicaisSchema: mongoose.Schema<any, mongoose.Model<any, any, any,
     nome: string;
     emBreve: boolean;
     finalizado: boolean;
-    ordem: number;
     media?: mongoose.Types.ObjectId;
     descricao?: string;
     linkDaCompra?: string;
+    dataDivulgacao?: NativeDate;
 }, mongoose.Document<unknown, {}, mongoose.FlatRecord<{
     nome: string;
     emBreve: boolean;
     finalizado: boolean;
-    ordem: number;
     media?: mongoose.Types.ObjectId;
     descricao?: string;
     linkDaCompra?: string;
+    dataDivulgacao?: NativeDate;
 }>, {}> & mongoose.FlatRecord<{
     nome: string;
     emBreve: boolean;
     finalizado: boolean;
-    ordem: number;
     media?: mongoose.Types.ObjectId;
     descricao?: string;
     linkDaCompra?: string;
+    dataDivulgacao?: NativeDate;
 }> & {
     _id: mongoose.Types.ObjectId;
 } & {
@@ -33,26 +33,26 @@ declare const MusicaisModel: mongoose.Model<any, {}, {}, {}, any, any> | mongoos
     nome: string;
     emBreve: boolean;
     finalizado: boolean;
-    ordem: number;
     media?: mongoose.Types.ObjectId;
     descricao?: string;
     linkDaCompra?: string;
+    dataDivulgacao?: NativeDate;
 }, {}, {}, {}, mongoose.Document<unknown, {}, {
     nome: string;
     emBreve: boolean;
     finalizado: boolean;
-    ordem: number;
     media?: mongoose.Types.ObjectId;
     descricao?: string;
     linkDaCompra?: string;
+    dataDivulgacao?: NativeDate;
 }, {}> & {
     nome: string;
     emBreve: boolean;
     finalizado: boolean;
-    ordem: number;
     media?: mongoose.Types.ObjectId;
     descricao?: string;
     linkDaCompra?: string;
+    dataDivulgacao?: NativeDate;
 } & {
     _id: mongoose.Types.ObjectId;
 } & {
@@ -61,26 +61,26 @@ declare const MusicaisModel: mongoose.Model<any, {}, {}, {}, any, any> | mongoos
     nome: string;
     emBreve: boolean;
     finalizado: boolean;
-    ordem: number;
     media?: mongoose.Types.ObjectId;
     descricao?: string;
     linkDaCompra?: string;
+    dataDivulgacao?: NativeDate;
 }, mongoose.Document<unknown, {}, mongoose.FlatRecord<{
     nome: string;
     emBreve: boolean;
     finalizado: boolean;
-    ordem: number;
     media?: mongoose.Types.ObjectId;
     descricao?: string;
     linkDaCompra?: string;
+    dataDivulgacao?: NativeDate;
 }>, {}> & mongoose.FlatRecord<{
     nome: string;
     emBreve: boolean;
     finalizado: boolean;
-    ordem: number;
     media?: mongoose.Types.ObjectId;
     descricao?: string;
     linkDaCompra?: string;
+    dataDivulgacao?: NativeDate;
 }> & {
     _id: mongoose.Types.ObjectId;
 } & {

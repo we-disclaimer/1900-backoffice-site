@@ -7,7 +7,7 @@ const MusicaisSchema = new mongoose.Schema({
     emBreve: { type: Boolean, default: false },
     finalizado: { type: Boolean, default: false },
     linkDaCompra: { type: String },
-    ordem: { type: Number, default: 0 },
+    dataDivulgacao: { type: Date },
 });
 const MusicaisModel = mongoose.models.Musicais || mongoose.model('Musicais', MusicaisSchema);
 const MusicaisResource = {
@@ -46,13 +46,13 @@ const MusicaisResource = {
             linkDaCompra: {
                 type: 'string',
             },
-            ordem: {
-                type: 'number',
+            dataDivulgacao: {
+                type: 'datetime',
             },
         },
-        listProperties: ['nome', 'media', 'emBreve', 'finalizado', 'ordem'],
-        editProperties: ['nome', 'descricao', 'media', 'emBreve', 'finalizado', 'linkDaCompra', 'ordem'],
-        showProperties: ['nome', 'descricao', 'media', 'emBreve', 'finalizado', 'linkDaCompra', 'ordem'],
+        listProperties: ['nome', 'media', 'emBreve', 'finalizado', 'dataDivulgacao'],
+        editProperties: ['nome', 'descricao', 'media', 'emBreve', 'finalizado', 'linkDaCompra', 'dataDivulgacao'],
+        showProperties: ['nome', 'descricao', 'media', 'emBreve', 'finalizado', 'linkDaCompra', 'dataDivulgacao'],
     },
 };
 export { MusicaisResource, MusicaisModel, MusicaisSchema };
