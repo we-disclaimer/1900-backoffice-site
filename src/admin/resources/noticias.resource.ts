@@ -6,6 +6,7 @@ import { CategoriaNoticiasModel } from './categoria-noticias.resource.js';
 
 const NoticiasSchema = new mongoose.Schema({
   fotoDestaque: { type: mongoose.Schema.Types.ObjectId, ref: 'Media', label: 'Foto de Destaque' },
+  videoDestaque: { type: String, required: false },
   dataPublicacao: { type: Date, default: Date.now, required: false },
   titulo: { type: String, required: true },
   slugPermanente: { type: String, required: false },
@@ -202,6 +203,11 @@ const NoticiasResource: ResourceWithOptions = {
           show: 'ShowProductImage',
         },
       },
+      videoDestaque: {
+        type: 'string',
+        description: '📺 ID do vídeo do YouTube para embed. Extraia o ID da URL:\n• https://www.youtube.com/watch?v=XXXXXXXXX (copie: XXXXXXXXX)\n• https://youtu.be/XXXXXXXXX (copie: XXXXXXXXX)\n• Exemplo: se a URL for https://youtu.be/dQw4w9WgXcQ, digite apenas: dQw4w9WgXcQ',
+        position: 3,
+      },
       dataPublicacao: {
         isVisible: {
           list: true,
@@ -237,9 +243,9 @@ const NoticiasResource: ResourceWithOptions = {
         type: 'string',
       },
     },
-    listProperties: ['titulo', 'slugPermanente', 'dataPublicacao', 'categorias', 'fotoDestaque'],
-    editProperties: ['titulo', 'slugPermanente', 'dataPublicacao', 'resumo', 'conteudo', 'fotoDestaque', 'categorias'],
-    showProperties: ['titulo', 'slugPermanente', 'resumo', 'conteudo', 'infoConteudo', 'fotoDestaque', 'categorias', 'dataPublicacao'],
+    listProperties: ['titulo', 'slugPermanente', 'dataPublicacao', 'categorias', 'fotoDestaque', 'videoDestaque'],
+    editProperties: ['titulo', 'slugPermanente', 'dataPublicacao', 'resumo', 'conteudo', 'fotoDestaque', 'videoDestaque', 'categorias'],
+    showProperties: ['titulo', 'slugPermanente', 'resumo', 'conteudo', 'infoConteudo', 'fotoDestaque', 'videoDestaque', 'categorias', 'dataPublicacao'],
     sort: {
       sortBy: 'dataPublicacao',
       direction: 'desc',

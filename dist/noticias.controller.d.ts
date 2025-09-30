@@ -14,6 +14,7 @@ export declare class NoticiasController {
         conteudo: string;
         curtidas: number;
         fotoDestaque?: import("mongoose").Types.ObjectId;
+        videoDestaque?: string;
         dataPublicacao?: NativeDate;
         slugPermanente?: string;
         metaTitle?: string;
@@ -25,6 +26,7 @@ export declare class NoticiasController {
         conteudo: string;
         curtidas: number;
         fotoDestaque?: import("mongoose").Types.ObjectId;
+        videoDestaque?: string;
         dataPublicacao?: NativeDate;
         slugPermanente?: string;
         metaTitle?: string;
@@ -36,6 +38,7 @@ export declare class NoticiasController {
         conteudo: string;
         curtidas: number;
         fotoDestaque?: import("mongoose").Types.ObjectId;
+        videoDestaque?: string;
         dataPublicacao?: NativeDate;
         slugPermanente?: string;
         metaTitle?: string;
@@ -51,6 +54,7 @@ export declare class NoticiasController {
         conteudo: string;
         curtidas: number;
         fotoDestaque?: import("mongoose").Types.ObjectId;
+        videoDestaque?: string;
         dataPublicacao?: NativeDate;
         slugPermanente?: string;
         metaTitle?: string;
@@ -62,6 +66,7 @@ export declare class NoticiasController {
         conteudo: string;
         curtidas: number;
         fotoDestaque?: import("mongoose").Types.ObjectId;
+        videoDestaque?: string;
         dataPublicacao?: NativeDate;
         slugPermanente?: string;
         metaTitle?: string;
@@ -73,6 +78,7 @@ export declare class NoticiasController {
         conteudo: string;
         curtidas: number;
         fotoDestaque?: import("mongoose").Types.ObjectId;
+        videoDestaque?: string;
         dataPublicacao?: NativeDate;
         slugPermanente?: string;
         metaTitle?: string;
@@ -97,6 +103,7 @@ export declare class NoticiasController {
         conteudo: string;
         curtidas: number;
         fotoDestaque?: import("mongoose").Types.ObjectId;
+        videoDestaque?: string;
         dataPublicacao?: NativeDate;
         slugPermanente?: string;
         metaTitle?: string;
@@ -108,6 +115,7 @@ export declare class NoticiasController {
         conteudo: string;
         curtidas: number;
         fotoDestaque?: import("mongoose").Types.ObjectId;
+        videoDestaque?: string;
         dataPublicacao?: NativeDate;
         slugPermanente?: string;
         metaTitle?: string;
@@ -119,6 +127,7 @@ export declare class NoticiasController {
         conteudo: string;
         curtidas: number;
         fotoDestaque?: import("mongoose").Types.ObjectId;
+        videoDestaque?: string;
         dataPublicacao?: NativeDate;
         slugPermanente?: string;
         metaTitle?: string;
@@ -134,6 +143,7 @@ export declare class NoticiasController {
         conteudo: string;
         curtidas: number;
         fotoDestaque?: import("mongoose").Types.ObjectId;
+        videoDestaque?: string;
         dataPublicacao?: NativeDate;
         slugPermanente?: string;
         metaTitle?: string;
@@ -145,6 +155,7 @@ export declare class NoticiasController {
         conteudo: string;
         curtidas: number;
         fotoDestaque?: import("mongoose").Types.ObjectId;
+        videoDestaque?: string;
         dataPublicacao?: NativeDate;
         slugPermanente?: string;
         metaTitle?: string;
@@ -156,6 +167,7 @@ export declare class NoticiasController {
         conteudo: string;
         curtidas: number;
         fotoDestaque?: import("mongoose").Types.ObjectId;
+        videoDestaque?: string;
         dataPublicacao?: NativeDate;
         slugPermanente?: string;
         metaTitle?: string;
@@ -181,6 +193,7 @@ export declare class NoticiasController {
         conteudo: string;
         curtidas: number;
         fotoDestaque?: import("mongoose").Types.ObjectId;
+        videoDestaque?: string;
         dataPublicacao?: NativeDate;
         slugPermanente?: string;
         metaTitle?: string;
@@ -192,6 +205,7 @@ export declare class NoticiasController {
         conteudo: string;
         curtidas: number;
         fotoDestaque?: import("mongoose").Types.ObjectId;
+        videoDestaque?: string;
         dataPublicacao?: NativeDate;
         slugPermanente?: string;
         metaTitle?: string;
@@ -203,6 +217,7 @@ export declare class NoticiasController {
         conteudo: string;
         curtidas: number;
         fotoDestaque?: import("mongoose").Types.ObjectId;
+        videoDestaque?: string;
         dataPublicacao?: NativeDate;
         slugPermanente?: string;
         metaTitle?: string;
@@ -218,6 +233,7 @@ export declare class NoticiasController {
         conteudo: string;
         curtidas: number;
         fotoDestaque?: import("mongoose").Types.ObjectId;
+        videoDestaque?: string;
         dataPublicacao?: NativeDate;
         slugPermanente?: string;
         metaTitle?: string;
@@ -229,6 +245,7 @@ export declare class NoticiasController {
         conteudo: string;
         curtidas: number;
         fotoDestaque?: import("mongoose").Types.ObjectId;
+        videoDestaque?: string;
         dataPublicacao?: NativeDate;
         slugPermanente?: string;
         metaTitle?: string;
@@ -240,6 +257,7 @@ export declare class NoticiasController {
         conteudo: string;
         curtidas: number;
         fotoDestaque?: import("mongoose").Types.ObjectId;
+        videoDestaque?: string;
         dataPublicacao?: NativeDate;
         slugPermanente?: string;
         metaTitle?: string;
@@ -264,6 +282,7 @@ export declare class NoticiasController {
         conteudo: string;
         curtidas: number;
         fotoDestaque?: import("mongoose").Types.ObjectId;
+        videoDestaque?: string;
         dataPublicacao?: NativeDate;
         slugPermanente?: string;
         metaTitle?: string;
@@ -275,6 +294,7 @@ export declare class NoticiasController {
         conteudo: string;
         curtidas: number;
         fotoDestaque?: import("mongoose").Types.ObjectId;
+        videoDestaque?: string;
         dataPublicacao?: NativeDate;
         slugPermanente?: string;
         metaTitle?: string;
@@ -286,6 +306,7 @@ export declare class NoticiasController {
         conteudo: string;
         curtidas: number;
         fotoDestaque?: import("mongoose").Types.ObjectId;
+        videoDestaque?: string;
         dataPublicacao?: NativeDate;
         slugPermanente?: string;
         metaTitle?: string;
@@ -301,6 +322,7 @@ export declare class NoticiasController {
         conteudo: string;
         curtidas: number;
         fotoDestaque?: import("mongoose").Types.ObjectId;
+        videoDestaque?: string;
         dataPublicacao?: NativeDate;
         slugPermanente?: string;
         metaTitle?: string;
@@ -312,6 +334,7 @@ export declare class NoticiasController {
         conteudo: string;
         curtidas: number;
         fotoDestaque?: import("mongoose").Types.ObjectId;
+        videoDestaque?: string;
         dataPublicacao?: NativeDate;
         slugPermanente?: string;
         metaTitle?: string;
@@ -323,6 +346,7 @@ export declare class NoticiasController {
         conteudo: string;
         curtidas: number;
         fotoDestaque?: import("mongoose").Types.ObjectId;
+        videoDestaque?: string;
         dataPublicacao?: NativeDate;
         slugPermanente?: string;
         metaTitle?: string;

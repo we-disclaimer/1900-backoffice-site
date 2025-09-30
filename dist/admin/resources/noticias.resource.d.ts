@@ -7,6 +7,7 @@ declare const NoticiasSchema: mongoose.Schema<any, mongoose.Model<any, any, any,
     conteudo: string;
     curtidas: number;
     fotoDestaque?: mongoose.Types.ObjectId;
+    videoDestaque?: string;
     dataPublicacao?: NativeDate;
     slugPermanente?: string;
     metaTitle?: string;
@@ -18,6 +19,7 @@ declare const NoticiasSchema: mongoose.Schema<any, mongoose.Model<any, any, any,
     conteudo: string;
     curtidas: number;
     fotoDestaque?: mongoose.Types.ObjectId;
+    videoDestaque?: string;
     dataPublicacao?: NativeDate;
     slugPermanente?: string;
     metaTitle?: string;
@@ -29,6 +31,7 @@ declare const NoticiasSchema: mongoose.Schema<any, mongoose.Model<any, any, any,
     conteudo: string;
     curtidas: number;
     fotoDestaque?: mongoose.Types.ObjectId;
+    videoDestaque?: string;
     dataPublicacao?: NativeDate;
     slugPermanente?: string;
     metaTitle?: string;
@@ -45,6 +48,7 @@ declare const NoticiasModel: mongoose.Model<any, {}, {}, {}, any, any> | mongoos
     conteudo: string;
     curtidas: number;
     fotoDestaque?: mongoose.Types.ObjectId;
+    videoDestaque?: string;
     dataPublicacao?: NativeDate;
     slugPermanente?: string;
     metaTitle?: string;
@@ -56,6 +60,7 @@ declare const NoticiasModel: mongoose.Model<any, {}, {}, {}, any, any> | mongoos
     conteudo: string;
     curtidas: number;
     fotoDestaque?: mongoose.Types.ObjectId;
+    videoDestaque?: string;
     dataPublicacao?: NativeDate;
     slugPermanente?: string;
     metaTitle?: string;
@@ -67,6 +72,7 @@ declare const NoticiasModel: mongoose.Model<any, {}, {}, {}, any, any> | mongoos
     conteudo: string;
     curtidas: number;
     fotoDestaque?: mongoose.Types.ObjectId;
+    videoDestaque?: string;
     dataPublicacao?: NativeDate;
     slugPermanente?: string;
     metaTitle?: string;
@@ -82,6 +88,7 @@ declare const NoticiasModel: mongoose.Model<any, {}, {}, {}, any, any> | mongoos
     conteudo: string;
     curtidas: number;
     fotoDestaque?: mongoose.Types.ObjectId;
+    videoDestaque?: string;
     dataPublicacao?: NativeDate;
     slugPermanente?: string;
     metaTitle?: string;
@@ -93,6 +100,7 @@ declare const NoticiasModel: mongoose.Model<any, {}, {}, {}, any, any> | mongoos
     conteudo: string;
     curtidas: number;
     fotoDestaque?: mongoose.Types.ObjectId;
+    videoDestaque?: string;
     dataPublicacao?: NativeDate;
     slugPermanente?: string;
     metaTitle?: string;
@@ -104,6 +112,7 @@ declare const NoticiasModel: mongoose.Model<any, {}, {}, {}, any, any> | mongoos
     conteudo: string;
     curtidas: number;
     fotoDestaque?: mongoose.Types.ObjectId;
+    videoDestaque?: string;
     dataPublicacao?: NativeDate;
     slugPermanente?: string;
     metaTitle?: string;
