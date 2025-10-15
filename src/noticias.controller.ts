@@ -16,6 +16,7 @@ export class NoticiasController {
     const query = categoria ? { categorias: categoria } : {};
     return this.noticiasModel
       .find(query)
+      .select('-conteudo')
       .populate('fotoDestaque')
       .populate('categorias')
       .sort({ dataPublicacao: -1 })
@@ -27,10 +28,11 @@ export class NoticiasController {
   async getNoticiasRecentes() {
     return this.noticiasModel
       .find()
+      .select('-conteudo')
       .populate('fotoDestaque')
       .populate('categorias')
       .sort({ dataPublicacao: -1 })
-      .limit(5)
+      .limit(2)
       .lean()
       .exec();
   }
