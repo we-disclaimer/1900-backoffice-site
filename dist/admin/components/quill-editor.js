@@ -59,6 +59,11 @@ const QuillEditor = ({ property, record, onChange }) => {
             input.onchange = async () => {
                 const file = input.files?.[0];
                 if (file) {
+                    const MAX_SIZE = 2 * 1024 * 1024;
+                    if (file.size > MAX_SIZE) {
+                        alert(`O arquivo é muito grande. Tamanho máximo permitido: 2MB. Tamanho do arquivo: ${(file.size / 1024 / 1024).toFixed(2)}MB`);
+                        return;
+                    }
                     const formData = new FormData();
                     formData.append('file', file);
                     try {

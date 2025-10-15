@@ -52,6 +52,13 @@ const TinyMCEEditor = ({ property, record, onChange }) => {
             content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }',
             images_upload_handler: async (blobInfo) => {
                 return new Promise((resolve, reject) => {
+                    const MAX_SIZE = 2 * 1024 * 1024;
+                    const fileSize = blobInfo.blob().size;
+                    if (fileSize > MAX_SIZE) {
+                        const sizeMB = (fileSize / 1024 / 1024).toFixed(2);
+                        reject(`O arquivo é muito grande. Tamanho máximo permitido: 2MB. Tamanho do arquivo: ${sizeMB}MB`);
+                        return;
+                    }
                     const reader = new FileReader();
                     reader.onload = () => {
                         const base64 = reader.result;

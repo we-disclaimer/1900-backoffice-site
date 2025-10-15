@@ -72,6 +72,16 @@ const TinyMCEEditor: React.FC<TinyMCEEditorProps> = ({ property, record, onChang
       content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }',
       images_upload_handler: async (blobInfo: any) => {
         return new Promise((resolve, reject) => {
+          // Validar tamanho máximo de 2MB
+          const MAX_SIZE = 2 * 1024 * 1024; // 2MB em bytes
+          const fileSize = blobInfo.blob().size;
+          
+          if (fileSize > MAX_SIZE) {
+            const sizeMB = (fileSize / 1024 / 1024).toFixed(2);
+            reject(`O arquivo é muito grande. Tamanho máximo permitido: 2MB. Tamanho do arquivo: ${sizeMB}MB`);
+            return;
+          }
+          
           // OPÇÃO 1: Usar base64 (mais simples, funciona sempre)
           const reader = new FileReader();
           reader.onload = () => {

@@ -17,8 +17,27 @@ const MediaResource = {
                     return request;
                 },
             },
+            new: {
+                before: async (request, context) => {
+                    const MAX_SIZE = 2 * 1024 * 1024;
+                    if (request.payload && request.payload.file) {
+                        const file = request.payload.file;
+                        if (file.size && file.size > MAX_SIZE) {
+                            throw new Error(`O arquivo é muito grande. Tamanho máximo permitido: 2MB. Tamanho do arquivo: ${(file.size / 1024 / 1024).toFixed(2)}MB`);
+                        }
+                    }
+                    return request;
+                },
+            },
             edit: {
                 before: async (request, context) => {
+                    const MAX_SIZE = 2 * 1024 * 1024;
+                    if (request.payload && request.payload.file) {
+                        const file = request.payload.file;
+                        if (file.size && file.size > MAX_SIZE) {
+                            throw new Error(`O arquivo é muito grande. Tamanho máximo permitido: 2MB. Tamanho do arquivo: ${(file.size / 1024 / 1024).toFixed(2)}MB`);
+                        }
+                    }
                     const { record } = context;
                     console.log('recordMEDIAXXXXXXXXXXX', record.params.media);
                     if (record && record.params.media) {
@@ -37,6 +56,11 @@ const MediaResource = {
         titleProperty: 'alt',
         showProperties: ['url', 'alt', 'dataDeCriacao'],
         properties: {
+            file: {
+                custom: {
+                    maxSize: 2 * 1024 * 1024,
+                },
+            },
             dataDeCriacao: {
                 components: {
                     list: 'FormattedDate',
@@ -70,6 +94,9 @@ const MediaResource = {
             uploadPath: (record, filename) => {
                 const basePath = process.env.AWS_S3_UPLOAD_PATH || '';
                 return `${basePath}/${filename}`;
+            },
+            validation: {
+                maxSize: 2 * 1024 * 1024,
             },
             componentLoader,
         }),

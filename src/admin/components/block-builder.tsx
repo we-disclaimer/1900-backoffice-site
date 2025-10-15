@@ -106,6 +106,13 @@ const BlockBuilder: React.FC<BlockBuilderProps> = ({ property, record, onChange 
   };
 
   const uploadImage = async (file: File): Promise<string> => {
+    // Validar tamanho máximo de 2MB
+    const MAX_SIZE = 2 * 1024 * 1024; // 2MB em bytes
+    if (file.size > MAX_SIZE) {
+      const sizeMB = (file.size / 1024 / 1024).toFixed(2);
+      throw new Error(`O arquivo é muito grande. Tamanho máximo permitido: 2MB. Tamanho do arquivo: ${sizeMB}MB`);
+    }
+
     const formData = new FormData();
     formData.append('file', file);
 
@@ -183,7 +190,7 @@ const BlockBuilder: React.FC<BlockBuilderProps> = ({ property, record, onChange 
                     const url = await uploadImage(file);
                     updateBlock(block.id, { url });
                   } catch (error) {
-                    alert('Erro ao fazer upload da imagem');
+                    alert(error instanceof Error ? error.message : 'Erro ao fazer upload da imagem');
                   }
                 }
               }}
