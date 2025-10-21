@@ -83,8 +83,8 @@ const MediaResource = {
                 aws: {
                     bucket: 'backoffice-app-assets',
                     region: 'us-east-1',
-                    accessKeyId: 'AKIATOEBVSRWKESTP2NC',
-                    secretAccessKey: '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',
+                    accessKeyId: 'AKIA46XIEXYZSXUO54SR',
+                    secretAccessKey: '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',
                 },
             },
             properties: {
