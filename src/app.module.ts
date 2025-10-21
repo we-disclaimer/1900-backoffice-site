@@ -76,9 +76,6 @@ AdminJS.registerAdapter({
           saveUninitialized: true,
           secret: process.env.COOKIE_SECRET,
         },
-        formidableOptions: {
-          maxFileSize: 2 * 1024 * 1024, // 2MB em bytes
-        },
       }),
     }),
   ],

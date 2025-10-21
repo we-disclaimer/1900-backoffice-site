@@ -77,9 +77,6 @@ AppModule = __decorate([
                         saveUninitialized: true,
                         secret: process.env.COOKIE_SECRET,
                     },
-                    formidableOptions: {
-                        maxFileSize: 2 * 1024 * 1024,
-                    },
                 }),
             }),
         ],
