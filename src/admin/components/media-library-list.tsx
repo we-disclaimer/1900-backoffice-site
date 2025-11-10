@@ -166,6 +166,7 @@ const MediaLibraryList: React.FC<ActionProps> = (props) => {
   const [uploadedFiles, setUploadedFiles] = useState<Array<{ id: string; name: string; status: 'pending' | 'success' | 'error' }>>([]);
   const [editingAltId, setEditingAltId] = useState<string | null>(null);
   const [editingAltValue, setEditingAltValue] = useState('');
+  const [viewMode, setViewMode] = useState<'list' | 'grid'>('list');
 
   const rootPath =
     paths?.rootPath ||
@@ -935,24 +936,44 @@ const MediaLibraryList: React.FC<ActionProps> = (props) => {
             borderRadius: '6px',
             padding: '12px 16px',
             marginBottom: '16px',
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
           }}
         >
           <Text fontWeight="bold" fontSize={18} style={{ margin: 0 }}>
             Lista de Arquivos
           </Text>
+          <Box display="flex" gap="xs">
+            <Button
+              variant={viewMode === 'list' ? 'primary' : 'outlined'}
+              size="sm"
+              onClick={() => setViewMode('list')}
+            >
+              <Icon icon="List" />
+            </Button>
+            <Button
+              variant={viewMode === 'grid' ? 'primary' : 'outlined'}
+              size="sm"
+              onClick={() => setViewMode('grid')}
+            >
+              <Icon icon="Grid" />
+            </Button>
+          </Box>
         </Box>
 
-        <Box
-          as="table"
-          width="100%"
-          style={{ 
-            borderCollapse: 'collapse',
-            border: '1px solid #e0e0e0',
-            borderRadius: '6px',
-            overflow: 'hidden',
-          }}
-        >
-          <thead>
+        {viewMode === 'list' ? (
+          <Box
+            as="table"
+            width="100%"
+            style={{ 
+              borderCollapse: 'collapse',
+              border: '1px solid #e0e0e0',
+              borderRadius: '6px',
+              overflow: 'hidden',
+            }}
+          >
+            <thead>
             <tr style={{ backgroundColor: '#f4f6fa', textAlign: 'left' }}>
               <th style={{ padding: '12px', borderBottom: '1px solid #e5e9f2', width: '48px' }}>
                 <input
@@ -1161,6 +1182,196 @@ const MediaLibraryList: React.FC<ActionProps> = (props) => {
             )}
           </tbody>
         </Box>
+        ) : (
+          /* Grid View */
+          <Box
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))',
+              gap: '16px',
+              padding: '16px',
+            }}
+          >
+            {paginatedRows.map((row) => {
+              if (row.type === 'folder') {
+                return (
+                  <Box
+                    key={`folder-${row.fullPath}`}
+                    style={{
+                      backgroundColor: '#ffffff',
+                      border: '2px solid #e0e0e0',
+                      borderRadius: '8px',
+                      padding: '16px',
+                      cursor: 'pointer',
+                      transition: 'all 0.2s',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'center',
+                      gap: '8px',
+                    }}
+                    onClick={() => handleOpenFolder(row.fullPath)}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.borderColor = '#0c4a2b';
+                      e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.borderColor = '#e0e0e0';
+                      e.currentTarget.style.boxShadow = 'none';
+                    }}
+                  >
+                    <Icon icon="Folder" color="primary60" size={48} />
+                    <Text fontWeight="bold" textAlign="center" style={{ wordBreak: 'break-word' }}>
+                      {row.name}
+                    </Text>
+                  </Box>
+                );
+              }
+
+              const { record, info } = row;
+              const thumbKey = info.rawKey;
+              const fileName = info.fileName;
+              const thumbUrl = thumbKey
+                ? thumbKey.startsWith('http')
+                  ? thumbKey
+                  : `https://backoffice-app-assets.s3.us-east-1.amazonaws.com/${thumbKey}`
+                : undefined;
+              const isSelected = isFileSelected(record.id);
+
+              return (
+                <Box
+                  key={record.id}
+                  style={{
+                    backgroundColor: '#ffffff',
+                    border: isSelected ? '2px solid #0c4a2b' : '2px solid #e0e0e0',
+                    borderRadius: '8px',
+                    padding: '12px',
+                    transition: 'all 0.2s',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '8px',
+                    position: 'relative',
+                  }}
+                  onMouseEnter={(e) => {
+                    if (!isSelected) {
+                      e.currentTarget.style.borderColor = '#0c4a2b';
+                      e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)';
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    if (!isSelected) {
+                      e.currentTarget.style.borderColor = '#e0e0e0';
+                      e.currentTarget.style.boxShadow = 'none';
+                    }
+                  }}
+                >
+                  {/* Checkbox */}
+                  <input
+                    type="checkbox"
+                    checked={isSelected}
+                    onChange={(event) => {
+                      toggleSelect(record.id, event.target.checked);
+                    }}
+                    style={{
+                      position: 'absolute',
+                      top: '8px',
+                      left: '8px',
+                      cursor: 'pointer',
+                      width: '18px',
+                      height: '18px',
+                      zIndex: 1,
+                    }}
+                  />
+                  
+                  {/* Thumbnail */}
+                  <Box
+                    style={{
+                      width: '100%',
+                      height: '150px',
+                      backgroundColor: '#f8f9fa',
+                      borderRadius: '6px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      overflow: 'hidden',
+                      cursor: 'pointer',
+                    }}
+                    onClick={() => {
+                      if (thumbUrl) {
+                        window.open(thumbUrl, '_blank', 'noopener,noreferrer');
+                      }
+                    }}
+                  >
+                    {thumbUrl ? (
+                      <img
+                        src={thumbUrl}
+                        alt={fileName}
+                        style={{
+                          maxWidth: '100%',
+                          maxHeight: '100%',
+                          objectFit: 'contain',
+                        }}
+                      />
+                    ) : (
+                      <Icon icon="Image" color="grey40" size={48} />
+                    )}
+                  </Box>
+                  
+                  {/* File Name */}
+                  <Text
+                    fontSize={12}
+                    fontWeight="bold"
+                    style={{
+                      wordBreak: 'break-word',
+                      textAlign: 'center',
+                      minHeight: '32px',
+                    }}
+                  >
+                    {record?.params?.alt || fileName || '-'}
+                  </Text>
+                  
+                  {/* Actions */}
+                  <Box display="flex" gap="xs" justifyContent="center" flexWrap="wrap">
+                    <Button
+                      variant="text"
+                      color="primary"
+                      size="sm"
+                      onClick={() => {
+                        setEditingAltId(record.id);
+                        setEditingAltValue(record?.params?.alt as string || '');
+                      }}
+                      style={{ fontSize: '11px', padding: '4px 8px' }}
+                    >
+                      Editar
+                    </Button>
+                    <Button
+                      variant="text"
+                      color="danger"
+                      size="sm"
+                      onClick={() => handleDeleteRecord(record)}
+                      style={{ fontSize: '11px', padding: '4px 8px' }}
+                    >
+                      Excluir
+                    </Button>
+                  </Box>
+                </Box>
+              );
+            })}
+            
+            {paginatedRows.length === 0 && (
+              <Box
+                style={{
+                  gridColumn: '1 / -1',
+                  padding: '48px',
+                  textAlign: 'center',
+                  color: '#9aa0a6',
+                }}
+              >
+                {isLoadingRecords ? 'Carregando arquivos...' : emptyMessage}
+              </Box>
+            )}
+          </Box>
+        )}
+        
         {totalRows > 0 && (
           <Box
             display="flex"

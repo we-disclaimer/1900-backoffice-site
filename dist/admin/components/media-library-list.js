@@ -117,6 +117,7 @@ const MediaLibraryList = (props) => {
     const [uploadedFiles, setUploadedFiles] = useState([]);
     const [editingAltId, setEditingAltId] = useState(null);
     const [editingAltValue, setEditingAltValue] = useState('');
+    const [viewMode, setViewMode] = useState('list');
     const rootPath = paths?.rootPath ||
         window?.AdminJS?.rootPath ||
         '/admin';
@@ -704,9 +705,17 @@ const MediaLibraryList = (props) => {
                     borderRadius: '6px',
                     padding: '12px 16px',
                     marginBottom: '16px',
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
                 } },
-                React.createElement(Text, { fontWeight: "bold", fontSize: 18, style: { margin: 0 } }, "Lista de Arquivos")),
-            React.createElement(Box, { as: "table", width: "100%", style: {
+                React.createElement(Text, { fontWeight: "bold", fontSize: 18, style: { margin: 0 } }, "Lista de Arquivos"),
+                React.createElement(Box, { display: "flex", gap: "xs" },
+                    React.createElement(Button, { variant: viewMode === 'list' ? 'primary' : 'outlined', size: "sm", onClick: () => setViewMode('list') },
+                        React.createElement(Icon, { icon: "List" })),
+                    React.createElement(Button, { variant: viewMode === 'grid' ? 'primary' : 'outlined', size: "sm", onClick: () => setViewMode('grid') },
+                        React.createElement(Icon, { icon: "Grid" })))),
+            viewMode === 'list' ? (React.createElement(Box, { as: "table", width: "100%", style: {
                     borderCollapse: 'collapse',
                     border: '1px solid #e0e0e0',
                     borderRadius: '6px',
@@ -801,7 +810,113 @@ const MediaLibraryList = (props) => {
                                     deleteAction && (React.createElement(Button, { variant: "text", color: "danger", size: "sm", onClick: () => handleDeleteRecord(record) }, "Excluir"))))));
                     }),
                     paginatedRows.length === 0 && (React.createElement("tr", null,
-                        React.createElement("td", { colSpan: 6, style: { padding: '24px', textAlign: 'center', color: '#9aa0a6' } }, isLoadingRecords ? 'Carregando arquivos...' : emptyMessage))))),
+                        React.createElement("td", { colSpan: 6, style: { padding: '24px', textAlign: 'center', color: '#9aa0a6' } }, isLoadingRecords ? 'Carregando arquivos...' : emptyMessage)))))) : (React.createElement(Box, { style: {
+                    display: 'grid',
+                    gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))',
+                    gap: '16px',
+                    padding: '16px',
+                } },
+                paginatedRows.map((row) => {
+                    if (row.type === 'folder') {
+                        return (React.createElement(Box, { key: `folder-${row.fullPath}`, style: {
+                                backgroundColor: '#ffffff',
+                                border: '2px solid #e0e0e0',
+                                borderRadius: '8px',
+                                padding: '16px',
+                                cursor: 'pointer',
+                                transition: 'all 0.2s',
+                                display: 'flex',
+                                flexDirection: 'column',
+                                alignItems: 'center',
+                                gap: '8px',
+                            }, onClick: () => handleOpenFolder(row.fullPath), onMouseEnter: (e) => {
+                                e.currentTarget.style.borderColor = '#0c4a2b';
+                                e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)';
+                            }, onMouseLeave: (e) => {
+                                e.currentTarget.style.borderColor = '#e0e0e0';
+                                e.currentTarget.style.boxShadow = 'none';
+                            } },
+                            React.createElement(Icon, { icon: "Folder", color: "primary60", size: 48 }),
+                            React.createElement(Text, { fontWeight: "bold", textAlign: "center", style: { wordBreak: 'break-word' } }, row.name)));
+                    }
+                    const { record, info } = row;
+                    const thumbKey = info.rawKey;
+                    const fileName = info.fileName;
+                    const thumbUrl = thumbKey
+                        ? thumbKey.startsWith('http')
+                            ? thumbKey
+                            : `https://backoffice-app-assets.s3.us-east-1.amazonaws.com/${thumbKey}`
+                        : undefined;
+                    const isSelected = isFileSelected(record.id);
+                    return (React.createElement(Box, { key: record.id, style: {
+                            backgroundColor: '#ffffff',
+                            border: isSelected ? '2px solid #0c4a2b' : '2px solid #e0e0e0',
+                            borderRadius: '8px',
+                            padding: '12px',
+                            transition: 'all 0.2s',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            gap: '8px',
+                            position: 'relative',
+                        }, onMouseEnter: (e) => {
+                            if (!isSelected) {
+                                e.currentTarget.style.borderColor = '#0c4a2b';
+                                e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)';
+                            }
+                        }, onMouseLeave: (e) => {
+                            if (!isSelected) {
+                                e.currentTarget.style.borderColor = '#e0e0e0';
+                                e.currentTarget.style.boxShadow = 'none';
+                            }
+                        } },
+                        React.createElement("input", { type: "checkbox", checked: isSelected, onChange: (event) => {
+                                toggleSelect(record.id, event.target.checked);
+                            }, style: {
+                                position: 'absolute',
+                                top: '8px',
+                                left: '8px',
+                                cursor: 'pointer',
+                                width: '18px',
+                                height: '18px',
+                                zIndex: 1,
+                            } }),
+                        React.createElement(Box, { style: {
+                                width: '100%',
+                                height: '150px',
+                                backgroundColor: '#f8f9fa',
+                                borderRadius: '6px',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                overflow: 'hidden',
+                                cursor: 'pointer',
+                            }, onClick: () => {
+                                if (thumbUrl) {
+                                    window.open(thumbUrl, '_blank', 'noopener,noreferrer');
+                                }
+                            } }, thumbUrl ? (React.createElement("img", { src: thumbUrl, alt: fileName, style: {
+                                maxWidth: '100%',
+                                maxHeight: '100%',
+                                objectFit: 'contain',
+                            } })) : (React.createElement(Icon, { icon: "Image", color: "grey40", size: 48 }))),
+                        React.createElement(Text, { fontSize: 12, fontWeight: "bold", style: {
+                                wordBreak: 'break-word',
+                                textAlign: 'center',
+                                minHeight: '32px',
+                            } }, record?.params?.alt || fileName || '-'),
+                        React.createElement(Box, { display: "flex", gap: "xs", justifyContent: "center", flexWrap: "wrap" },
+                            React.createElement(Button, { variant: "text", color: "primary", size: "sm", onClick: () => {
+                                    setEditingAltId(record.id);
+                                    setEditingAltValue(record?.params?.alt || '');
+                                }, style: { fontSize: '11px', padding: '4px 8px' } }, "Editar"),
+                            React.createElement(Button, { variant: "text", color: "danger", size: "sm", onClick: () => handleDeleteRecord(record), style: { fontSize: '11px', padding: '4px 8px' } }, "Excluir"))));
+                }),
+                paginatedRows.length === 0 && (React.createElement(Box, { style: {
+                        gridColumn: '1 / -1',
+                        padding: '48px',
+                        textAlign: 'center',
+                        color: '#9aa0a6',
+                    } }, isLoadingRecords ? 'Carregando arquivos...' : emptyMessage)))),
             totalRows > 0 && (React.createElement(Box, { display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "sm", mt: "lg", style: { paddingBottom: '50px' } },
                 React.createElement(Text, { color: "grey60" }, `Mostrando ${startIndex}-${endIndex} de ${totalRows}`),
                 React.createElement(Box, { display: "flex", gap: "sm", alignItems: "center", flexWrap: "wrap" },
