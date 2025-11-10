@@ -192,6 +192,7 @@ const NoticiasResource: ResourceWithOptions = {
       conteudo: { 
         components: {
           edit: 'VisualComposer',
+          show: 'VisualComposerShow',
         },
         isRequired: true,
         description: '🎨 Editor visual estilo WordPress Composer com blocos arraståveis, imagens, vídeos e layouts personalizados.',

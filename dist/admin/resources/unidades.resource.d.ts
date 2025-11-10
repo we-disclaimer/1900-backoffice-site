@@ -4,6 +4,7 @@ declare const UnidadeSchema: mongoose.Schema<any, mongoose.Model<any, any, any, 
     nome: string;
     criadoEm: NativeDate;
     urlCustomizada: string;
+    tags?: string;
     metaTagTitle?: string;
     metaTagDescription?: string;
     resumo?: string;
@@ -15,12 +16,12 @@ declare const UnidadeSchema: mongoose.Schema<any, mongoose.Model<any, any, any, 
     codigoGoogleMaps?: string;
     linkGoogleMaps?: string;
     codigoReservas?: string;
-    tags?: string;
     outrasInformacoes?: string;
 }, mongoose.Document<unknown, {}, mongoose.FlatRecord<{
     nome: string;
     criadoEm: NativeDate;
     urlCustomizada: string;
+    tags?: string;
     metaTagTitle?: string;
     metaTagDescription?: string;
     resumo?: string;
@@ -32,12 +33,12 @@ declare const UnidadeSchema: mongoose.Schema<any, mongoose.Model<any, any, any, 
     codigoGoogleMaps?: string;
     linkGoogleMaps?: string;
     codigoReservas?: string;
-    tags?: string;
     outrasInformacoes?: string;
 }>, {}> & mongoose.FlatRecord<{
     nome: string;
     criadoEm: NativeDate;
     urlCustomizada: string;
+    tags?: string;
     metaTagTitle?: string;
     metaTagDescription?: string;
     resumo?: string;
@@ -49,7 +50,6 @@ declare const UnidadeSchema: mongoose.Schema<any, mongoose.Model<any, any, any, 
     codigoGoogleMaps?: string;
     linkGoogleMaps?: string;
     codigoReservas?: string;
-    tags?: string;
     outrasInformacoes?: string;
 }> & {
     _id: mongoose.Types.ObjectId;
@@ -60,6 +60,7 @@ declare const UnidadeModel: mongoose.Model<any, {}, {}, {}, any, any> | mongoose
     nome: string;
     criadoEm: NativeDate;
     urlCustomizada: string;
+    tags?: string;
     metaTagTitle?: string;
     metaTagDescription?: string;
     resumo?: string;
@@ -71,12 +72,12 @@ declare const UnidadeModel: mongoose.Model<any, {}, {}, {}, any, any> | mongoose
     codigoGoogleMaps?: string;
     linkGoogleMaps?: string;
     codigoReservas?: string;
-    tags?: string;
     outrasInformacoes?: string;
 }, {}, {}, {}, mongoose.Document<unknown, {}, {
     nome: string;
     criadoEm: NativeDate;
     urlCustomizada: string;
+    tags?: string;
     metaTagTitle?: string;
     metaTagDescription?: string;
     resumo?: string;
@@ -88,12 +89,12 @@ declare const UnidadeModel: mongoose.Model<any, {}, {}, {}, any, any> | mongoose
     codigoGoogleMaps?: string;
     linkGoogleMaps?: string;
     codigoReservas?: string;
-    tags?: string;
     outrasInformacoes?: string;
 }, {}> & {
     nome: string;
     criadoEm: NativeDate;
     urlCustomizada: string;
+    tags?: string;
     metaTagTitle?: string;
     metaTagDescription?: string;
     resumo?: string;
@@ -105,7 +106,6 @@ declare const UnidadeModel: mongoose.Model<any, {}, {}, {}, any, any> | mongoose
     codigoGoogleMaps?: string;
     linkGoogleMaps?: string;
     codigoReservas?: string;
-    tags?: string;
     outrasInformacoes?: string;
 } & {
     _id: mongoose.Types.ObjectId;
@@ -115,6 +115,7 @@ declare const UnidadeModel: mongoose.Model<any, {}, {}, {}, any, any> | mongoose
     nome: string;
     criadoEm: NativeDate;
     urlCustomizada: string;
+    tags?: string;
     metaTagTitle?: string;
     metaTagDescription?: string;
     resumo?: string;
@@ -126,12 +127,12 @@ declare const UnidadeModel: mongoose.Model<any, {}, {}, {}, any, any> | mongoose
     codigoGoogleMaps?: string;
     linkGoogleMaps?: string;
     codigoReservas?: string;
-    tags?: string;
     outrasInformacoes?: string;
 }, mongoose.Document<unknown, {}, mongoose.FlatRecord<{
     nome: string;
     criadoEm: NativeDate;
     urlCustomizada: string;
+    tags?: string;
     metaTagTitle?: string;
     metaTagDescription?: string;
     resumo?: string;
@@ -143,12 +144,12 @@ declare const UnidadeModel: mongoose.Model<any, {}, {}, {}, any, any> | mongoose
     codigoGoogleMaps?: string;
     linkGoogleMaps?: string;
     codigoReservas?: string;
-    tags?: string;
     outrasInformacoes?: string;
 }>, {}> & mongoose.FlatRecord<{
     nome: string;
     criadoEm: NativeDate;
     urlCustomizada: string;
+    tags?: string;
     metaTagTitle?: string;
     metaTagDescription?: string;
     resumo?: string;
@@ -160,7 +161,6 @@ declare const UnidadeModel: mongoose.Model<any, {}, {}, {}, any, any> | mongoose
     codigoGoogleMaps?: string;
     linkGoogleMaps?: string;
     codigoReservas?: string;
-    tags?: string;
     outrasInformacoes?: string;
 }> & {
     _id: mongoose.Types.ObjectId;

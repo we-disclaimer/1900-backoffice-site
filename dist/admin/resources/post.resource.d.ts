@@ -3,9 +3,9 @@ import { ResourceWithOptions } from 'adminjs';
 declare const PostSchema: mongoose.Schema<any, mongoose.Model<any, any, any, any, any, any>, {}, {}, {}, {}, mongoose.DefaultSchemaOptions, {
     dataDeCriacao: NativeDate;
     titulo: string;
+    tags?: string;
     media?: mongoose.Types.ObjectId;
     descricao?: string;
-    tags?: string;
     precoMedio?: number;
     precoGrande?: number;
     categoria?: mongoose.Types.ObjectId;
@@ -17,9 +17,9 @@ declare const PostSchema: mongoose.Schema<any, mongoose.Model<any, any, any, any
 }, mongoose.Document<unknown, {}, mongoose.FlatRecord<{
     dataDeCriacao: NativeDate;
     titulo: string;
+    tags?: string;
     media?: mongoose.Types.ObjectId;
     descricao?: string;
-    tags?: string;
     precoMedio?: number;
     precoGrande?: number;
     categoria?: mongoose.Types.ObjectId;
@@ -31,9 +31,9 @@ declare const PostSchema: mongoose.Schema<any, mongoose.Model<any, any, any, any
 }>, {}> & mongoose.FlatRecord<{
     dataDeCriacao: NativeDate;
     titulo: string;
+    tags?: string;
     media?: mongoose.Types.ObjectId;
     descricao?: string;
-    tags?: string;
     precoMedio?: number;
     precoGrande?: number;
     categoria?: mongoose.Types.ObjectId;
@@ -50,9 +50,9 @@ declare const PostSchema: mongoose.Schema<any, mongoose.Model<any, any, any, any
 declare const PostModel: mongoose.Model<any, {}, {}, {}, any, any> | mongoose.Model<{
     dataDeCriacao: NativeDate;
     titulo: string;
+    tags?: string;
     media?: mongoose.Types.ObjectId;
     descricao?: string;
-    tags?: string;
     precoMedio?: number;
     precoGrande?: number;
     categoria?: mongoose.Types.ObjectId;
@@ -64,9 +64,9 @@ declare const PostModel: mongoose.Model<any, {}, {}, {}, any, any> | mongoose.Mo
 }, {}, {}, {}, mongoose.Document<unknown, {}, {
     dataDeCriacao: NativeDate;
     titulo: string;
+    tags?: string;
     media?: mongoose.Types.ObjectId;
     descricao?: string;
-    tags?: string;
     precoMedio?: number;
     precoGrande?: number;
     categoria?: mongoose.Types.ObjectId;
@@ -78,9 +78,9 @@ declare const PostModel: mongoose.Model<any, {}, {}, {}, any, any> | mongoose.Mo
 }, {}> & {
     dataDeCriacao: NativeDate;
     titulo: string;
+    tags?: string;
     media?: mongoose.Types.ObjectId;
     descricao?: string;
-    tags?: string;
     precoMedio?: number;
     precoGrande?: number;
     categoria?: mongoose.Types.ObjectId;
@@ -96,9 +96,9 @@ declare const PostModel: mongoose.Model<any, {}, {}, {}, any, any> | mongoose.Mo
 }, mongoose.Schema<any, mongoose.Model<any, any, any, any, any, any>, {}, {}, {}, {}, mongoose.DefaultSchemaOptions, {
     dataDeCriacao: NativeDate;
     titulo: string;
+    tags?: string;
     media?: mongoose.Types.ObjectId;
     descricao?: string;
-    tags?: string;
     precoMedio?: number;
     precoGrande?: number;
     categoria?: mongoose.Types.ObjectId;
@@ -110,9 +110,9 @@ declare const PostModel: mongoose.Model<any, {}, {}, {}, any, any> | mongoose.Mo
 }, mongoose.Document<unknown, {}, mongoose.FlatRecord<{
     dataDeCriacao: NativeDate;
     titulo: string;
+    tags?: string;
     media?: mongoose.Types.ObjectId;
     descricao?: string;
-    tags?: string;
     precoMedio?: number;
     precoGrande?: number;
     categoria?: mongoose.Types.ObjectId;
@@ -124,9 +124,9 @@ declare const PostModel: mongoose.Model<any, {}, {}, {}, any, any> | mongoose.Mo
 }>, {}> & mongoose.FlatRecord<{
     dataDeCriacao: NativeDate;
     titulo: string;
+    tags?: string;
     media?: mongoose.Types.ObjectId;
     descricao?: string;
-    tags?: string;
     precoMedio?: number;
     precoGrande?: number;
     categoria?: mongoose.Types.ObjectId;

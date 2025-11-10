@@ -16,5 +16,7 @@ componentLoader.add('QuillEditor', path.resolve('src/admin/components/quill-edit
 componentLoader.add('BlockBuilder', path.resolve('src/admin/components/block-builder.tsx'));
 componentLoader.add('TiptapEditor', path.resolve('src/admin/components/tiptap-editor.tsx'));
 componentLoader.add('VisualComposer', path.resolve('src/admin/components/visual-composer.tsx'));
+componentLoader.add('VisualComposerShow', path.resolve('src/admin/components/visual-composer-show.tsx'));
+componentLoader.add('MediaLibraryList', path.resolve('src/admin/components/media-library-list.tsx'));
 export default componentLoader;
 //# sourceMappingURL=component-loader.js.map

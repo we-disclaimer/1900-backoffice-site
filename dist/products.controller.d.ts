@@ -10,9 +10,9 @@ export declare class ProductsController {
     }) | (import("mongoose").FlattenMaps<Model<{
         dataDeCriacao: NativeDate;
         titulo: string;
+        tags?: string;
         media?: import("mongoose").Types.ObjectId;
         descricao?: string;
-        tags?: string;
         precoMedio?: number;
         precoGrande?: number;
         categoria?: import("mongoose").Types.ObjectId;
@@ -24,9 +24,9 @@ export declare class ProductsController {
     }, {}, {}, {}, import("mongoose").Document<unknown, {}, {
         dataDeCriacao: NativeDate;
         titulo: string;
+        tags?: string;
         media?: import("mongoose").Types.ObjectId;
         descricao?: string;
-        tags?: string;
         precoMedio?: number;
         precoGrande?: number;
         categoria?: import("mongoose").Types.ObjectId;
@@ -38,9 +38,9 @@ export declare class ProductsController {
     }, {}> & {
         dataDeCriacao: NativeDate;
         titulo: string;
+        tags?: string;
         media?: import("mongoose").Types.ObjectId;
         descricao?: string;
-        tags?: string;
         precoMedio?: number;
         precoGrande?: number;
         categoria?: import("mongoose").Types.ObjectId;
@@ -56,9 +56,9 @@ export declare class ProductsController {
     }, import("mongoose").Schema<any, Model<any, any, any, any, any, any>, {}, {}, {}, {}, import("mongoose").DefaultSchemaOptions, {
         dataDeCriacao: NativeDate;
         titulo: string;
+        tags?: string;
         media?: import("mongoose").Types.ObjectId;
         descricao?: string;
-        tags?: string;
         precoMedio?: number;
         precoGrande?: number;
         categoria?: import("mongoose").Types.ObjectId;
@@ -70,9 +70,9 @@ export declare class ProductsController {
     }, import("mongoose").Document<unknown, {}, import("mongoose").FlatRecord<{
         dataDeCriacao: NativeDate;
         titulo: string;
+        tags?: string;
         media?: import("mongoose").Types.ObjectId;
         descricao?: string;
-        tags?: string;
         precoMedio?: number;
         precoGrande?: number;
         categoria?: import("mongoose").Types.ObjectId;
@@ -84,9 +84,9 @@ export declare class ProductsController {
     }>, {}> & import("mongoose").FlatRecord<{
         dataDeCriacao: NativeDate;
         titulo: string;
+        tags?: string;
         media?: import("mongoose").Types.ObjectId;
         descricao?: string;
-        tags?: string;
         precoMedio?: number;
         precoGrande?: number;
         categoria?: import("mongoose").Types.ObjectId;

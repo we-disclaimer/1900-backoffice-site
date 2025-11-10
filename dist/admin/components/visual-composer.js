@@ -3,14 +3,185 @@ import { DndContext, closestCenter, KeyboardSensor, PointerSensor, useSensor, us
 import { arrayMove, SortableContext, sortableKeyboardCoordinates, verticalListSortingStrategy, } from '@dnd-kit/sortable';
 import { useSortable, } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
+const createBlockId = () => Math.random().toString(36).substr(2, 9);
+const normalizeBlock = (rawBlock) => {
+    const normalized = {
+        id: rawBlock?.id || createBlockId(),
+        type: rawBlock?.type || 'paragraph',
+        content: typeof rawBlock?.content === 'string' ? rawBlock.content : '',
+        attributes: rawBlock?.attributes ? { ...rawBlock.attributes } : undefined,
+    };
+    if (normalized.attributes?.columns) {
+        normalized.attributes.columns = normalized.attributes.columns.map((column) => {
+            if (!Array.isArray(column)) {
+                return [];
+            }
+            return column.map((childBlock) => normalizeBlock(childBlock));
+        });
+    }
+    return normalized;
+};
+const convertHtmlToBlocks = (value) => {
+    if (!value) {
+        return [];
+    }
+    const trimmedValue = value.trim();
+    if (!trimmedValue) {
+        return [];
+    }
+    if (trimmedValue.startsWith('[')) {
+        try {
+            const parsed = JSON.parse(trimmedValue);
+            if (Array.isArray(parsed)) {
+                return parsed.map((item) => normalizeBlock(item));
+            }
+        }
+        catch (error) {
+            console.warn('VisualComposer: falha ao interpretar JSON salvo anteriormente.', error);
+        }
+    }
+    if (typeof window === 'undefined' || typeof DOMParser === 'undefined') {
+        return [{
+                id: createBlockId(),
+                type: 'paragraph',
+                content: value,
+            }];
+    }
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(value, 'text/html');
+    const parseNodes = (nodes) => {
+        const parsedBlocks = [];
+        nodes.forEach((node) => {
+            const result = parseNode(node);
+            if (!result) {
+                return;
+            }
+            if (Array.isArray(result)) {
+                parsedBlocks.push(...result);
+            }
+            else {
+                parsedBlocks.push(result);
+            }
+        });
+        return parsedBlocks;
+    };
+    const parseNode = (node) => {
+        if (node.nodeType === Node.TEXT_NODE) {
+            const textContent = node.textContent?.trim();
+            if (textContent) {
+                return {
+                    id: createBlockId(),
+                    type: 'paragraph',
+                    content: textContent,
+                };
+            }
+            return null;
+        }
+        if (node.nodeType !== Node.ELEMENT_NODE) {
+            return null;
+        }
+        const element = node;
+        const tag = element.tagName.toLowerCase();
+        switch (tag) {
+            case 'p':
+                return {
+                    id: createBlockId(),
+                    type: 'paragraph',
+                    content: element.innerHTML || '',
+                };
+            case 'h1':
+            case 'h2':
+            case 'h3':
+            case 'h4':
+            case 'h5':
+            case 'h6':
+                return {
+                    id: createBlockId(),
+                    type: `heading${tag.slice(-1)}`,
+                    content: element.innerHTML || '',
+                };
+            case 'img':
+                return {
+                    id: createBlockId(),
+                    type: 'image',
+                    content: '',
+                    attributes: {
+                        src: element.getAttribute('src') || '',
+                        alt: element.getAttribute('alt') || '',
+                    },
+                };
+            case 'iframe': {
+                const src = element.getAttribute('src') || '';
+                const youtubeMatch = src.match(/youtube\.com\/embed\/([^?]+)/);
+                if (youtubeMatch) {
+                    return {
+                        id: createBlockId(),
+                        type: 'youtube',
+                        content: '',
+                        attributes: {
+                            videoId: youtubeMatch[1],
+                        },
+                    };
+                }
+                return {
+                    id: createBlockId(),
+                    type: 'paragraph',
+                    content: element.outerHTML,
+                };
+            }
+            case 'a':
+                return {
+                    id: createBlockId(),
+                    type: 'link',
+                    content: element.innerHTML || '',
+                    attributes: {
+                        href: element.getAttribute('href') || '',
+                    },
+                };
+            case 'div': {
+                const isColumnsContainer = element.classList.contains('columns');
+                if (isColumnsContainer) {
+                    const children = Array.from(element.children);
+                    const columnCountFromStyle = element.getAttribute('style')?.match(/repeat\((\d+)/i);
+                    const columnCount = columnCountFromStyle ? parseInt(columnCountFromStyle[1], 10) : children.length || 2;
+                    const columns = children.map((child) => parseNodes(Array.from(child.childNodes)));
+                    return {
+                        id: createBlockId(),
+                        type: 'columns',
+                        content: '',
+                        attributes: {
+                            columnCount,
+                            columns,
+                        },
+                    };
+                }
+                const childBlocks = parseNodes(Array.from(element.childNodes));
+                if (childBlocks.length) {
+                    return childBlocks;
+                }
+                return {
+                    id: createBlockId(),
+                    type: 'paragraph',
+                    content: element.innerHTML || '',
+                };
+            }
+            default:
+                return {
+                    id: createBlockId(),
+                    type: 'paragraph',
+                    content: element.innerHTML || '',
+                };
+        }
+    };
+    return parseNodes(Array.from(doc.body.childNodes));
+};
 const ColumnBlockManager = ({ columnIndex, blocks, onUpdateBlocks }) => {
     const sensors = useSensors(useSensor(PointerSensor), useSensor(KeyboardSensor, {
         coordinateGetter: sortableKeyboardCoordinates,
     }));
-    const generateId = () => Math.random().toString(36).substr(2, 9);
     const addBlockToColumn = (type) => {
         const newBlock = {
-            id: generateId(),
+            id: createBlockId(),
             type,
             content: '',
             attributes: {}
@@ -294,32 +465,13 @@ const SortableBlock = ({ block, onUpdate, onDelete }) => {
             React.createElement("div", { style: { padding: '12px' } }, renderBlockContent()))));
 };
 const VisualComposer = ({ record, property, onChange }) => {
-    const [blocks, setBlocks] = useState(() => {
-        try {
-            const value = record?.params?.[property.name] || '';
-            if (value && typeof value === 'string' && value.startsWith('[')) {
-                return JSON.parse(value);
-            }
-            if (value) {
-                return [{
-                        id: 'initial',
-                        type: 'paragraph',
-                        content: value
-                    }];
-            }
-            return [];
-        }
-        catch {
-            return [];
-        }
-    });
+    const [blocks, setBlocks] = useState(() => convertHtmlToBlocks(record?.params?.[property.name]));
     const sensors = useSensors(useSensor(PointerSensor), useSensor(KeyboardSensor, {
         coordinateGetter: sortableKeyboardCoordinates,
     }));
-    const generateId = () => Math.random().toString(36).substr(2, 9);
     const addBlock = (type) => {
         const newBlock = {
-            id: generateId(),
+            id: createBlockId(),
             type,
             content: '',
             attributes: type === 'columns' ? { columnCount: 2, columns: [[], []] } : {}

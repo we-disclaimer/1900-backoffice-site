@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useRef, useEffect } from 'react';
+import React, { useState, useCallback } from 'react';
 import { EditPropertyProps } from 'adminjs';
 import { 
   DndContext, 
@@ -61,6 +61,198 @@ interface ColumnBlockManagerProps {
   onUpdateBlocks: (columnIndex: number, blocks: Block[]) => void;
 }
 
+const createBlockId = () => Math.random().toString(36).substr(2, 9);
+
+const normalizeBlock = (rawBlock: any): Block => {
+  const normalized: Block = {
+    id: rawBlock?.id || createBlockId(),
+    type: (rawBlock?.type as BlockType) || 'paragraph',
+    content: typeof rawBlock?.content === 'string' ? rawBlock.content : '',
+    attributes: rawBlock?.attributes ? { ...rawBlock.attributes } : undefined,
+  };
+
+  if (normalized.attributes?.columns) {
+    normalized.attributes.columns = normalized.attributes.columns.map((column: any) => {
+      if (!Array.isArray(column)) {
+        return [];
+      }
+      return column.map((childBlock: any) => normalizeBlock(childBlock));
+    });
+  }
+
+  return normalized;
+};
+
+const convertHtmlToBlocks = (value?: string | null): Block[] => {
+  if (!value) {
+    return [];
+  }
+
+  const trimmedValue = value.trim();
+
+  if (!trimmedValue) {
+    return [];
+  }
+
+  if (trimmedValue.startsWith('[')) {
+    try {
+      const parsed = JSON.parse(trimmedValue);
+      if (Array.isArray(parsed)) {
+        return parsed.map((item) => normalizeBlock(item));
+      }
+    } catch (error) {
+      console.warn('VisualComposer: falha ao interpretar JSON salvo anteriormente.', error);
+    }
+  }
+
+  if (typeof window === 'undefined' || typeof DOMParser === 'undefined') {
+    return [{
+      id: createBlockId(),
+      type: 'paragraph',
+      content: value,
+    }];
+  }
+
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(value, 'text/html');
+
+  const parseNodes = (nodes: ChildNode[]): Block[] => {
+    const parsedBlocks: Block[] = [];
+
+    nodes.forEach((node) => {
+      const result = parseNode(node);
+      if (!result) {
+        return;
+      }
+
+      if (Array.isArray(result)) {
+        parsedBlocks.push(...result);
+      } else {
+        parsedBlocks.push(result);
+      }
+    });
+
+    return parsedBlocks;
+  };
+
+  const parseNode = (node: ChildNode): Block | Block[] | null => {
+    if (node.nodeType === Node.TEXT_NODE) {
+      const textContent = node.textContent?.trim();
+      if (textContent) {
+        return {
+          id: createBlockId(),
+          type: 'paragraph',
+          content: textContent,
+        };
+      }
+      return null;
+    }
+
+    if (node.nodeType !== Node.ELEMENT_NODE) {
+      return null;
+    }
+
+    const element = node as HTMLElement;
+    const tag = element.tagName.toLowerCase();
+
+    switch (tag) {
+      case 'p':
+        return {
+          id: createBlockId(),
+          type: 'paragraph',
+          content: element.innerHTML || '',
+        };
+      case 'h1':
+      case 'h2':
+      case 'h3':
+      case 'h4':
+      case 'h5':
+      case 'h6':
+        return {
+          id: createBlockId(),
+          type: `heading${tag.slice(-1)}` as BlockType,
+          content: element.innerHTML || '',
+        };
+      case 'img':
+        return {
+          id: createBlockId(),
+          type: 'image',
+          content: '',
+          attributes: {
+            src: element.getAttribute('src') || '',
+            alt: element.getAttribute('alt') || '',
+          },
+        };
+      case 'iframe': {
+        const src = element.getAttribute('src') || '';
+        const youtubeMatch = src.match(/youtube\.com\/embed\/([^?]+)/);
+        if (youtubeMatch) {
+          return {
+            id: createBlockId(),
+            type: 'youtube',
+            content: '',
+            attributes: {
+              videoId: youtubeMatch[1],
+            },
+          };
+        }
+        return {
+          id: createBlockId(),
+          type: 'paragraph',
+          content: element.outerHTML,
+        };
+      }
+      case 'a':
+        return {
+          id: createBlockId(),
+          type: 'link',
+          content: element.innerHTML || '',
+          attributes: {
+            href: element.getAttribute('href') || '',
+          },
+        };
+      case 'div': {
+        const isColumnsContainer = element.classList.contains('columns');
+        if (isColumnsContainer) {
+          const children = Array.from(element.children);
+          const columnCountFromStyle = element.getAttribute('style')?.match(/repeat\((\d+)/i);
+          const columnCount = columnCountFromStyle ? parseInt(columnCountFromStyle[1], 10) : children.length || 2;
+          const columns = children.map((child) => parseNodes(Array.from(child.childNodes)));
+          return {
+            id: createBlockId(),
+            type: 'columns',
+            content: '',
+            attributes: {
+              columnCount,
+              columns,
+            },
+          };
+        }
+
+        // Para DIVs genéricas, aproveitamos os filhos
+        const childBlocks = parseNodes(Array.from(element.childNodes));
+        if (childBlocks.length) {
+          return childBlocks;
+        }
+
+        return {
+          id: createBlockId(),
+          type: 'paragraph',
+          content: element.innerHTML || '',
+        };
+      }
+      default:
+        return {
+          id: createBlockId(),
+          type: 'paragraph',
+          content: element.innerHTML || '',
+        };
+    }
+  };
+
+  return parseNodes(Array.from(doc.body.childNodes));
+};
+
 // Componente para gerenciar blocos dentro de uma coluna
 const ColumnBlockManager: React.FC<ColumnBlockManagerProps> = ({ columnIndex, blocks, onUpdateBlocks }) => {
   const sensors = useSensors(
@@ -70,11 +262,9 @@ const ColumnBlockManager: React.FC<ColumnBlockManagerProps> = ({ columnIndex, bl
     })
   );
 
-  const generateId = () => Math.random().toString(36).substr(2, 9);
-
   const addBlockToColumn = (type: BlockType) => {
     const newBlock: Block = {
-      id: generateId(),
+      id: createBlockId(),
       type,
       content: '',
       attributes: {}
@@ -585,25 +775,7 @@ const SortableBlock: React.FC<SortableBlockProps> = ({ block, onUpdate, onDelete
 
 // Componente principal do editor
 const VisualComposer: React.FC<EditPropertyProps> = ({ record, property, onChange }) => {
-  const [blocks, setBlocks] = useState<Block[]>(() => {
-    try {
-      const value = record?.params?.[property.name] || '';
-      if (value && typeof value === 'string' && value.startsWith('[')) {
-        return JSON.parse(value);
-      }
-      // Converte HTML existente para um bloco de parágrafo
-      if (value) {
-        return [{
-          id: 'initial',
-          type: 'paragraph' as BlockType,
-          content: value
-        }];
-      }
-      return [];
-    } catch {
-      return [];
-    }
-  });
+  const [blocks, setBlocks] = useState<Block[]>(() => convertHtmlToBlocks(record?.params?.[property.name] as string | undefined));
 
   // Removido: não precisamos mais de debounce ou indicador de salvamento
 
@@ -614,11 +786,9 @@ const VisualComposer: React.FC<EditPropertyProps> = ({ record, property, onChang
     })
   );
 
-  const generateId = () => Math.random().toString(36).substr(2, 9);
-
   const addBlock = (type: BlockType) => {
     const newBlock: Block = {
-      id: generateId(),
+      id: createBlockId(),
       type,
       content: '',
       attributes: type === 'columns' ? { columnCount: 2, columns: [[], []] } : {}

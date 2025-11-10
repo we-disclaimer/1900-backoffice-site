@@ -29,6 +29,10 @@ import TiptapEditor from '../src/admin/components/tiptap-editor'
 AdminJS.UserComponents.TiptapEditor = TiptapEditor
 import VisualComposer from '../src/admin/components/visual-composer'
 AdminJS.UserComponents.VisualComposer = VisualComposer
+import VisualComposerShow from '../src/admin/components/visual-composer-show'
+AdminJS.UserComponents.VisualComposerShow = VisualComposerShow
+import MediaLibraryList from '../src/admin/components/media-library-list'
+AdminJS.UserComponents.MediaLibraryList = MediaLibraryList
 import UploadEditComponent from '../node_modules/@adminjs/upload/build/features/upload-file/components/UploadEditComponent'
 AdminJS.UserComponents.UploadEditComponent = UploadEditComponent
 import UploadListComponent from '../node_modules/@adminjs/upload/build/features/upload-file/components/UploadListComponent'

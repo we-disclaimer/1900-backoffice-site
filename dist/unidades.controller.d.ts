@@ -11,6 +11,7 @@ export declare class UnidadesController {
         nome: string;
         criadoEm: NativeDate;
         urlCustomizada: string;
+        tags?: string;
         metaTagTitle?: string;
         metaTagDescription?: string;
         resumo?: string;
@@ -22,12 +23,12 @@ export declare class UnidadesController {
         codigoGoogleMaps?: string;
         linkGoogleMaps?: string;
         codigoReservas?: string;
-        tags?: string;
         outrasInformacoes?: string;
     }, {}, {}, {}, import("mongoose").Document<unknown, {}, {
         nome: string;
         criadoEm: NativeDate;
         urlCustomizada: string;
+        tags?: string;
         metaTagTitle?: string;
         metaTagDescription?: string;
         resumo?: string;
@@ -39,12 +40,12 @@ export declare class UnidadesController {
         codigoGoogleMaps?: string;
         linkGoogleMaps?: string;
         codigoReservas?: string;
-        tags?: string;
         outrasInformacoes?: string;
     }, {}> & {
         nome: string;
         criadoEm: NativeDate;
         urlCustomizada: string;
+        tags?: string;
         metaTagTitle?: string;
         metaTagDescription?: string;
         resumo?: string;
@@ -56,7 +57,6 @@ export declare class UnidadesController {
         codigoGoogleMaps?: string;
         linkGoogleMaps?: string;
         codigoReservas?: string;
-        tags?: string;
         outrasInformacoes?: string;
     } & {
         _id: import("mongoose").Types.ObjectId;
@@ -66,6 +66,7 @@ export declare class UnidadesController {
         nome: string;
         criadoEm: NativeDate;
         urlCustomizada: string;
+        tags?: string;
         metaTagTitle?: string;
         metaTagDescription?: string;
         resumo?: string;
@@ -77,12 +78,12 @@ export declare class UnidadesController {
         codigoGoogleMaps?: string;
         linkGoogleMaps?: string;
         codigoReservas?: string;
-        tags?: string;
         outrasInformacoes?: string;
     }, import("mongoose").Document<unknown, {}, import("mongoose").FlatRecord<{
         nome: string;
         criadoEm: NativeDate;
         urlCustomizada: string;
+        tags?: string;
         metaTagTitle?: string;
         metaTagDescription?: string;
         resumo?: string;
@@ -94,12 +95,12 @@ export declare class UnidadesController {
         codigoGoogleMaps?: string;
         linkGoogleMaps?: string;
         codigoReservas?: string;
-        tags?: string;
         outrasInformacoes?: string;
     }>, {}> & import("mongoose").FlatRecord<{
         nome: string;
         criadoEm: NativeDate;
         urlCustomizada: string;
+        tags?: string;
         metaTagTitle?: string;
         metaTagDescription?: string;
         resumo?: string;
@@ -111,7 +112,6 @@ export declare class UnidadesController {
         codigoGoogleMaps?: string;
         linkGoogleMaps?: string;
         codigoReservas?: string;
-        tags?: string;
         outrasInformacoes?: string;
     }> & {
         _id: import("mongoose").Types.ObjectId;
@@ -130,6 +130,7 @@ export declare class UnidadesController {
         nome: string;
         criadoEm: NativeDate;
         urlCustomizada: string;
+        tags?: string;
         metaTagTitle?: string;
         metaTagDescription?: string;
         resumo?: string;
@@ -141,12 +142,12 @@ export declare class UnidadesController {
         codigoGoogleMaps?: string;
         linkGoogleMaps?: string;
         codigoReservas?: string;
-        tags?: string;
         outrasInformacoes?: string;
     }, {}, {}, {}, import("mongoose").Document<unknown, {}, {
         nome: string;
         criadoEm: NativeDate;
         urlCustomizada: string;
+        tags?: string;
         metaTagTitle?: string;
         metaTagDescription?: string;
         resumo?: string;
@@ -158,12 +159,12 @@ export declare class UnidadesController {
         codigoGoogleMaps?: string;
         linkGoogleMaps?: string;
         codigoReservas?: string;
-        tags?: string;
         outrasInformacoes?: string;
     }, {}> & {
         nome: string;
         criadoEm: NativeDate;
         urlCustomizada: string;
+        tags?: string;
         metaTagTitle?: string;
         metaTagDescription?: string;
         resumo?: string;
@@ -175,7 +176,6 @@ export declare class UnidadesController {
         codigoGoogleMaps?: string;
         linkGoogleMaps?: string;
         codigoReservas?: string;
-        tags?: string;
         outrasInformacoes?: string;
     } & {
         _id: import("mongoose").Types.ObjectId;
@@ -185,6 +185,7 @@ export declare class UnidadesController {
         nome: string;
         criadoEm: NativeDate;
         urlCustomizada: string;
+        tags?: string;
         metaTagTitle?: string;
         metaTagDescription?: string;
         resumo?: string;
@@ -196,12 +197,12 @@ export declare class UnidadesController {
         codigoGoogleMaps?: string;
         linkGoogleMaps?: string;
         codigoReservas?: string;
-        tags?: string;
         outrasInformacoes?: string;
     }, import("mongoose").Document<unknown, {}, import("mongoose").FlatRecord<{
         nome: string;
         criadoEm: NativeDate;
         urlCustomizada: string;
+        tags?: string;
         metaTagTitle?: string;
         metaTagDescription?: string;
         resumo?: string;
@@ -213,12 +214,12 @@ export declare class UnidadesController {
         codigoGoogleMaps?: string;
         linkGoogleMaps?: string;
         codigoReservas?: string;
-        tags?: string;
         outrasInformacoes?: string;
     }>, {}> & import("mongoose").FlatRecord<{
         nome: string;
         criadoEm: NativeDate;
         urlCustomizada: string;
+        tags?: string;
         metaTagTitle?: string;
         metaTagDescription?: string;
         resumo?: string;
@@ -230,7 +231,6 @@ export declare class UnidadesController {
         codigoGoogleMaps?: string;
         linkGoogleMaps?: string;
         codigoReservas?: string;
-        tags?: string;
         outrasInformacoes?: string;
     }> & {
         _id: import("mongoose").Types.ObjectId;

@@ -1,8 +1,19 @@
 import mongoose from 'mongoose';
-import AdminJS, { ResourceWithOptions } from 'adminjs';
+import AdminJS, { ResourceWithOptions, ActionRequest, ActionContext } from 'adminjs';
 import uploadFeature from '@adminjs/upload';
+import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3';
+import { readFile } from 'fs/promises';
 
 import componentLoader from '../component-loader.js';
+
+// Cliente S3
+const s3Client = new S3Client({
+  region: 'us-east-1',
+  credentials: {
+    accessKeyId: 'AKIA46XIEXYZSXUO54SR',
+    secretAccessKey: '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',
+  },
+});
 
 // 1. Modelo Mongoose
 const MediaSchema = new mongoose.Schema({
@@ -17,24 +28,72 @@ const MediaResource: ResourceWithOptions = {
   options: {
     actions: {
       list: {
+        component: 'MediaLibraryList',
         before: async (request, context) => {
-          request.query.perPage = 10; // Limitar a 10 itens por página
+          if (!request.query.perPage) {
+            request.query.perPage = 500;
+          }
           return request;
+        },
+      },
+      bulkUpload: {
+        actionType: 'resource',
+        handler: async (request: ActionRequest, response: any, context: ActionContext) => {
+          if (!request.payload || !request.payload.file) {
+            return {
+              notice: {
+                message: 'Nenhum arquivo foi enviado',
+                type: 'error',
+              },
+            };
+          }
+
+          try {
+            const file = request.payload.file;
+            const alt = request.payload.alt || file.name || 'Sem título';
+
+            // Upload para S3
+            const s3Key = `1900-backoffice/public/media//${file.name}`;
+            
+            // Ler o arquivo do disco temporário
+            const fileBuffer = file.path ? await readFile(file.path) : Buffer.from(await file.arrayBuffer());
+            
+            const uploadCommand = new PutObjectCommand({
+              Bucket: 'backoffice-app-assets',
+              Key: s3Key,
+              Body: fileBuffer,
+              ContentType: file.type || 'application/octet-stream',
+            });
+
+            await s3Client.send(uploadCommand);
+
+            // Criar registro no MongoDB
+            const url = `https://backoffice-app-assets.s3.us-east-1.amazonaws.com/${s3Key}`;
+            const newMedia = new MediaModel({
+              url,
+              alt,
+            });
+            await newMedia.save();
+
+            return {
+              notice: {
+                message: 'Arquivo enviado com sucesso!',
+                type: 'success',
+              },
+              record: context.resource.build(newMedia.toObject()),
+            };
+          } catch (error: any) {
+            return {
+              notice: {
+                message: `Erro ao enviar arquivo: ${error.message}`,
+                type: 'error',
+              },
+            };
+          }
         },
       },
       new: {
         before: async (request, context) => {
-          const MAX_SIZE = 2 * 1024 * 1024; // 2MB em bytes
-          
-          if (request.payload && request.payload.file) {
-            const file = request.payload.file;
-            
-            // Verificar o tamanho do arquivo
-            if (file.size && file.size > MAX_SIZE) {
-              throw new Error(`O arquivo é muito grande. Tamanho máximo permitido: 2MB. Tamanho do arquivo: ${(file.size / 1024 / 1024).toFixed(2)}MB`);
-            }
-          }
-          
           return request;
         },
       },
@@ -97,6 +156,7 @@ const MediaResource: ResourceWithOptions = {
   },
   features: [
     uploadFeature({
+      componentLoader,
       provider: {
         aws: {
           bucket: 'backoffice-app-assets',
@@ -110,13 +170,15 @@ const MediaResource: ResourceWithOptions = {
         file: 'file',
       },
       uploadPath: (record, filename) => {
-        const basePath = process.env.AWS_S3_UPLOAD_PATH || '';
-        return `${basePath}/${filename}`;
+        console.log('🔍 uploadPath chamado - filename:', filename);
+        const basePath = '1900-backoffice/public/media';
+        const finalPath = `${basePath}//${filename}`;
+        console.log('🎯 Caminho final:', finalPath);
+        return finalPath;
       },
       validation: {
         maxSize: 2 * 1024 * 1024, // 2MB em bytes
       },
-      componentLoader, // **adicionado aqui**
     }),
   ],
 };
