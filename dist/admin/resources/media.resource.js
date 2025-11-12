@@ -4,15 +4,17 @@ import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3';
 import { readFile } from 'fs/promises';
 import componentLoader from '../component-loader.js';
 const getS3Client = () => {
-    const accessKeyId = process.env.AWS_ACCESS_KEY_ID;
-    const secretAccessKey = process.env.AWS_SECRET_ACCESS_KEY;
-    const region = process.env.AWS_REGION || 'us-east-1';
+    const accessKeyId = process.env.AWS_ACCESS_KEY_ID?.trim();
+    const secretAccessKey = process.env.AWS_SECRET_ACCESS_KEY?.trim();
+    const region = process.env.AWS_REGION?.trim() || 'us-east-1';
     console.log('🔑 AWS Credentials Check:', {
         hasAccessKey: !!accessKeyId,
         accessKeyLength: accessKeyId?.length || 0,
         hasSecretKey: !!secretAccessKey,
         secretKeyLength: secretAccessKey?.length || 0,
         region,
+        accessKeyStart: accessKeyId?.substring(0, 4),
+        secretKeyStart: secretAccessKey?.substring(0, 4),
     });
     if (!accessKeyId || !secretAccessKey) {
         throw new Error('AWS credentials not found in environment variables. Please check your .env file.');
