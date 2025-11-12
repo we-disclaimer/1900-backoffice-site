@@ -44,14 +44,14 @@ AppModule = __decorate([
             HomeModule,
             NoticiasModule,
             HorarioModule,
-            MongooseModule.forRoot('mongodb+srv://admin:TXCCMCCQvgQhmKwZ@cluster0.j7wteli.mongodb.net/website?retryWrites=true&w=majority'),
+            MongooseModule.forRoot(process.env.MONGODB_URI || 'mongodb+srv://admin:TXCCMCCQvgQhmKwZ@cluster0.j7wteli.mongodb.net/website?retryWrites=true&w=majority'),
             AdminModule.createAdminAsync({
                 useFactory: async () => ({
                     adminJsOptions: {
                         ...options,
                         branding: {
                             companyName: '1900 - Site Principal - 2025',
-                            logo: 'https://backoffice-app-assets.s3.us-east-1.amazonaws.com/1900-backoffice/public/media/logo.png',
+                            logo: `https://${process.env.AWS_BUCKET || 'backoffice-app-assets'}.s3.${process.env.AWS_REGION || 'us-east-1'}.amazonaws.com/1900-backoffice/public/media/logo.png`,
                             softwareBrothers: false,
                             theme: {
                                 colors: {

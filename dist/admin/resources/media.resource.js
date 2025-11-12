@@ -3,13 +3,28 @@ import uploadFeature from '@adminjs/upload';
 import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3';
 import { readFile } from 'fs/promises';
 import componentLoader from '../component-loader.js';
-const s3Client = new S3Client({
-    region: 'us-east-1',
-    credentials: {
-        accessKeyId: 'AKIA46XIEXYZSXUO54SR',
-        secretAccessKey: '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',
-    },
-});
+const getS3Client = () => {
+    const accessKeyId = process.env.AWS_ACCESS_KEY_ID;
+    const secretAccessKey = process.env.AWS_SECRET_ACCESS_KEY;
+    const region = process.env.AWS_REGION || 'us-east-1';
+    console.log('🔑 AWS Credentials Check:', {
+        hasAccessKey: !!accessKeyId,
+        accessKeyLength: accessKeyId?.length || 0,
+        hasSecretKey: !!secretAccessKey,
+        secretKeyLength: secretAccessKey?.length || 0,
+        region,
+    });
+    if (!accessKeyId || !secretAccessKey) {
+        throw new Error('AWS credentials not found in environment variables. Please check your .env file.');
+    }
+    return new S3Client({
+        region,
+        credentials: {
+            accessKeyId,
+            secretAccessKey,
+        },
+    });
+};
 const MediaSchema = new mongoose.Schema({
     url: { type: String },
     alt: { type: String },
@@ -46,13 +61,16 @@ const MediaResource = {
                         const s3Key = `1900-backoffice/public/media//${file.name}`;
                         const fileBuffer = file.path ? await readFile(file.path) : Buffer.from(await file.arrayBuffer());
                         const uploadCommand = new PutObjectCommand({
-                            Bucket: 'backoffice-app-assets',
+                            Bucket: process.env.AWS_BUCKET || 'backoffice-app-assets',
                             Key: s3Key,
                             Body: fileBuffer,
                             ContentType: file.type || 'application/octet-stream',
                         });
+                        const s3Client = getS3Client();
                         await s3Client.send(uploadCommand);
-                        const url = `https://backoffice-app-assets.s3.us-east-1.amazonaws.com/${s3Key}`;
+                        const bucket = process.env.AWS_BUCKET || 'backoffice-app-assets';
+                        const region = process.env.AWS_REGION || 'us-east-1';
+                        const url = `https://${bucket}.s3.${region}.amazonaws.com/${s3Key}`;
                         const newMedia = new MediaModel({
                             url,
                             alt,
@@ -134,10 +152,10 @@ const MediaResource = {
             componentLoader,
             provider: {
                 aws: {
-                    bucket: 'backoffice-app-assets',
-                    region: 'us-east-1',
-                    accessKeyId: 'AKIA46XIEXYZSXUO54SR',
-                    secretAccessKey: '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',
+                    bucket: process.env.AWS_BUCKET || 'backoffice-app-assets',
+                    region: process.env.AWS_REGION || 'us-east-1',
+                    accessKeyId: process.env.AWS_ACCESS_KEY_ID || '',
+                    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY || '',
                 },
             },
             properties: {
