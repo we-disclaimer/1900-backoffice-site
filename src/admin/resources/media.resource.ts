@@ -8,9 +8,10 @@ import componentLoader from '../component-loader.js';
 
 // Função para criar cliente S3 (lazy initialization)
 const getS3Client = () => {
-  const accessKeyId = process.env.AWS_ACCESS_KEY_ID;
-  const secretAccessKey = process.env.AWS_SECRET_ACCESS_KEY;
-  const region = process.env.AWS_REGION || 'us-east-1';
+  // Trim para remover espaços em branco que podem vir das variáveis de ambiente
+  const accessKeyId = process.env.AWS_ACCESS_KEY_ID?.trim();
+  const secretAccessKey = process.env.AWS_SECRET_ACCESS_KEY?.trim();
+  const region = process.env.AWS_REGION?.trim() || 'us-east-1';
   
   console.log('🔑 AWS Credentials Check:', {
     hasAccessKey: !!accessKeyId,
@@ -18,6 +19,9 @@ const getS3Client = () => {
     hasSecretKey: !!secretAccessKey,
     secretKeyLength: secretAccessKey?.length || 0,
     region,
+    // Log para debug (primeiros e últimos caracteres)
+    accessKeyStart: accessKeyId?.substring(0, 4),
+    secretKeyStart: secretAccessKey?.substring(0, 4),
   });
   
   if (!accessKeyId || !secretAccessKey) {
