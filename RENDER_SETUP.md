@@ -12,6 +12,8 @@ Este erro acontece quando as credenciais AWS contêm caracteres especiais (`+`, 
 
 ### 2. Configure as Environment Variables
 
+⚠️ **IMPORTANTE**: No Render, você deve adicionar as variáveis **UMA POR UMA**, não todas de uma vez.
+
 Vá em **Environment** → **Environment Variables** e adicione:
 
 | Key | Value | Observações |

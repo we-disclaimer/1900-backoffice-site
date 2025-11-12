@@ -61,16 +61,24 @@ const MediaResource = {
                         const file = request.payload.file;
                         const alt = request.payload.alt || file.name || 'Sem título';
                         const s3Key = `1900-backoffice/public/media//${file.name}`;
+                        const bucket = process.env.AWS_BUCKET || 'backoffice-app-assets';
+                        console.log('📦 Upload Config:', {
+                            bucket,
+                            key: s3Key,
+                            fileName: file.name,
+                            fileSize: file.size,
+                        });
                         const fileBuffer = file.path ? await readFile(file.path) : Buffer.from(await file.arrayBuffer());
                         const uploadCommand = new PutObjectCommand({
-                            Bucket: process.env.AWS_BUCKET || 'backoffice-app-assets',
+                            Bucket: bucket,
                             Key: s3Key,
                             Body: fileBuffer,
                             ContentType: file.type || 'application/octet-stream',
                         });
                         const s3Client = getS3Client();
+                        console.log('🚀 Sending upload command to S3...');
                         await s3Client.send(uploadCommand);
-                        const bucket = process.env.AWS_BUCKET || 'backoffice-app-assets';
+                        console.log('✅ Upload successful!');
                         const region = process.env.AWS_REGION || 'us-east-1';
                         const url = `https://${bucket}.s3.${region}.amazonaws.com/${s3Key}`;
                         const newMedia = new MediaModel({
