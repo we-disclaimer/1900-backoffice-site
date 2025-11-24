@@ -105,8 +105,19 @@ const MediaResource = {
                 },
             },
             new: {
-                before: async (request, context) => {
-                    return request;
+                after: async (response, request, context) => {
+                    if (response.record && response.record.params.url) {
+                        const url = response.record.params.url;
+                        if (!url.startsWith('http')) {
+                            const bucket = process.env.AWS_BUCKET || 'backoffice-app-assets';
+                            const region = process.env.AWS_REGION || 'us-east-1';
+                            const fullUrl = `https://${bucket}.s3.${region}.amazonaws.com/${url}`;
+                            console.log('🔄 Corrigindo URL:', url, '→', fullUrl);
+                            await MediaModel.findByIdAndUpdate(response.record.id, { url: fullUrl });
+                            response.record.params.url = fullUrl;
+                        }
+                    }
+                    return response;
                 },
             },
             edit: {
@@ -128,6 +139,20 @@ const MediaResource = {
                         }
                     }
                     return request;
+                },
+                after: async (response, request, context) => {
+                    if (response.record && response.record.params.url) {
+                        const url = response.record.params.url;
+                        if (!url.startsWith('http')) {
+                            const bucket = process.env.AWS_BUCKET || 'backoffice-app-assets';
+                            const region = process.env.AWS_REGION || 'us-east-1';
+                            const fullUrl = `https://${bucket}.s3.${region}.amazonaws.com/${url}`;
+                            console.log('🔄 Corrigindo URL:', url, '→', fullUrl);
+                            await MediaModel.findByIdAndUpdate(response.record.id, { url: fullUrl });
+                            response.record.params.url = fullUrl;
+                        }
+                    }
+                    return response;
                 },
             },
         },
@@ -174,9 +199,13 @@ const MediaResource = {
             },
             uploadPath: (record, filename) => {
                 console.log('🔍 uploadPath chamado - filename:', filename);
+                const bucket = process.env.AWS_BUCKET || 'backoffice-app-assets';
+                const region = process.env.AWS_REGION || 'us-east-1';
                 const basePath = '1900-backoffice/public/media';
                 const finalPath = `${basePath}//${filename}`;
+                const fullUrl = `https://${bucket}.s3.${region}.amazonaws.com/${finalPath}`;
                 console.log('🎯 Caminho final:', finalPath);
+                console.log('📍 URL completa:', fullUrl);
                 return finalPath;
             },
             validation: {
